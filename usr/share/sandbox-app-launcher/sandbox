@@ -1,5 +1,8 @@
 #!/bin/bash
 
+## Copyright (C) 2012 - 2020 ENCRYPTED SUPPORT LP <adrelanos@riseup.net>
+## See the file COPYING for copying conditions.
+
 main_app_dir="/usr/share/sandbox-app-launcher"
 symlink_dir="${main_app_dir}/symlinks"
 config_file="${main_app_dir}/config"
