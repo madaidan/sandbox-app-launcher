@@ -1,0 +1,130 @@
+#!/bin/bash
+
+main_app_dir="/usr/share/sandbox-app-launcher"
+symlink_dir="${main_app_dir}/symlinks"
+config_file="${main_app_dir}/config"
+app_name="${@}"
+app_user="sandbox-${app_name}"
+app_homedir="${main_app_dir}/${app_name}"
+seccomp_filter="${main_app_dir}/seccomp-filter.bpf"
+
+setup() {
+  if ! [ -d "${main_app_dir}" ]; then
+    mkdir -m 755 "${main_app_dir}"
+  fi
+
+  if ! [ -d "${symlink_dir}" ]; then
+    mkdir -m 755 "${symlink_dir}"
+  fi
+
+  if ! getent passwd | sed -e 's/:.*//g' | grep -qw "${app_user}"; then
+    useradd -m -d "${app_homedir}" -s /sbin/nologin "${app_user}"
+  fi
+
+  if ! [ "$(stat -c %a ${app_homedir})" = "700" ]; then
+    chmod 700 -R "${app_homedir}"
+  fi
+
+  echo "b08dfa6083e7567a1921a715000001fb" > "${main_app_dir}/machine-id"
+
+  ## Generate seccomp filter.
+  if ! [ -f "${seccomp_filter}" ]; then
+    gcc -o "${main_app_dir}/seccomp" "${main_app_dir}/seccomp.c" -lseccomp
+    chmod 700 "${main_app_dir}/seccomp"
+    "${main_app_dir}/seccomp"
+  fi
+}
+
+create_symlinks() {
+  while read -r line; do
+    [[ "$line" =~ ^#.*$ ]] && continue
+
+    if ! read -r app app_path <<< "${line}" ; then
+      echo "ERROR: cannot parse line: ${line}"
+      continue
+    fi
+
+    if ! [ -e "${symlink_dir}/${app}" ]; then
+      ln -s "${app_path}" "${symlink_dir}/${app}"
+    fi
+  done < "${config_file}"
+
+  export PATH="${PATH}:${symlink_dir}"
+}
+
+run_program() {
+  ## TODO: X11 sandbox - not needed if we switch to wayland
+  ## TODO: IPC namespace
+  ## TODO: Network namespace - probably via ip netns
+  ## TODO: Seccomp whitelist - currently only a blacklist
+  ## TODO: Finer-grained /usr/{local,share}, /sys restrictions
+
+  ## Some systems do not have /lib{32,64}.
+  lib_dir="/lib /lib --ro-bind /usr/lib /usr/lib"
+  if [ -d /lib32 ]; then
+    lib_dir+=" --ro-bind /lib32 /lib32"
+  fi
+  if [ -d /lib64 ]; then
+    lib_dir+=" --ro-bind /lib64 /lib64"
+  fi
+
+  sudo -H -u "${app_user}" \
+  bwrap \
+  --ro-bind /bin /bin \
+  --ro-bind /usr/bin /usr/bin \
+  --ro-bind ${lib_dir} \
+  --ro-bind /usr/share /usr/share \
+  --ro-bind /usr/local /usr/local \
+  --ro-bind /etc/profile /etc/profile \
+  --ro-bind /etc/bash.bashrc /etc/bash.bashrc \
+  --ro-bind /etc/passwd /etc/passwd \
+  --ro-bind /etc/group /etc/group \
+  --ro-bind /etc/hosts /etc/hosts \
+  --ro-bind /etc/localtime /etc/localtime \
+  --ro-bind /etc/nsswitch.conf /etc/nsswitch.conf \
+  --ro-bind /etc/resolv.conf /etc/resolv.conf \
+  --ro-bind /etc/xdg /etc/xdg \
+  --ro-bind /etc/X11 /etc/X11 \
+  --ro-bind /etc/gtk-2.0 /etc/gtk-2.0 \
+  --ro-bind /etc/gtk-3.0 /etc/gtk-3.0 \
+  --ro-bind /etc/fonts /etc/fonts \
+  --ro-bind /etc/mime.types /etc/mime.types \
+  --ro-bind "${main_app_dir}/machine-id" /etc/machine-id \
+  --ro-bind "${main_app_dir}/machine-id" /var/lib/dbus/machine-id \
+  --ro-bind /sys/devices /sys/devices \
+  --ro-bind /sys/class /sys/class \
+  --ro-bind /sys/bus /sys/bus \
+  --ro-bind /sys/fs /sys/fs \
+  --tmpfs "${main_app_dir}" \
+  --bind "${app_homedir}" "${app_homedir}" \
+  --proc /proc \
+  --tmpfs /tmp \
+  --tmpfs /var/tmp \
+  --tmpfs /run \
+  --dev /dev \
+  --chdir "${app_homedir}" \
+  --setenv HOME "${app_homedir}" \
+  --setenv USER "${app_user}" \
+  --setenv LOGNAME "${app_user}" \
+  --setenv XAUTHORITY "${app_homedir}/.Xauthority" \
+  --setenv SHELL /sbin/nologin \
+  --unsetenv SUDO_USER \
+  --unsetenv SUDO_UID \
+  --unsetenv SUDO_GID \
+  --unsetenv SUDO_COMMAND \
+  --unsetenv OLDPWD \
+  --unsetenv MAIL \
+  --unshare-pid \
+  --unshare-cgroup \
+  --unshare-uts \
+  --hostname host \
+  --new-session \
+  --cap-drop all \
+  --seccomp 10 \
+  10< "${seccomp_filter}" \
+  "${symlink_dir}/${app_name}"
+}
+
+setup
+create_symlinks
+run_program
