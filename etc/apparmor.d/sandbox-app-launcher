@@ -1,0 +1,166 @@
+## Copyright (C) 2012 - 2020 ENCRYPTED SUPPORT LP <adrelanos@riseup.net>
+## See the file COPYING for copying conditions.
+
+#include <tunables/global>
+
+@{MAIN_APP_DIR}=/usr/share/sandbox-app-launcher
+@{SYMLINK_DIR}=@{MAIN_APP_DIR}/symlinks
+@{APP_NAME}=TODO
+@{APP_HOMEDIR}=@{MAIN_APP_DIR}/@{APP_NAME}
+
+profile sandbox-app-launcher @{SYMLINK_DIR}/** flags=(attach_disconnected) {
+  #include <abstractions/dangerous-files>
+
+  / r,
+
+  ## Let the app do whatever they want with their own data except
+  ## executing their own code.
+  owner @{APP_HOMEDIR}/ r,
+  owner @{APP_HOMEDIR}/** rwmlk,
+
+  ## Allow us to send ourselves signals.
+  ## TODO: Whitelist of allowed signals.
+  ## TODO: Distinguish between apps.
+  signal peer=sandbox-app-launcher,
+
+  ## Allow us to ptrace ourselves.
+  ## TODO: Distinguish between apps.
+  ptrace (read, readby, tracedby) peer=sandbox-app-launcher,
+
+  ## TODO: Restrict if possible.
+  unix,
+
+  ## Network access.
+  ##
+  ## Only IPv4 TCP traffic is allowed as Whonix
+  ## disables IPv6 and Tor only supports TCP.
+  network inet tcp,
+
+  ## Allow DBus.
+  ## TODO: Restrict access.
+  dbus,
+
+  ## Programs and libraries.
+  ##
+  ## All programs and libraries are read-only to prevent malware from
+  ## compromising a specific program. Updates will be handled by APT.
+  /usr/ r,
+  /{,usr/,usr/local/}{,s}bin/ r,
+  /{,usr/,usr/local/}{,s}bin/** rpix,
+  /usr/{,local/}games/ r,
+  /usr/{,local/}games/** rpix,
+  /{,usr/,usr/local/}lib{,32,64}/ r,
+  /{,usr/,usr/local/}lib{,32,64}/** rmpix,
+  /usr/{,local/}share/ r,
+  /usr/{,local/}share/** rpix,
+  /usr/{,local/}include/ r,
+  /usr/{,local/}include/** rpix,
+  owner /usr/lib/python3/dist-packages/*/__pycache__/ rwm,
+  owner /usr/lib/python3/dist-packages/*/__pycache__/** rwm,
+
+  ## Sysfs access.
+  /sys/ r,
+  /sys/devices/ r,
+  /sys/devices/**/{,uevent,config} r,
+  /sys/devices/pci[0-9]*/**/ r,
+  /sys/devices/pci[0-9]*/**/{,resource,boot_vga,class,vendor,device,irq,revision,subsystem_vendor,port_no} r,
+  /sys/devices/pci[0-9]*/**/drm/**/{,enabled,status} r,
+  /sys/devices/pci[0-9]*/**/sound/**/pcm_class r,
+  /sys/devices/pci[0-9]*/**/backlight/**/* rw,
+  /sys/devices/virtual/tty/tty[0-9]*/active r,
+  /sys/devices/virtual/tty/console/active r,
+  /sys/devices/virtual/dmi/id/{,sys,board,bios}_vendor r,
+  /sys/devices/system/node/node[0-9]*/meminfo r,
+  /sys/devices/system/cpu/present r,
+  /sys/devices/system/cpu/online r,
+  /sys/devices/system/cpu/cpu[0-9]*/cache/index2/size r,
+  /sys/class/ r,
+  /sys/class/{,tty,input,drm,sound}/ r,
+  /sys/bus/ r,
+  /sys/bus/pci/devices/ r,
+  /sys/fs/cgroup/** rwm,
+
+  ## Procfs access.
+  ## TODO: Restrict access further. Restrict all to owner.
+  owner /proc/ r,
+  owner /proc/*/{,environ,limits,mountinfo,mounts,uid_map,gid_map,setgroups} r,
+  owner /proc/*/fdinfo/* r,
+  owner /proc/*/oom_score_adj rw,
+  /proc/*/{,cgroup,cmdline,comm,sessionid,mounts,stat,status,sched,maps,auxv} r,
+  /proc/*/attr/current r,
+  /proc/*/attr/exec rw,
+  /proc/*/loginuid rw,
+  /proc/*/fd/ r,
+  /proc/*/task/*/stat r,
+  /proc/*/net/ r,
+  /proc/*/net/{,dev,route} r,
+  /proc/{,stat,cpuinfo,filesystems,meminfo,swaps,cmdline,uptime} r,
+  /proc/sys/** r,
+  /proc/asound/card[0-9]*/ r,
+  /proc/asound/card[0-9]*/pcm[0-9]*/ r,
+  /proc/asound/card[0-9]*/pcm[0-9]*/sub[0-9]*/status r,
+  owner /proc/*/{,setgroups,gid_map,uid_map} w,
+  owner /proc/{,kmsg,devices,mtrr} r,
+  owner /proc/tty/drivers r,
+  owner /proc/sysvipc/{,shm,sem,msg} r,
+
+  ## Tmpfs access.
+  ##
+  ## Read-only access is given to files the user is not an owner of
+  ## and read-write access is given to files the user is owner of.
+  ## TODO: W^X.
+  /{,var/}tmp/ r,
+  /{,var/}tmp/** rpix,
+  owner /{,var/}tmp/ rw,
+  owner /{,var/}tmp/** rwmpixl,
+
+  ## Config files.
+  ## TODO: Restrict access. Write/exec should most likely be removed. Apps probably don't need much in /etc anyway.
+  /{,usr/local/}etc/ r,
+  /{,usr/local/}etc/** rpix,
+  owner /{,usr/local/}etc/** rwmlkpix,
+
+  ## Device access.
+  ## TODO: Remove write permission where it's not needed.
+  ## TODO: Some of these devices aren't needed.
+  /dev/ r,
+  /dev/console rw,
+  /dev/random rw,
+  /dev/urandom rw,
+  /dev/null rw,
+  /dev/zero rw,
+  /dev/full rw,
+  /dev/stdin rw,
+  /dev/stdout r,
+  /dev/stderr rw,
+  /dev/tty rw,
+  owner /dev/tty[0-9]* rw,
+  /dev/ptmx rw,
+  /dev/pts/ r,
+  owner /dev/pts/* rw,
+  /dev/input/ r,
+  /dev/input/** rw,
+  /dev/uinput rw,
+  /dev/dri/ r,
+  owner /dev/snd/ r,
+  /dev/snd/* rw,
+  owner /dev/mqueue/ rw,
+  /dev/shm/ r,
+  owner /dev/shm/** rwm,
+  /dev/dri/card[0-9]* rw,
+
+  ## /var and /run access.
+  /var/ r,
+  /var/{,cache,lib,log,spool}/ r,
+  /var/cache/** r,
+  /var/cache/man/*/*[0-9]/ rw,
+  /var/{,lib,log}/** rw,
+  owner /var/{,cache,lib,db}/** rwkl,
+  /{,var/}run/ r,
+  /{,var/}run/** rw,
+  /{,var/}run/shm/** rwl,
+  owner /{,var/}run/** rwk,
+
+  /srv/ r,
+
+}
