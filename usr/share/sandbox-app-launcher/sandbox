@@ -32,7 +32,7 @@ setup() {
 
   ## Generate seccomp filter.
   if ! [ -f "${seccomp_filter}" ]; then
-    gcc -o "${main_app_dir}/seccomp" "${main_app_dir}/seccomp.c" -lseccomp
+    gcc -o "${main_app_dir}/seccomp" "${main_app_dir}/seccomp.c" -lseccomp -ldl -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wl,-z,relro -Wl,-z,now
     chmod 700 "${main_app_dir}/seccomp"
     "${main_app_dir}/seccomp"
   fi
