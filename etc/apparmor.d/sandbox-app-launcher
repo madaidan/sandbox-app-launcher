@@ -5,8 +5,6 @@
 
 @{MAIN_APP_DIR}=/usr/share/sandbox-app-launcher
 @{SYMLINK_DIR}=@{MAIN_APP_DIR}/symlinks
-@{APP_NAME}=TODO
-@{APP_HOMEDIR}=@{MAIN_APP_DIR}/@{APP_NAME}
 
 profile sandbox-app-launcher @{SYMLINK_DIR}/** flags=(attach_disconnected) {
   #include <abstractions/dangerous-files>
@@ -15,8 +13,8 @@ profile sandbox-app-launcher @{SYMLINK_DIR}/** flags=(attach_disconnected) {
 
   ## Let the app do whatever they want with their own data except
   ## executing their own code.
-  owner @{APP_HOMEDIR}/ r,
-  owner @{APP_HOMEDIR}/** rwmlk,
+  owner @{MAIN_APP_DIR}/*/ r,
+  owner @{MAIN_APP_DIR}/*/** rwmlk,
 
   ## Allow us to send ourselves signals.
   ## TODO: Whitelist of allowed signals.
