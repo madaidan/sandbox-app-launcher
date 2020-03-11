@@ -11,7 +11,7 @@ profile sandbox-app-launcher @{SYMLINK_DIR}/** flags=(attach_disconnected) {
 
   ## Let the app do whatever they want with their own data except
   ## executing their own code.
-  owner @{MAIN_APP_DIR}/*/ r,
+  owner @{MAIN_APP_DIR}/*/ rw,
   owner @{MAIN_APP_DIR}/*/** rwmlk,
 
   ## Allow us to send ourselves signals.
