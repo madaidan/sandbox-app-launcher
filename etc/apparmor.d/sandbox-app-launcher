@@ -108,10 +108,9 @@ profile sandbox-app-launcher @{SYMLINK_DIR}/** flags=(attach_disconnected) {
   owner /{,var/}tmp/** rwmpixl,
 
   ## Config files.
-  ## TODO: Restrict access. Write/exec should most likely be removed. Apps probably don't need much in /etc anyway.
+  ## TODO: Restrict access. Apps probably don't need much in /etc anyway.
   /{,usr/local/}etc/ r,
-  /{,usr/local/}etc/** rpix,
-  owner /{,usr/local/}etc/** rwmlkpix,
+  /{,usr/local/}etc/** r,
 
   ## Device access.
   ## TODO: Remove write permission where it's not needed.
