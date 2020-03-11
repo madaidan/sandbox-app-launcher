@@ -7,8 +7,6 @@
 @{SYMLINK_DIR}=@{MAIN_APP_DIR}/symlinks
 
 profile sandbox-app-launcher @{SYMLINK_DIR}/** flags=(attach_disconnected) {
-  #include <abstractions/dangerous-files>
-
   / r,
 
   ## Let the app do whatever they want with their own data except
