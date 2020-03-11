@@ -98,7 +98,7 @@ run_program() {
   --ro-bind /sys/devices /sys/devices \
   --ro-bind /sys/class /sys/class \
   --ro-bind /sys/bus /sys/bus \
-  --ro-bind /sys/fs /sys/fs \
+  --ro-bind /sys/fs/cgroup /sys/fs/cgroup \
   --tmpfs "${main_app_dir}" \
   --bind "${app_homedir}" "${app_homedir}" \
   --ro-bind "${symlink_dir}/${app_name}" "${symlink_dir}/${app_name}" \
