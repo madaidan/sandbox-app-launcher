@@ -100,6 +100,7 @@ run_program() {
   --ro-bind /sys/fs /sys/fs \
   --tmpfs "${main_app_dir}" \
   --bind "${app_homedir}" "${app_homedir}" \
+  --ro-bind "${symlink_dir}/${app_name}" "${symlink_dir}/${app_name}" \
   --proc /proc \
   --tmpfs /tmp \
   --tmpfs /var/tmp \
