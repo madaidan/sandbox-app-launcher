@@ -101,11 +101,10 @@ profile sandbox-app-launcher @{SYMLINK_DIR}/** flags=(attach_disconnected) {
   ##
   ## Read-only access is given to files the user is not an owner of
   ## and read-write access is given to files the user is owner of.
-  ## TODO: W^X.
   /{,var/}tmp/ r,
-  /{,var/}tmp/** rpix,
+  /{,var/}tmp/** r,
   owner /{,var/}tmp/ rw,
-  owner /{,var/}tmp/** rwmpixl,
+  owner /{,var/}tmp/** rwml,
 
   ## Config files.
   ## TODO: Restrict access. Apps probably don't need much in /etc anyway.
