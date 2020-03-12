@@ -4,6 +4,8 @@
 #include <errno.h>
 #include <sys/socket.h>
 #include <sys/ioctl.h>
+#include <sys/mman.h>
+#include <linux/shm.h>
 
 /* TODO: Use a whitelist */
 
@@ -17,6 +19,7 @@ int main(int argc, char *argv[])
     scmp_filter_ctx ctx;
     int filter_fd;
     char *filter_path = "/usr/share/sandbox-app-launcher/seccomp-filter.bpf";
+    int w_xor_x = 1;
 
     ctx = seccomp_init(SCMP_ACT_ALLOW);
     if (ctx == NULL)
@@ -133,6 +136,20 @@ int main(int argc, char *argv[])
     DENY_SOCKET (AF_X25);
 
     DENY_IOCTL (TIOCSTI);
+
+    /* W^X */
+    if (w_xor_x) {
+        /* Disallow creating PROT_EXEC|PROT_WRITE mappings */
+        if (seccomp_rule_add (ctx, SCMP_ACT_KILL, SCMP_SYS(mmap), 1, SCMP_A2(SCMP_CMP_MASKED_EQ, PROT_EXEC|PROT_WRITE), 0) < 0) goto out;
+        if (seccomp_rule_add (ctx, SCMP_ACT_KILL, SCMP_SYS(mmap2), 1, SCMP_A2(SCMP_CMP_MASKED_EQ, PROT_EXEC|PROT_WRITE, PROT_EXEC|PROT_WRITE), 0) < 0) goto out;
+
+        /* Disallow changing mappings to PROT_EXEC */
+        if (seccomp_rule_add (ctx, SCMP_ACT_KILL, SCMP_SYS(mprotect), 1, SCMP_A2(SCMP_CMP_MASKED_EQ, PROT_EXEC, PROT_EXEC), 0) < 0) goto out;
+        if (seccomp_rule_add (ctx, SCMP_ACT_KILL, SCMP_SYS(pkey_mprotect), 1, SCMP_A2(SCMP_CMP_MASKED_EQ, PROT_EXEC, PROT_EXEC), 0) < 0) goto out;
+
+        /* Disallow mapping shared memory segments as executable */
+        if (seccomp_rule_add (ctx, SCMP_ACT_KILL, SCMP_SYS(shmat), 1, SCMP_A2(SCMP_CMP_MASKED_EQ, SHM_EXEC, SHM_EXEC), 0) < 0) goto out;
+    }
 
     filter_fd = open(filter_path, O_CREAT | O_WRONLY, 0644);
     if (filter_fd == -1) {
