@@ -3,11 +3,13 @@
 #include <fcntl.h>
 #include <errno.h>
 #include <sys/socket.h>
+#include <sys/ioctl.h>
 
 /* TODO: Use a whitelist */
 
 #define DENY_SYSCALL(call) { if (seccomp_rule_add (ctx, SCMP_ACT_KILL, SCMP_SYS(call), 0) < 0) goto out; }
 #define DENY_SOCKET(call) { if (seccomp_rule_add (ctx, SCMP_ACT_KILL, SCMP_SYS(socket), 1, SCMP_A0 (SCMP_CMP_EQ, call)) < 0) goto out; }
+#define DENY_IOCTL(call) { if (seccomp_rule_add (ctx, SCMP_ACT_KILL, SCMP_SYS(ioctl), 1, SCMP_A1 (SCMP_CMP_MASKED_EQ, 0xFFFFFFFFu, (int) call), 0) < 0) goto out; }
 
 int main(int argc, char *argv[])
 {
@@ -129,6 +131,8 @@ int main(int argc, char *argv[])
     DENY_SOCKET (AF_TIPC);
     DENY_SOCKET (AF_VSOCK);
     DENY_SOCKET (AF_X25);
+
+    DENY_IOCTL (TIOCSTI);
 
     filter_fd = open(filter_path, O_CREAT | O_WRONLY, 0644);
     if (filter_fd == -1) {
