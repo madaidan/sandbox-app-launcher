@@ -2,10 +2,12 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <errno.h>
+#include <sys/socket.h>
 
 /* TODO: Use a whitelist */
 
 #define DENY_SYSCALL(call) { if (seccomp_rule_add (ctx, SCMP_ACT_KILL, SCMP_SYS(call), 0) < 0) goto out; }
+#define DENY_SOCKET(call) { if (seccomp_rule_add (ctx, SCMP_ACT_KILL, SCMP_SYS(socket), 1, SCMP_A0 (SCMP_CMP_EQ, call)) < 0) goto out; }
 
 int main(int argc, char *argv[])
 {
@@ -109,6 +111,24 @@ int main(int argc, char *argv[])
     DENY_SYSCALL (vm86old);
     DENY_SYSCALL (vmsplice);
     DENY_SYSCALL (vserver);
+
+    DENY_SOCKET (AF_AX25);
+    DENY_SOCKET (AF_BLUETOOTH);
+    DENY_SOCKET (AF_CAN);
+    DENY_SOCKET (AF_DECnet);
+    DENY_SOCKET (AF_ECONET);
+    DENY_SOCKET (AF_IB);
+    DENY_SOCKET (AF_INET6);
+    DENY_SOCKET (AF_IPX);
+    DENY_SOCKET (AF_LLC);
+    DENY_SOCKET (AF_NETROM);
+    DENY_SOCKET (AF_PHONET);
+    DENY_SOCKET (AF_RDS);
+    DENY_SOCKET (AF_ROSE);
+    DENY_SOCKET (AF_RXRPC);
+    DENY_SOCKET (AF_TIPC);
+    DENY_SOCKET (AF_VSOCK);
+    DENY_SOCKET (AF_X25);
 
     filter_fd = open(filter_path, O_CREAT | O_WRONLY, 0644);
     if (filter_fd == -1) {
