@@ -136,6 +136,8 @@ int main(int argc, char *argv[])
     DENY_SOCKET (AF_X25);
 
     /* Blacklist unused ioctls */
+    /* SIOCGIFHWADDR gets the MAC address which apps shouldn't need and can be a privacy issue */
+    DENY_IOCTL (SIOCGIFHWADDR);
     /* TIOCSETD can load vulnerable line disciplines to increase kernel attack surface */
     DENY_IOCTL (TIOCSETD);
     /* TIOCSTI has been used in sandbox escapes before and is unneeded */
