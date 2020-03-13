@@ -140,7 +140,7 @@ int main(int argc, char *argv[])
     /* W^X */
     if (w_xor_x) {
         /* Disallow creating PROT_EXEC|PROT_WRITE mappings */
-        if (seccomp_rule_add (ctx, SCMP_ACT_KILL, SCMP_SYS(mmap), 1, SCMP_A2(SCMP_CMP_MASKED_EQ, PROT_EXEC|PROT_WRITE), 0) < 0) goto out;
+        if (seccomp_rule_add (ctx, SCMP_ACT_KILL, SCMP_SYS(mmap), 1, SCMP_A2(SCMP_CMP_MASKED_EQ, PROT_EXEC|PROT_WRITE, PROT_EXEC|PROT_WRITE), 0) < 0) goto out;
         if (seccomp_rule_add (ctx, SCMP_ACT_KILL, SCMP_SYS(mmap2), 1, SCMP_A2(SCMP_CMP_MASKED_EQ, PROT_EXEC|PROT_WRITE, PROT_EXEC|PROT_WRITE), 0) < 0) goto out;
 
         /* Disallow changing mappings to PROT_EXEC */
