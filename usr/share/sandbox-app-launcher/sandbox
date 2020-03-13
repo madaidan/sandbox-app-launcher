@@ -95,8 +95,6 @@ run_program() {
   --ro-bind /usr/local /usr/local \
   --ro-bind /etc/profile /etc/profile \
   --ro-bind /etc/bash.bashrc /etc/bash.bashrc \
-  --ro-bind /etc/passwd /etc/passwd \
-  --ro-bind /etc/group /etc/group \
   --ro-bind /etc/hosts /etc/hosts \
   --ro-bind /etc/localtime /etc/localtime \
   --ro-bind /etc/nsswitch.conf /etc/nsswitch.conf \
@@ -108,6 +106,10 @@ run_program() {
   --ro-bind /etc/fonts /etc/fonts \
   --ro-bind /etc/mime.types /etc/mime.types \
   --ro-bind /etc/ssl /etc/ssl \
+  --ro-bind-data 10 /etc/passwd \
+  --ro-bind-data 11 /etc/group \
+  10< <(getent passwd "${app_user}" nobody) \
+  11< <(getent group "${app_user}" nobody) \
   --ro-bind "${main_app_dir}/machine-id" /etc/machine-id \
   --ro-bind "${main_app_dir}/machine-id" /var/lib/dbus/machine-id \
   --ro-bind /sys/devices /sys/devices \
@@ -140,8 +142,8 @@ run_program() {
   --hostname host \
   --new-session \
   --cap-drop all \
-  --seccomp 10 \
-  10< "${seccomp_filter}" \
+  --seccomp 12 \
+  12< "${seccomp_filter}" \
   "${symlink_dir}/${app_name}"
 }
 
