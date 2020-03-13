@@ -138,7 +138,7 @@ int main(int argc, char *argv[])
     /* Blacklist unused ioctls */
     /* TIOCSETD can load vulnerable line disciplines to increase kernel attack surface */
     DENY_IOCTL (TIOCSETD);
-    /* TIOCSTI has been used in sandbox escapes before and is unneeded. */
+    /* TIOCSTI has been used in sandbox escapes before and is unneeded */
     DENY_IOCTL (TIOCSTI);
 
     /* W^X */
