@@ -37,6 +37,15 @@ setup() {
     chmod 700 "${main_app_dir}/seccomp"
     "${main_app_dir}/seccomp"
   fi
+  
+  if ! [ -f "${main_app_dir}/seccomp-filter-wx.bpf" ]; then
+    cp "${main_app_dir}/seccomp.c" "${main_app_dir}/seccomp-wx.c"
+    sed -i 's/seccomp-filter\.bpf/seccomp-filter-wx\.bpf/' "${main_app_dir}/seccomp-wx.c"
+    sed -i 's/int w_xor_x = 1/int w_xor_x = 0/' "${main_app_dir}/seccomp-wx.c"
+    gcc -o "${main_app_dir}/seccomp-wx" "${main_app_dir}/seccomp-wx.c" -lseccomp -ldl -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wl,-z,relro -Wl,-z,now
+    chmod 700 "${main_app_dir}/seccomp-wx"
+    "${main_app_dir}/seccomp-wx"
+  fi
 
   ## Some apps break with W^X so allow opting out.
   if grep -qw "${app_name}" "${wx_whitelist}"; then
