@@ -25,6 +25,7 @@ int main(int argc, char *argv[])
     if (ctx == NULL)
          goto out;
 
+    /* Blacklist unused syscalls */
     DENY_SYSCALL (_sysctl);
     DENY_SYSCALL (acct);
     DENY_SYSCALL (add_key);
@@ -116,6 +117,7 @@ int main(int argc, char *argv[])
     DENY_SYSCALL (vmsplice);
     DENY_SYSCALL (vserver);
 
+    /* Blacklist unused socket families */
     DENY_SOCKET (AF_AX25);
     DENY_SOCKET (AF_BLUETOOTH);
     DENY_SOCKET (AF_CAN);
@@ -133,6 +135,10 @@ int main(int argc, char *argv[])
     DENY_SOCKET (AF_VSOCK);
     DENY_SOCKET (AF_X25);
 
+    /* Blacklist unused ioctls */
+    /* TIOCSETD can load vulnerable line disciplines to increase kernel attack surface */
+    DENY_IOCTL (TIOCSETD);
+    /* TIOCSTI has been used in sandbox escapes before and is unneeded. */
     DENY_IOCTL (TIOCSTI);
 
     /* W^X */
