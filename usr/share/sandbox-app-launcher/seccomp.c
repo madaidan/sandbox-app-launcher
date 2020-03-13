@@ -122,7 +122,6 @@ int main(int argc, char *argv[])
     DENY_SOCKET (AF_DECnet);
     DENY_SOCKET (AF_ECONET);
     DENY_SOCKET (AF_IB);
-    DENY_SOCKET (AF_INET6);
     DENY_SOCKET (AF_IPX);
     DENY_SOCKET (AF_LLC);
     DENY_SOCKET (AF_NETROM);
