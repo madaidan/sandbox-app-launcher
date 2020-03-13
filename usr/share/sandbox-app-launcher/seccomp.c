@@ -82,7 +82,6 @@ int main(int argc, char *argv[])
     DENY_SYSCALL (ptrace);
     DENY_SYSCALL (putpmsg);
     DENY_SYSCALL (query_module);
-    DENY_SYSCALL (quotactl);
     DENY_SYSCALL (reboot);
     DENY_SYSCALL (remap_file_pages);
     DENY_SYSCALL (request_key);
