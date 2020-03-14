@@ -108,9 +108,30 @@ profile sandbox-app-launcher @{SYMLINK_DIR}/** flags=(attach_disconnected) {
   owner /{,var/}tmp/** rwml,
 
   ## Config files.
-  ## TODO: Restrict access. Apps probably don't need much in /etc anyway.
-  /{,usr/local/}etc/ r,
-  /{,usr/local/}etc/** r,
+  /etc/profile r,
+  /etc/bash.bashrc r,
+  /etc/hosts r,
+  /etc/localtime r,
+  /etc/nsswitch.conf r,
+  /etc/resolv.conf r,
+  /etc/xdg/ r,
+  /etc/xdg/** r,
+  /etc/X11/ r,
+  /etc/X11/** r,
+  /etc/gtk-{,2,3}.0/ r,
+  /etc/gtk-{,2,3}.0/** r,
+  /etc/fonts/ r,
+  /etc/fonts/** r,
+  /etc/mime.types r,
+  /etc/ssl/ r,
+  /etc/ssl/** r,
+  /etc/passwd r,
+  /etc/group r,
+  /etc/machine-id r,
+  /etc/gimp/ r,
+  /etc/gimp/** r,
+  /etc/thunderbird/ r,
+  /etc/thunderbird/** r,
 
   ## Device access.
   ## TODO: Remove write permission where it's not needed.
