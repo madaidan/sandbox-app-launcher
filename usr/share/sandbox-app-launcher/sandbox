@@ -75,7 +75,6 @@ run_program() {
   ## TODO: IPC namespace
   ## TODO: Network namespace - probably via ip netns
   ## TODO: Seccomp whitelist - currently only a blacklist
-  ## TODO: Finer-grained /usr/{local,share}, /sys restrictions
 
   ## Some systems do not have /lib{32,64}.
   lib_dir="/lib /lib --ro-bind /usr/lib /usr/lib"
@@ -92,7 +91,9 @@ run_program() {
   --ro-bind /usr/bin /usr/bin \
   --ro-bind ${lib_dir} \
   --ro-bind /usr/share /usr/share \
-  --ro-bind /usr/local /usr/local \
+  --ro-bind /usr/local/lib /usr/local/lib \
+  --ro-bind /usr/local/share /usr/local/share \
+  --ro-bind /usr/include /usr/include \
   --ro-bind /etc/profile /etc/profile \
   --ro-bind /etc/bash.bashrc /etc/bash.bashrc \
   --ro-bind /etc/hosts /etc/hosts \
