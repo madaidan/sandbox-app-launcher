@@ -51,8 +51,9 @@ profile sandbox-app-launcher @{SYMLINK_DIR}/** flags=(attach_disconnected) {
   /usr/{,local/}share/** rpix,
   /usr/{,local/}include/ r,
   /usr/{,local/}include/** rpix,
-  owner /usr/lib/python3/dist-packages/*/__pycache__/ rwm,
-  owner /usr/lib/python3/dist-packages/*/__pycache__/** rwm,
+  ## /usr/lib/ is mounted read-only.
+  deny /usr/lib/python3/dist-packages/*/__pycache__/ w,
+  deny /usr/lib/python3/dist-packages/*/__pycache__/** w,
 
   ## Sysfs access.
   /sys/ r,
@@ -62,7 +63,7 @@ profile sandbox-app-launcher @{SYMLINK_DIR}/** flags=(attach_disconnected) {
   /sys/devices/pci[0-9]*/**/{,resource,boot_vga,class,vendor,device,irq,revision,subsystem_vendor,port_no} r,
   /sys/devices/pci[0-9]*/**/drm/**/{,enabled,status} r,
   /sys/devices/pci[0-9]*/**/sound/**/pcm_class r,
-  /sys/devices/pci[0-9]*/**/backlight/**/* rw,
+  /sys/devices/pci[0-9]*/**/backlight/**/* r,
   /sys/devices/virtual/tty/tty[0-9]*/active r,
   /sys/devices/virtual/tty/console/active r,
   /sys/devices/virtual/dmi/id/{,sys,board,bios}_vendor r,
