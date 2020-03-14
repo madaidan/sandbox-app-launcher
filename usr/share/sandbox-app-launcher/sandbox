@@ -106,11 +106,15 @@ run_program() {
   --ro-bind /etc/fonts /etc/fonts \
   --ro-bind /etc/mime.types /etc/mime.types \
   --ro-bind /etc/ssl /etc/ssl \
+  --ro-bind-try /etc/gimp /etc/gimp \
+  --ro-bind-try /etc/thunderbird /etc/thunderbird \
   --ro-bind-data 10 /etc/passwd \
   --ro-bind-data 11 /etc/group \
   10< <(getent passwd "${app_user}" nobody) \
   11< <(getent group "${app_user}" nobody) \
   --ro-bind "${main_app_dir}/machine-id" /etc/machine-id \
+  --ro-bind /var/lib /var/lib \
+  --ro-bind /var/log /var/log \
   --ro-bind "${main_app_dir}/machine-id" /var/lib/dbus/machine-id \
   --ro-bind /sys/devices /sys/devices \
   --ro-bind /sys/class /sys/class \
@@ -123,6 +127,7 @@ run_program() {
   --tmpfs /tmp \
   --tmpfs /var/tmp \
   --tmpfs /var/cache \
+  --tmpfs /var/run
   --tmpfs /run \
   --dev /dev \
   --chdir "${app_homedir}" \
