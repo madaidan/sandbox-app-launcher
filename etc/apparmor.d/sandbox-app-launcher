@@ -95,6 +95,7 @@ profile sandbox-app-launcher @{SYMLINK_DIR}/** flags=(attach_disconnected) {
   /proc/asound/card[0-9]*/pcm[0-9]*/ r,
   /proc/asound/card[0-9]*/pcm[0-9]*/sub[0-9]*/status r,
   owner /proc/*/{,setgroups,gid_map,uid_map} w,
+  deny /proc/*/{,statm,smaps} r,
 
   ## Tmpfs access.
   ##
