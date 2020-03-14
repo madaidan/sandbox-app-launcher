@@ -43,8 +43,6 @@ profile sandbox-app-launcher @{SYMLINK_DIR}/** flags=(attach_disconnected) {
   /usr/ r,
   /{,usr/,usr/local/}{,s}bin/ r,
   /{,usr/,usr/local/}{,s}bin/** rpix,
-  /usr/{,local/}games/ r,
-  /usr/{,local/}games/** rpix,
   /{,usr/,usr/local/}lib{,32,64}/ r,
   /{,usr/,usr/local/}lib{,32,64}/** rmpix,
   /usr/{,local/}share/ r,
