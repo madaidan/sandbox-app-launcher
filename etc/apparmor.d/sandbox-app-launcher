@@ -103,7 +103,7 @@ profile sandbox-app-launcher @{SYMLINK_DIR}/** flags=(attach_disconnected) {
   /{,var/}tmp/ r,
   /{,var/}tmp/** r,
   owner /{,var/}tmp/ rw,
-  owner /{,var/}tmp/** rwml,
+  owner /{,var/}tmp/** rwmlk,
 
   ## Config files.
   /etc/ r,
@@ -142,7 +142,7 @@ profile sandbox-app-launcher @{SYMLINK_DIR}/** flags=(attach_disconnected) {
   /var/ r,
   /var/{,lib,log,cache}/ r,
   /var/{,lib,log}/** r,
-  /var/cache/** rw,
+  /var/cache/** rwl,
   owner /var/{,lib,log}/ rw,
   owner /var/{,lib,log}/** rw,
   /{,var/}run/ r,
