@@ -143,11 +143,11 @@ profile sandbox-app-launcher @{SYMLINK_DIR}/** flags=(attach_disconnected) {
 
   ## /var and /run access.
   /var/ r,
-  /var/{,cache,lib,log,spool}/ r,
-  /var/cache/** r,
-  /var/cache/man/*/*[0-9]/ rw,
-  /var/{,lib,log}/** rw,
-  owner /var/{,cache,lib,db}/** rwkl,
+  /var/{,lib,log,cache}/ r,
+  /var/{,lib,log}/** r,
+  /var/cache/** rw,
+  owner /var/{,lib,log}/ rw,
+  owner /var/{,lib,log}/** rw,
   /{,var/}run/ r,
   /{,var/}run/** rw,
   /{,var/}run/shm/** rwl,
