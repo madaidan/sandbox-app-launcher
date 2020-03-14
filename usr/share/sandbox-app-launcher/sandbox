@@ -114,7 +114,7 @@ run_program() {
   --tmpfs /tmp \
   --tmpfs /var/tmp \
   --tmpfs /var/cache \
-  --tmpfs /var/run
+  --tmpfs /var/run \
   --tmpfs /run \
   --dev /dev \
   --chdir "${app_homedir}" \
