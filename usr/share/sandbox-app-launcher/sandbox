@@ -98,8 +98,8 @@ run_program() {
   --ro-bind /etc /etc \
   --ro-bind-data 10 /etc/passwd \
   --ro-bind-data 11 /etc/group \
-  10< <(getent passwd "${app_user}" nobody) \
-  11< <(getent group "${app_user}" nobody) \
+  10< <(getent passwd root "${app_user}" nobody) \
+  11< <(getent group root "${app_user}" nobody) \
   --ro-bind "${main_app_dir}/machine-id" /etc/machine-id \
   --ro-bind /var/lib /var/lib \
   --ro-bind /var/log /var/log \
