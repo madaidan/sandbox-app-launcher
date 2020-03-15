@@ -79,15 +79,16 @@ profile sandbox-app-launcher @{SYMLINK_DIR}/** flags=(attach_disconnected) {
   ## Procfs access.
   ## TODO: Restrict access further.
   owner /proc/ r,
-  owner /proc/*/{,cgroup,cmdline,comm,sessionid,mounts,stat,status,sched,maps,auxv,attr/current,fd/,environ,limits,mountinfo} r,
-  owner /proc/*/{,setgroups,gid_map,uid_map,attr/exec,oom_score_adj} rw,
+  owner /proc/*/{cgroup,cmdline,comm,sessionid,mounts,stat,status,sched,maps,auxv,attr/current,fd/,environ,limits,mountinfo} r,
+  owner /proc/*/{setgroups,gid_map,uid_map,attr/exec,oom_score_adj} rw,
   owner /proc/*/task/*/stat r,
   owner /proc/*/fdinfo/* r,
-  owner /proc/*/net/ r,
-  owner /proc/*/net/{,dev,route} r,
-  /proc/{,stat,cpuinfo,filesystems,meminfo,swaps,uptime} r,
+  /proc/{stat,cpuinfo,filesystems,meminfo,swaps,uptime} r,
   /proc/sys/** r,
-  deny /proc/*/{,statm,smaps} r,
+
+  deny /proc/*/{statm,smaps} r,
+  deny /proc/*/net/ r,
+  deny /proc/*/net/** r,
 
   ## Tmpfs access.
   ##
@@ -133,11 +134,11 @@ profile sandbox-app-launcher @{SYMLINK_DIR}/** flags=(attach_disconnected) {
 
   ## /var and /run access.
   /var/ r,
-  /var/{,lib,log,cache}/ r,
-  /var/{,lib,log}/** r,
+  /var/{lib,log,cache}/ r,
+  /var/{lib,log}/** r,
   /var/cache/** rwl,
-  owner /var/{,lib,log}/ rw,
-  owner /var/{,lib,log}/** rw,
+  owner /var/{lib,log}/ rw,
+  owner /var/{lib,log}/** rw,
   /{,var/}run/ r,
   /{,var/}run/** rw,
   /{,var/}run/shm/** rwl,
