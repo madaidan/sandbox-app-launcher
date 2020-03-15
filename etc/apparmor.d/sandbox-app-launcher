@@ -36,6 +36,12 @@ profile sandbox-app-launcher @{SYMLINK_DIR}/** flags=(attach_disconnected) {
   ## Allow DBus.
   ## TODO: Restrict access.
   dbus,
+  
+  ## rlimit restrictions.
+  ##
+  ## Only allow a maximum of 50 processes to prevent things such as
+  ## fork bombs.
+  set rlimit nproc <= 50,
 
   ## Programs and libraries.
   ##
