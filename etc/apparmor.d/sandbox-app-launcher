@@ -41,6 +41,7 @@ profile sandbox-app-launcher @{SYMLINK_DIR}/** flags=(attach_disconnected) {
   ##
   ## All programs and libraries are read-only to prevent malware from
   ## compromising a specific program. Updates will be handled by APT.
+  ## TODO: Environment scrubbing.
   /usr/ r,
   /{,usr/,usr/local/}{,s}bin/ r,
   /{,usr/,usr/local/}{,s}bin/** rpix,
