@@ -86,7 +86,7 @@ profile sandbox-app-launcher @{SYMLINK_DIR}/** flags=(attach_disconnected) {
 
   ## Procfs access.
   ## TODO: Restrict access further.
-  owner /proc/ r,
+  /proc/ r,
   owner /proc/*/{cgroup,cmdline,comm,sessionid,mounts,stat,status,sched,maps,auxv,attr/current,fd/,environ,limits,mountinfo} r,
   owner /proc/*/{setgroups,gid_map,uid_map,attr/exec,oom_score_adj} rw,
   owner /proc/*/task/*/stat r,
