@@ -72,7 +72,7 @@ profile sandbox-app-launcher @{SYMLINK_DIR}/** flags=(attach_disconnected) {
   /sys/devices/system/cpu/online r,
   /sys/devices/system/cpu/cpu[0-9]*/cache/index2/size r,
   /sys/class/ r,
-  /sys/class/{,tty,input,drm,sound}/ r,
+  /sys/class/{tty,input,drm,sound}/ r,
   /sys/bus/ r,
   /sys/bus/pci/devices/ r,
   /sys/fs/cgroup/** rwm,
