@@ -66,8 +66,6 @@ create_symlinks() {
       ln -s "${app_path}" "${symlink_dir}/${app}"
     fi
   done < "${config_file}"
-
-  export PATH="${PATH}:${symlink_dir}"
 }
 
 run_program() {
