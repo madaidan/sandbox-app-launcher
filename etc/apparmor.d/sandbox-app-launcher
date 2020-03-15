@@ -79,23 +79,14 @@ profile sandbox-app-launcher @{SYMLINK_DIR}/** flags=(attach_disconnected) {
   ## Procfs access.
   ## TODO: Restrict access further.
   owner /proc/ r,
-  owner /proc/*/{,environ,limits,mountinfo,mounts,uid_map,gid_map,setgroups} r,
-  owner /proc/*/fdinfo/* r,
-  owner /proc/*/oom_score_adj rw,
-  owner /proc/*/{,cgroup,cmdline,comm,sessionid,mounts,stat,status,sched,maps,auxv} r,
-  owner /proc/*/attr/current r,
-  owner /proc/*/attr/exec rw,
-  owner /proc/*/loginuid rw,
-  owner /proc/*/fd/ r,
+  owner /proc/*/{,cgroup,cmdline,comm,sessionid,mounts,stat,status,sched,maps,auxv,attr/current,fd/,environ,limits,mountinfo} r,
+  owner /proc/*/{,setgroups,gid_map,uid_map,attr/exec,oom_score_adj} rw,
   owner /proc/*/task/*/stat r,
+  owner /proc/*/fdinfo/* r,
   owner /proc/*/net/ r,
   owner /proc/*/net/{,dev,route} r,
-  /proc/{,stat,cpuinfo,filesystems,meminfo,swaps,cmdline,uptime} r,
+  /proc/{,stat,cpuinfo,filesystems,meminfo,swaps,uptime} r,
   /proc/sys/** r,
-  /proc/asound/card[0-9]*/ r,
-  /proc/asound/card[0-9]*/pcm[0-9]*/ r,
-  /proc/asound/card[0-9]*/pcm[0-9]*/sub[0-9]*/status r,
-  owner /proc/*/{,setgroups,gid_map,uid_map} w,
   deny /proc/*/{,statm,smaps} r,
 
   ## Tmpfs access.
