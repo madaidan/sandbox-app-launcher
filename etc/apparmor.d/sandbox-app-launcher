@@ -39,10 +39,10 @@ profile sandbox-app-launcher @{SYMLINK_DIR}/** flags=(attach_disconnected) {
   
   ## rlimit restrictions.
   ##
-  ## Only allow a maximum of 50 processes to prevent things such as
+  ## Only allow a maximum of 200 processes to prevent things such as
   ## fork bombs.
   ## TODO: More rlimit restrictions.
-  set rlimit nproc <= 50,
+  set rlimit nproc <= 200,
 
   ## Programs and libraries.
   ##
