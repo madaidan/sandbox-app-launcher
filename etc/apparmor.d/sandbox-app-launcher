@@ -18,6 +18,7 @@ profile sandbox-app-launcher @{SYMLINK_DIR}/** flags=(attach_disconnected) {
   ## TODO: Whitelist of allowed signals.
   ## TODO: Distinguish between apps.
   signal peer=sandbox-app-launcher,
+  signal (receive) set=(int, term, kill) peer=unconfined,
 
   ## Allow us to ptrace ourselves.
   ## TODO: Distinguish between apps.
