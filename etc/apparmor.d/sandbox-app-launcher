@@ -143,7 +143,4 @@ profile sandbox-app-launcher @{SYMLINK_DIR}/** flags=(attach_disconnected) {
   /{,var/}run/** rw,
   /{,var/}run/shm/** rwl,
   owner /{,var/}run/** rwk,
-
-  /srv/ r,
-
 }
