@@ -104,10 +104,8 @@ profile sandbox-app-launcher @{SYMLINK_DIR}/** flags=(attach_disconnected) {
   /etc/** r,
 
   ## Device access.
-  ## TODO: Remove write permission where it's not needed.
-  ## TODO: Some of these devices aren't needed.
   /dev/ r,
-  /dev/console rw,
+  /dev/console r,
   /dev/random rw,
   /dev/urandom rw,
   /dev/null rw,
@@ -117,20 +115,11 @@ profile sandbox-app-launcher @{SYMLINK_DIR}/** flags=(attach_disconnected) {
   /dev/stdout r,
   /dev/stderr rw,
   /dev/tty rw,
-  owner /dev/tty[0-9]* rw,
   /dev/ptmx rw,
   /dev/pts/ r,
   owner /dev/pts/* rw,
-  /dev/input/ r,
-  /dev/input/** rw,
-  /dev/uinput rw,
-  /dev/dri/ r,
-  owner /dev/snd/ r,
-  /dev/snd/* rw,
-  owner /dev/mqueue/ rw,
   /dev/shm/ r,
   owner /dev/shm/** rwm,
-  /dev/dri/card[0-9]* rw,
 
   ## /var and /run access.
   /var/ r,
