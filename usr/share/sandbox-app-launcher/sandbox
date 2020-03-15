@@ -75,6 +75,7 @@ run_program() {
   ## TODO: IPC namespace
   ## TODO: Network namespace - probably via ip netns
   ## TODO: Seccomp whitelist - currently only a blacklist
+  ## TODO: Don't preserve the environment - env -i
 
   ## Some systems do not have /lib{32,64}.
   lib_dir="/lib /lib --ro-bind /usr/lib /usr/lib"
