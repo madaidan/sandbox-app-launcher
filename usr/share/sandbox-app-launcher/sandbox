@@ -120,6 +120,7 @@ run_program() {
   --tmpfs "${main_app_dir}" \
   --bind "${app_homedir}" "${app_homedir}" \
   --ro-bind "${symlink_dir}/${app_name}" "${symlink_dir}/${app_name}" \
+  --remount-ro "${main_app_dir}" \
   --proc /proc \
   --tmpfs /tmp \
   --tmpfs /var/tmp \
