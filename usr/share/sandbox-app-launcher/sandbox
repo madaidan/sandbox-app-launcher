@@ -107,12 +107,10 @@ run_program() {
   --ro-bind /etc /etc \
   --ro-bind-data 10 /etc/passwd \
   --ro-bind-data 11 /etc/group \
-  10< <(getent passwd root "${app_user}" nobody) \
-  11< <(getent group root "${app_user}" nobody) \
   --ro-bind "${main_app_dir}/machine-id" /etc/machine-id \
   --ro-bind /var/lib /var/lib \
-  --ro-bind /var/log /var/log \
   --ro-bind "${main_app_dir}/machine-id" /var/lib/dbus/machine-id \
+  --ro-bind /var/log /var/log \
   --ro-bind /sys/devices /sys/devices \
   --ro-bind /sys/class /sys/class \
   --ro-bind /sys/bus /sys/bus \
@@ -147,6 +145,8 @@ run_program() {
   --new-session \
   --cap-drop all \
   --seccomp 12 \
+  10< <(getent passwd root "${app_user}" nobody) \
+  11< <(getent group root "${app_user}" nobody) \
   12< "${seccomp_filter}" \
   ${bwrap_args} \
   "${symlink_dir}/${app_name}"
