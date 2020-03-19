@@ -43,7 +43,7 @@ setup() {
     chmod 700 "${main_app_dir}/seccomp"
     "${main_app_dir}/seccomp"
   fi
-  
+
   if ! [ -f "${main_app_dir}/seccomp-filter-wx.bpf" ]; then
     cp "${main_app_dir}/seccomp.c" "${main_app_dir}/seccomp-wx.c"
     sed -i 's/seccomp-filter\.bpf/seccomp-filter-wx\.bpf/' "${main_app_dir}/seccomp-wx.c"
