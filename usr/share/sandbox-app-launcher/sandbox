@@ -95,7 +95,7 @@ run_program() {
     bwrap_args+="--unshare-net "
   fi
 
-  sudo -H -u "${app_user}" \
+  sudo -H -u "${app_user}" bash -c "
   bwrap \
   --ro-bind /bin /bin \
   --ro-bind /usr/bin /usr/bin \
@@ -149,7 +149,7 @@ run_program() {
   11< <(getent group root "${app_user}" nobody) \
   12< "${seccomp_filter}" \
   ${bwrap_args} \
-  "${symlink_dir}/${app_name}"
+  "${symlink_dir}/${app_name}""
 }
 
 setup
