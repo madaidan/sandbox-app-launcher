@@ -12,6 +12,10 @@ app_homedir="${main_app_dir}/${app_name}"
 seccomp_filter="${main_app_dir}/seccomp-filter.bpf"
 wx_whitelist="${main_app_dir}/wx_whitelist"
 
+if [ -f "/etc/sandbox-app-launcher/${app_name}.conf" ]; then
+  . "/etc/sandbox-app-launcher/${app_name}.conf"
+fi
+
 setup() {
   if ! [ -d "${main_app_dir}" ]; then
     mkdir -m 755 "${main_app_dir}"
@@ -86,6 +90,11 @@ run_program() {
     lib_dir+=" --ro-bind /lib64 /lib64"
   fi
 
+  ## Optionally remove network access by creating an empty net namespace.
+  if [ "${allow_net}" = "no" ]; then
+    bwrap_args+="--unshare-net "
+  fi
+
   sudo -H -u "${app_user}" \
   bwrap \
   --ro-bind /bin /bin \
@@ -138,6 +147,7 @@ run_program() {
   --cap-drop all \
   --seccomp 12 \
   12< "${seccomp_filter}" \
+  ${bwrap_args} \
   "${symlink_dir}/${app_name}"
 }
 
