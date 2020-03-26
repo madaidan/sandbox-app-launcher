@@ -5,7 +5,6 @@
 
 main_app_dir="/usr/share/sandbox-app-launcher"
 symlink_dir="${main_app_dir}/symlinks"
-config_file="${main_app_dir}/config"
 app_name="${@}"
 app_user="sandbox-${app_name}"
 app_homedir="${main_app_dir}/${app_name}"
@@ -59,19 +58,17 @@ setup() {
   fi
 }
 
-create_symlinks() {
-  while read -r line; do
-    [[ "$line" =~ ^#.*$ ]] && continue
+create_symlinks() {    
+  app_path="$(which ${app_name})"
+  
+  if ! [ -e "${app_path}" ]; then
+    echo "ERROR: Could not find '${app_name}' in $PATH."
+    exit 1
+  fi
 
-    if ! read -r app app_path <<< "${line}" ; then
-      echo "ERROR: cannot parse line: ${line}"
-      continue
-    fi
-
-    if ! [ -e "${symlink_dir}/${app}" ]; then
-      ln -s "${app_path}" "${symlink_dir}/${app}"
-    fi
-  done < "${config_file}"
+  if ! [ -e "${symlink_dir}/${app_name}" ]; then
+    ln -s "${app_path}" "${symlink_dir}/${app_name}"
+  fi
 }
 
 run_program() {
