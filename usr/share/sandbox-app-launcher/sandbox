@@ -5,7 +5,7 @@
 
 main_app_dir="/usr/share/sandbox-app-launcher"
 symlink_dir="${main_app_dir}/symlinks"
-app_name="${@}"
+app_name="${*}"
 app_user="sandbox-${app_name}"
 app_homedir="${main_app_dir}/${app_name}"
 seccomp_filter="${main_app_dir}/seccomp-filter.bpf"
@@ -38,7 +38,7 @@ setup() {
   compiler_flags="-lseccomp -ldl -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wl,-z,relro -Wl,-z,now"
 
   if ! [ -f "${seccomp_filter}" ]; then
-    gcc "${main_app_dir}/seccomp.c" -o "${main_app_dir}/seccomp" ${compiler_flags}
+    gcc "${main_app_dir}/seccomp.c" -o "${main_app_dir}/seccomp" "${compiler_flags}"
     chmod 700 "${main_app_dir}/seccomp"
     "${main_app_dir}/seccomp"
   fi
@@ -47,7 +47,7 @@ setup() {
     cp "${main_app_dir}/seccomp.c" "${main_app_dir}/seccomp-wx.c"
     sed -i 's/seccomp-filter\.bpf/seccomp-filter-wx\.bpf/' "${main_app_dir}/seccomp-wx.c"
     sed -i 's/int w_xor_x = 1/int w_xor_x = 0/' "${main_app_dir}/seccomp-wx.c"
-    gcc "${main_app_dir}/seccomp-wx.c" -o "${main_app_dir}/seccomp-wx" ${compiler_flags}
+    gcc "${main_app_dir}/seccomp-wx.c" -o "${main_app_dir}/seccomp-wx" "${compiler_flags}"
     chmod 700 "${main_app_dir}/seccomp-wx"
     "${main_app_dir}/seccomp-wx"
   fi
@@ -59,7 +59,7 @@ setup() {
 }
 
 create_symlinks() {    
-  app_path="$(which ${app_name})"
+  app_path="$(true -P ${app_name})"
   
   if ! [ -e "${app_path}" ]; then
     echo "ERROR: Could not find '${app_name}' in $PATH."
@@ -103,18 +103,18 @@ run_program() {
   --ro-bind /etc /etc \
   --ro-bind-data 10 /etc/passwd \
   --ro-bind-data 11 /etc/group \
-  --ro-bind "${main_app_dir}/machine-id" /etc/machine-id \
+  --ro-bind ${main_app_dir}/machine-id /etc/machine-id \
   --ro-bind /var/lib /var/lib \
-  --ro-bind "${main_app_dir}/machine-id" /var/lib/dbus/machine-id \
+  --ro-bind ${main_app_dir}/machine-id /var/lib/dbus/machine-id \
   --ro-bind /var/log /var/log \
   --ro-bind /sys/devices /sys/devices \
   --ro-bind /sys/class /sys/class \
   --ro-bind /sys/bus /sys/bus \
   --ro-bind /sys/fs/cgroup /sys/fs/cgroup \
-  --tmpfs "${main_app_dir}" \
-  --bind "${app_homedir}" "${app_homedir}" \
-  --ro-bind "${symlink_dir}/${app_name}" "${symlink_dir}/${app_name}" \
-  --remount-ro "${main_app_dir}" \
+  --tmpfs ${main_app_dir} \
+  --bind ${app_homedir} ${app_homedir} \
+  --ro-bind ${symlink_dir}/${app_name} ${symlink_dir}/${app_name} \
+  --remount-ro ${main_app_dir} \
   --proc /proc \
   --tmpfs /tmp \
   --tmpfs /var/tmp \
@@ -122,11 +122,11 @@ run_program() {
   --tmpfs /var/run \
   --tmpfs /run \
   --dev /dev \
-  --chdir "${app_homedir}" \
-  --setenv HOME "${app_homedir}" \
-  --setenv USER "${app_user}" \
-  --setenv LOGNAME "${app_user}" \
-  --setenv XAUTHORITY "${app_homedir}/.Xauthority" \
+  --chdir ${app_homedir} \
+  --setenv HOME ${app_homedir} \
+  --setenv USER ${app_user} \
+  --setenv LOGNAME ${app_user} \
+  --setenv XAUTHORITY ${app_homedir}/.Xauthority \
   --setenv SHELL /sbin/nologin \
   --unsetenv SUDO_USER \
   --unsetenv SUDO_UID \
@@ -141,11 +141,11 @@ run_program() {
   --new-session \
   --cap-drop all \
   --seccomp 12 \
-  10< <(getent passwd root "${app_user}" nobody) \
-  11< <(getent group root "${app_user}" nobody) \
-  12< "${seccomp_filter}" \
+  10< <(getent passwd root ${app_user} nobody) \
+  11< <(getent group root ${app_user} nobody) \
+  12< ${seccomp_filter} \
   ${bwrap_args} \
-  "${symlink_dir}/${app_name}""
+  ${symlink_dir}/${app_name}"
 }
 
 setup
