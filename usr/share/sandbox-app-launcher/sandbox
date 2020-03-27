@@ -75,7 +75,6 @@ run_program() {
   ## TODO: X11 sandbox - not needed if we switch to wayland
   ## TODO: IPC namespace
   ## TODO: Network namespace - probably via ip netns
-  ## TODO: Seccomp whitelist - currently only a blacklist
   ## TODO: Don't preserve the environment - env -i
 
   ## Some systems do not have /lib{32,64}.
