@@ -1,21 +1,19 @@
 ## Copyright (C) 2012 - 2018 ENCRYPTED SUPPORT LP <adrelanos@riseup.net>
 ## See the file COPYING for copying conditions.
 
-Source: helper-scripts
+Source: sandbox-app-launcher
 Section: misc
 Priority: optional
 Maintainer: Patrick Schleizer <adrelanos@riseup.net>
-Build-Depends: debhelper (>= 12), genmkfile, dh-python, ronn
-Homepage: https://github.com/Whonix/helper-scripts
-Vcs-Browser: https://github.com/Whonix/helper-scripts
-Vcs-Git: https://github.com/Whonix/helper-scripts.git
+Build-Depends: debhelper (>= 12), genmkfile, dh-apparmor, ronn
+Homepage: https://github.com/Whonix/sandbox-app-launcher
+Vcs-Browser: https://github.com/Whonix/sandbox-app-launcher
+Vcs-Git: https://github.com/Whonix/sandbox-app-launcher.git
 Standards-Version: 4.3.0
 
-Package: helper-scripts
+Package: sandbox-app-launcher
 Architecture: all
-Depends: sudo, python3, python3-stem, ${misc:Depends}
-Replaces: anon-shared-helper-scripts
-Description: Helper scripts useful for Anonymizing Linux Distributions
- Library that can be used by other (anonymity related) packages that want to
- programmatically get information about states of Tor. Common code, that is
- often required. Includes bash and Python helper scripts.
+Depends: sudo, bubblewrap, apparmor, ${misc:Depends}
+Description: An app launcher to start apps in a restrictive sandbox
+ Runs each app as its own user, in a bubblewrap sandbox and confined
+ by apparmor. Currently a WIP and not for actual use.
