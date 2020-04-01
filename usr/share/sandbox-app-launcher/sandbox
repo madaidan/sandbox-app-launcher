@@ -58,9 +58,9 @@ setup() {
   fi
 }
 
-create_symlinks() {    
+create_symlinks() {
   app_path="$(true -P ${app_name})"
-  
+
   if ! [ -e "${app_path}" ]; then
     echo "ERROR: Could not find '${app_name}' in $PATH."
     exit 1
