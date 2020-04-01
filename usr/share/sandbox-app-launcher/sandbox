@@ -59,7 +59,7 @@ setup() {
 }
 
 create_symlinks() {
-  app_path="$(true -P ${app_name})"
+  app_path="$(type -P ${app_name})"
 
   if ! [ -e "${app_path}" ]; then
     echo "ERROR: Could not find '${app_name}' in \$PATH."
