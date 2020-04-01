@@ -43,8 +43,8 @@ setup() {
 
   if ! [ -f "${main_app_dir}/seccomp-filter-wx.bpf" ]; then
     cp "${main_app_dir}/seccomp.c" "${main_app_dir}/seccomp-wx.c"
-    str_replace "seccomp-filter.bpf" "seccomp-filter-wx.bpf" "${main_app_dir}/seccomp-wx.c"
-    str_replace "int w_xor_x = 1" "int w_xor_x = 0" "${main_app_dir}/seccomp-wx.c"
+    str_replace "seccomp-filter.bpf" "seccomp-filter-wx.bpf" "${main_app_dir}/seccomp-wx.c" >/dev/null
+    str_replace "int w_xor_x = 1" "int w_xor_x = 0" "${main_app_dir}/seccomp-wx.c" >/dev/null
     gcc "${main_app_dir}/seccomp-wx.c" -o "${main_app_dir}/seccomp-wx" ${compiler_flags}
     chmod 700 "${main_app_dir}/seccomp-wx"
     "${main_app_dir}/seccomp-wx"
