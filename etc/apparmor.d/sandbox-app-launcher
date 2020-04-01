@@ -12,7 +12,7 @@ profile sandbox-app-launcher @{SYMLINK_DIR}/** flags=(attach_disconnected) {
   ## Let the app do whatever they want with their own data except
   ## executing their own code.
   owner @{MAIN_APP_DIR}/*/ rw,
-  owner @{MAIN_APP_DIR}/*/** rwmlk,
+  owner @{MAIN_APP_DIR}/*/** rwlk,
 
   ## Allow us to send ourselves signals.
   ## TODO: Whitelist of allowed signals.
@@ -82,7 +82,7 @@ profile sandbox-app-launcher @{SYMLINK_DIR}/** flags=(attach_disconnected) {
   /sys/class/{tty,input,drm,sound}/ r,
   /sys/bus/ r,
   /sys/bus/pci/devices/ r,
-  /sys/fs/cgroup/** rwm,
+  /sys/fs/cgroup/** rw,
 
   ## Procfs access.
   ## TODO: Restrict access further.
@@ -105,7 +105,7 @@ profile sandbox-app-launcher @{SYMLINK_DIR}/** flags=(attach_disconnected) {
   /{,var/}tmp/ r,
   /{,var/}tmp/** r,
   owner /{,var/}tmp/ rw,
-  owner /{,var/}tmp/** rwmlk,
+  owner /{,var/}tmp/** rwlk,
 
   ## Config files.
   /etc/ r,
@@ -127,7 +127,7 @@ profile sandbox-app-launcher @{SYMLINK_DIR}/** flags=(attach_disconnected) {
   /dev/pts/ r,
   owner /dev/pts/* rw,
   owner /dev/shm/ r,
-  owner /dev/shm/** rwm,
+  owner /dev/shm/** rw,
 
   ## /var and /run access.
   /var/ r,
@@ -140,4 +140,10 @@ profile sandbox-app-launcher @{SYMLINK_DIR}/** flags=(attach_disconnected) {
   /{,var/}run/** rw,
   /{,var/}run/shm/** rwl,
   owner /{,var/}run/** rwk,
+  
+  ## Deny W^X violations.
+  deny @{MAIN_APP_DIR}/*/** m,
+  deny /{,var/}tmp/** m,
+  deny /dev/shm/** m,
+  deny /sys/fs/cgroup/** m,
 }
