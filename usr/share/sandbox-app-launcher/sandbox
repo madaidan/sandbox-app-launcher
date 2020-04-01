@@ -32,8 +32,6 @@ setup() {
     chmod 700 -R "${app_homedir}"
   fi
 
-  echo "b08dfa6083e7567a1921a715000001fb" > "${main_app_dir}/machine-id"
-
   ## Generate seccomp filter.
   compiler_flags="-lseccomp -ldl -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wl,-z,relro -Wl,-z,now"
 
