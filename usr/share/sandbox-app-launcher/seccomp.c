@@ -178,6 +178,7 @@ int main(int argc, char *argv[])
     ALLOW_SYSCALL (munlockall);
     ALLOW_SYSCALL (munmap);
     ALLOW_SYSCALL (nanosleep);
+    ALLOW_SYSCALL (newfstatat);
     ALLOW_SYSCALL (nice);
     ALLOW_SYSCALL (oldfstat);
     ALLOW_SYSCALL (oldlstat);
