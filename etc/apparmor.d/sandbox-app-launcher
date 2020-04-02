@@ -36,7 +36,7 @@ profile sandbox-app-launcher @{SYMLINK_DIR}/** flags=(attach_disconnected) {
   ## Allow DBus.
   ## TODO: Restrict access.
   dbus,
-  
+
   ## rlimit restrictions.
   ##
   ## Only allow a maximum of 200 processes to prevent things such as
@@ -140,7 +140,7 @@ profile sandbox-app-launcher @{SYMLINK_DIR}/** flags=(attach_disconnected) {
   /{,var/}run/** rw,
   /{,var/}run/shm/** rwl,
   owner /{,var/}run/** rwk,
-  
+
   ## Deny W^X violations.
   deny @{MAIN_APP_DIR}/*/** m,
   deny /{,var/}tmp/** m,
