@@ -15,6 +15,8 @@ Package: sandbox-app-launcher
 Architecture: all
 Depends: sudo, bubblewrap, apparmor, libseccomp-dev, helper-scripts,
  ${misc:Depends}
-Description: An app launcher to start apps in a restrictive sandbox
+Description: application launcher to start apps in a restrictive sandbox
  Runs each app as its own user, in a bubblewrap sandbox and confined
- by apparmor. Currently a WIP and not for actual use.
+ by apparmor.
+ .
+ Currently a WIP and not for actual use.
