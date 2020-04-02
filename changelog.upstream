@@ -1,0 +1,648 @@
+commit 0106d2bd3f6508c34439b8d8d1f74dba8e70d162
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Thu Apr 2 06:23:56 2020 -0400
+
+    depend on helper-scripts for str_replace
+
+commit 8778566abe9cd976dbfcee94f9826b8083f20390
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Thu Apr 2 06:23:20 2020 -0400
+
+    packaging
+
+commit d2920c8d28518554881b110ace383d5c84401bfe
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Thu Apr 2 06:21:02 2020 -0400
+
+    copyright
+
+commit 129d45d5b6f54b6d76f5d633f2586254abd6b794
+Merge: f26eb53 2103eec
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Thu Apr 2 06:19:56 2020 -0400
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 2103eec9b6cd0fbee3fefc580a090f20a82527b6
+Merge: 0da31b9 ee27c79
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Thu Apr 2 10:18:21 2020 +0000
+
+    Merge pull request #5 from madaidan/wx
+    
+    Fix W^X violations
+
+commit 0da31b915e3d7eafeba32a67dae157e7ecfdb71d
+Merge: f26eb53 55ccde1
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Thu Apr 2 10:17:44 2020 +0000
+
+    Merge pull request #4 from madaidan/fixes
+    
+    Fixes
+
+commit ee27c79ff3b3e959e1a272638a1da869c081456b
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Wed Apr 1 17:01:55 2020 +0000
+
+    Fix W^X violations
+
+commit 55ccde193870eef770bd04a146c3756f44b8c567
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Wed Apr 1 15:18:16 2020 +0000
+
+    Allow newfstatat
+
+commit d742048bc511d0cca8c7123f91e080dfbfcdadaf
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Wed Apr 1 15:17:26 2020 +0000
+
+    Hide stdout
+
+commit adc08af25725e3a189768bd63aaf09c0ee6726cc
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Wed Apr 1 15:08:12 2020 +0000
+
+    Don't create machine-id in script
+
+commit 5908d773b3a0446d734865dc5de3385f4affc924
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Wed Apr 1 15:07:50 2020 +0000
+
+    Create machine-id
+
+commit 912ea18395fdc62f0d2cfb4a17a3bb7fcfc53813
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Wed Apr 1 15:06:06 2020 +0000
+
+    type, not true
+
+commit 1ec1162e752a36a18cc6d6f00ab80a696cb0874b
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Wed Apr 1 14:59:45 2020 +0000
+
+    Don't expand $PATH
+
+commit fb409e3c0914e18eed1f18686a022bb44eeb4739
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Wed Apr 1 14:58:39 2020 +0000
+
+    Switch to str_replace
+
+commit 93d4bd49172e81f5393dcf30e06e13840713f2c3
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Wed Apr 1 14:54:53 2020 +0000
+
+    Remove whitespace
+
+commit b6c7a2b0fc6d07c74ee49081014ac81144c60722
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Wed Apr 1 14:54:13 2020 +0000
+
+    Depend on libseccomp-dev
+
+commit f133ef784503871d7336661437dd1a7934628a7e
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Wed Apr 1 14:53:09 2020 +0000
+
+    Don't quote $compiler_flags
+
+commit f26eb53a4650abce48c90a3c7dffcce073135b5c
+Merge: 9d73cc2 6762de5
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Fri Mar 27 15:23:56 2020 -0400
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 6762de5dea19dead0653b4274c76c073ad513d89
+Merge: 9d73cc2 70dcdba
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Fri Mar 27 19:20:32 2020 +0000
+
+    Merge pull request #3 from madaidan/improvements
+    
+    Minor improvements
+
+commit 70dcdbacaa1d14a4b1bebd01df36eb26ca4d8a8d
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Fri Mar 27 18:25:44 2020 +0000
+
+    Rename to sandbox-app-launcher
+
+commit d451f1c8ef6191e044d04f260376d6189a0daf18
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Fri Mar 27 18:19:28 2020 +0000
+
+    Usual files
+
+commit 4461ccdf40c2a656f51b789b904b23dfd4997503
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Fri Mar 27 18:08:50 2020 +0000
+
+    Minor improvements
+
+commit 9d73cc2342e722ffa3e05d583483d48a9ee11ac2
+Merge: 006094b 6847e8c
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Fri Mar 27 06:27:41 2020 +0000
+
+    Merge pull request #2 from madaidan/whitelist
+    
+    Switch to a seccomp whitelist
+
+commit 006094bf02f853af143764f47c66c896031bb8c9
+Merge: f5a7989 0f03f4a
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Fri Mar 27 06:22:19 2020 +0000
+
+    Merge pull request #1 from madaidan/config
+    
+    Get rid of the need for a config file
+
+commit 6847e8cc591c24b0e8dc90b5d65eb8bacd65d7c3
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Thu Mar 26 20:07:52 2020 +0000
+
+    Remove TODO
+
+commit ab5580244222b925adce32b6f22e446632ddec5d
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Thu Mar 26 20:02:15 2020 +0000
+
+    Switch to a seccomp whitelist
+
+commit 0f03f4a57f6ea1b636913c1e2d26371a74f8d2df
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Thu Mar 26 16:01:51 2020 +0000
+
+    Delete config
+
+commit 23d5ef49a3d2eb6afccc95155df993d2f4299976
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Thu Mar 26 16:01:32 2020 +0000
+
+    Get rid of the need for a config file
+
+commit f5a7989df5baf06e18126f9d5fc2de838ad1e8d3
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Thu Mar 19 22:34:14 2020 +0000
+
+    Fix
+
+commit 1fc832e4f6973cdbeca853d44acefd95083654e6
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Thu Mar 19 22:26:52 2020 +0000
+
+    Whitespace
+
+commit 7e3e3f99678eeba457ae25d5d5174fbd686c89c8
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Thu Mar 19 22:21:50 2020 +0000
+
+    Minor reordering
+
+commit 22dd87b187503c8c559544d22f99ffff630e299e
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Thu Mar 19 22:17:24 2020 +0000
+
+    Remount ${main_app_dir} as read-only
+
+commit a06d905ac63c56af752433092147c188ed19bd42
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Thu Mar 19 17:54:21 2020 +0000
+
+    Optionally remove network access
+
+commit 507ba3f1b51997caa061fd3ca660d1055d6a3021
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sun Mar 15 20:51:51 2020 +0000
+
+    Use proc variables
+
+commit dfd682b8c7865cf19fc920260625ca3d90dc79a4
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sun Mar 15 20:37:45 2020 +0000
+
+    Use more owner rules where possible
+
+commit bc0b0d4ad2ce0c87d476e8b71949dbd4f5cf6d69
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sun Mar 15 20:33:09 2020 +0000
+
+    Add root to passwd/group
+
+commit 1f4656e1da29ec520827e6c2f6cb14a614e52ab9
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sun Mar 15 20:13:53 2020 +0000
+
+    More unneeded commas
+
+commit b3c454429b9eb8648a9c24d3c5859986866e5055
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sun Mar 15 20:02:39 2020 +0000
+
+    /proc/*/task/ needs to be readable
+
+commit 0fcd6a03924791c9146a7c27843e32aa1e20c09a
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sun Mar 15 19:59:28 2020 +0000
+
+    Increase rlimit restrictions
+
+commit f1d2f8b125b0505a758f404712e1061065a141c4
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sun Mar 15 19:53:51 2020 +0000
+
+    This shouldn't be restricted to owner
+
+commit 628a8bc8fcb508d44460924fc92368b3d17341c8
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sun Mar 15 19:46:29 2020 +0000
+
+    Add TODO
+
+commit fed7eea6b42acbb9e9fd61fec3b1ebb46e90b597
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sun Mar 15 19:45:49 2020 +0000
+
+    Set reasonable rlimit restrictions
+
+commit 9504e96d1d3441f5eee5d38def3c6d02a3532673
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sun Mar 15 17:57:38 2020 +0000
+
+    Unneeded comma
+
+commit f53b0a86d9a41796cc926a6b314b1e3151b5096a
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sun Mar 15 17:44:52 2020 +0000
+
+    Re-arrange compiler flags
+
+commit 4440f431b187069837a82dc46c0848db5c3bd0af
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sun Mar 15 17:40:31 2020 +0000
+
+    Remove $PATH modification
+
+commit 1ae4b9a63c5a681fdc150487d5f10cbad359d31e
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sun Mar 15 17:40:08 2020 +0000
+
+    Create TODO
+
+commit bc1fc705e5d443336ea78a73ba377519b0b10864
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sun Mar 15 17:38:51 2020 +0000
+
+    Add TODO
+
+commit e321ef2788cc4d1ee66cd6e356d111461d42a822
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sun Mar 15 17:34:16 2020 +0000
+
+    Unneeded comma
+
+commit bc6092e59099c1c97d091487e1ae647e8df0bd53
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sun Mar 15 17:30:40 2020 +0000
+
+    Remove unneeded devices
+    
+    These aren't created by bubblewrap anyhow
+
+commit f2c9844354bc112838ceefecda05d339676c3d7b
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sun Mar 15 17:22:32 2020 +0000
+
+    /srv isn't used
+
+commit c2e232dca90950717fdcf5d27f3a6dd8ae957d00
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sun Mar 15 17:21:05 2020 +0000
+
+    Apps shouldn't need access to /proc/*/net/ and fix commas
+
+commit bf2cffbc3a845dc4124101d2414411d3c702f12c
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sun Mar 15 16:52:00 2020 +0000
+
+    Clean up /proc permissions
+
+commit 6e4b34de35bca82fdce1d94f5d69781af3d4ac97
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sun Mar 15 16:45:15 2020 +0000
+
+    Fix evince
+
+commit 7ca639f24c10dc5e1aacbcb89b32821bc5276ae2
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sun Mar 15 16:44:54 2020 +0000
+
+    Add evince
+
+commit 1076cdd7528f7a865f828619d37a0aee7454ab93
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sun Mar 15 16:35:21 2020 +0000
+
+    Allow unconfined processes (such as systemd) to kill us
+
+commit 9ad16a52d3f3a798f78fdb458c3b21d5e413ad08
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sat Mar 14 22:14:24 2020 +0000
+
+    Silence noise
+
+commit 72682a7f4cfb906678ebfa187cb661b0071df390
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sat Mar 14 22:12:01 2020 +0000
+
+    Add firefox
+
+commit 9f08fc7b4690abc7126d96f7a3b0c76303ca79f4
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sat Mar 14 22:11:52 2020 +0000
+
+    Add firefox
+
+commit 414c684d00a9e66ed4005346147f95845126b898
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sat Mar 14 22:10:57 2020 +0000
+
+    Minor
+
+commit b39184a01c8eadb2ea847b03eb1fe85a6e632ff3
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sat Mar 14 22:01:40 2020 +0000
+
+    Add thunderbird to wx_whitelist
+
+commit fed2293a9ee47da818246fa9dce5cf46718f1217
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sat Mar 14 21:54:38 2020 +0000
+
+    Missing \
+
+commit 80619366520bf2fd1c3a8aae1884cfa2368da377
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sat Mar 14 21:52:14 2020 +0000
+
+    Relax /etc restrictions
+    
+    Breaks too many things
+
+commit 4d32588653b8e4038f2e72e60d8d3eca006062ae
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sat Mar 14 21:51:35 2020 +0000
+
+    Relax /etc restrictions
+    
+    Breaks too many things
+
+commit 5cc09e4ecc8059dcad35b3ab9bb549c03b6b29a8
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sat Mar 14 21:48:14 2020 +0000
+
+    /usr/games isn't used much
+
+commit e7c841e0266f9938b24dd94198fc3e0aa6cc3a41
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sat Mar 14 21:47:18 2020 +0000
+
+    Mount /usr/include and finer-grained /usr/local restrictions
+
+commit ec24ada79321a9a5ac01685691b59020a2c4de55
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sat Mar 14 21:42:49 2020 +0000
+
+    Fine-grained /etc restrictions
+
+commit 6d472acf4c3d8fcdf37f905cff5a2fa5fd9f9c27
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sat Mar 14 21:35:59 2020 +0000
+
+    Mount/create more directories
+
+commit c54715305db796ef74d9d1a711b809c842645926
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sat Mar 14 21:31:36 2020 +0000
+
+    Remove hexchat from wx_whitelist
+
+commit d75d9456997a4173b3c9a55452de819a4bfc2c30
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sat Mar 14 21:31:24 2020 +0000
+
+    Fix /var permissions
+
+commit 25771a63b100b45527ef6a6bc03b38f07034d65b
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sat Mar 14 21:27:14 2020 +0000
+
+    Create /var/cache
+
+commit f22a0190b093e2b47a418db6f165e9226c333efa
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sat Mar 14 21:22:05 2020 +0000
+
+    Create wx_whitelist
+
+commit 7183b2a4d66c5007d10f9dc0e7e3f49336fb0f8c
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sat Mar 14 21:21:42 2020 +0000
+
+    Create config
+
+commit 3d2ca926216d5ac581b7e7b2336aa650daf15b4c
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sat Mar 14 20:58:44 2020 +0000
+
+    Remove write access where it isn't required
+
+commit 299dc65e4d91e3eb45143744f07d47ac31d00b51
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Fri Mar 13 21:36:31 2020 +0000
+
+    Blacklist SIOCGIFHWADDR
+
+commit ac9b9c12c086a2ad7cf1f56b4b3b4a412fd8964b
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Fri Mar 13 21:28:51 2020 +0000
+
+    Minor
+
+commit 90d2bbe03e1748eff3294d8dcc983a1bb7265c00
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Fri Mar 13 21:27:54 2020 +0000
+
+    Blacklist TIOCSETD and more comments
+
+commit 46b3c6370551f880a04c81b9481d610e7b160f3b
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Fri Mar 13 19:27:27 2020 +0000
+
+    Blacklisting inet6 can break things
+
+commit 9dc09eebb1bdcd846774557af6242fb9564e0e81
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Fri Mar 13 19:19:55 2020 +0000
+
+    Don't blacklist quotactl
+    
+    Breaks Tor Browser
+
+commit 74acbbd37071501b8fde8a19fba74d273884e9d0
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Fri Mar 13 18:35:44 2020 +0000
+
+    Create own passwd and group files
+
+commit 58894c32f6673371d63d867306252617eaf8a823
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Fri Mar 13 18:20:21 2020 +0000
+
+    Fix mmap() restrictions
+
+commit 46b9ad53e936f9e07d05bd8ed7818766f3afc31c
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Fri Mar 13 00:28:10 2020 +0000
+
+    Create seccomp-filter-wx.bpf
+
+commit 9b182c717b4345c5b624fbd5c48eaf02ab7870b1
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Fri Mar 13 00:20:50 2020 +0000
+
+    Allow opting out of W^X
+
+commit bce6f8d8dc80ee712444d8011b1bf48799c98c22
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Thu Mar 12 21:50:40 2020 +0000
+
+    Disallow executing from /{,var/}tmp
+
+commit cbf69006cb4679485081994d4b5478daae4bc8d6
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Thu Mar 12 21:40:07 2020 +0000
+
+    Implement W^X
+
+commit 91114ae375c6e80e13d3f13fe6beeb448270c70c
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Thu Mar 12 20:19:59 2020 +0000
+
+    Blacklist TIOCSTI ioctl
+    
+    TIOCSTI has been used in sandbox escapes before and although those are fixed via bwrap's `--new-session` flag, TIOCSTI shouldn't be needed at all and should be blacklisted.
+
+commit 7bfdf96297c8c811f9bb534895fa686fec5388de
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Thu Mar 12 18:07:02 2020 +0000
+
+    Blacklist unused socket families
+
+commit ec5565bb71cdaf8c1a2321041abffa0df5313c5b
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Thu Mar 12 17:34:11 2020 +0000
+
+    Blacklist 2 more syscalls
+
+commit 7dd63b9b421bb3b86376af3ce79ebd510d5ddf91
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Wed Mar 11 22:31:18 2020 +0000
+
+    Compiler flags
+
+commit 245d219d19a9ab75c6059129700c381840c785c5
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Wed Mar 11 21:11:05 2020 +0000
+
+    Disallow writing to and executing from /etc
+
+commit 142eb70e72a61b345fc432e65118036c2e3799ab
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Wed Mar 11 21:05:05 2020 +0000
+
+    Remove uneeded proc permissions
+
+commit 172b568c510fd91c6416ca179a7b005c00bcf739
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Wed Mar 11 21:04:15 2020 +0000
+
+    Restrict all process info to owner
+    
+    Apps can't see other process info due to the PID namespace anyway
+
+commit 23a8912f0b5f5322dad71829ffe9add745d4f0d1
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Wed Mar 11 20:56:15 2020 +0000
+
+    Give write access to home directory
+
+commit cabd23d3374e662fc66ffc7a38d01de0ebef5bf5
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Wed Mar 11 20:44:46 2020 +0000
+
+    Only mount /sys/fs/cgroup
+
+commit e04eed7200ca71f17992b02be04b019f0da55b08
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Wed Mar 11 20:27:05 2020 +0000
+
+    Remove dangerous-files abstraction
+    
+    This isn't apparmor-profile-everything
+
+commit 5324c469e4152669bc5a27ddb04a4ce2dcf680eb
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Wed Mar 11 20:23:39 2020 +0000
+
+    Mount SSL certificates
+
+commit b15b506e59bcaee3345f850473af0d13cd870c2e
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Wed Mar 11 20:21:08 2020 +0000
+
+    Mount binary symlink
+
+commit d1b84e5fd1c39b7203f8e91c73da57d4d70d64e3
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Wed Mar 11 19:45:30 2020 +0000
+
+    APP_NAME isn't needed if we use owner rules
+
+commit c3b17262ca7e6640b329cc885aba2067e54a7734
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Tue Mar 10 23:30:57 2020 +0000
+
+    Update README.md
+
+commit eb29e937101e7d23ce2a0736ea8b3a6753b65450
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Tue Mar 10 23:28:41 2020 +0000
+
+    Licensing
+
+commit 109148163f93492c3e8faacf6898536431abf21b
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Tue Mar 10 23:28:16 2020 +0000
+
+    Add seccomp filter
+
+commit 19961619cb5d0762570702bc4912bfe3751de09f
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Tue Mar 10 23:27:47 2020 +0000
+
+    Add apparmor profile
+
+commit 77690b61808fe2ac2303967effd1f1a756db1711
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Tue Mar 10 23:26:05 2020 +0000
+
+    Add the main script
+
+commit 143df039c64f7099cd2b6141bead657ed3c65743
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Tue Mar 10 23:24:56 2020 +0000
+
+    Initial commit
