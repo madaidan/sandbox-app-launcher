@@ -5,7 +5,7 @@ Source: sandbox-app-launcher
 Section: misc
 Priority: optional
 Maintainer: Patrick Schleizer <adrelanos@riseup.net>
-Build-Depends: debhelper (>= 12), genmkfile, dh-apparmor, ronn
+Build-Depends: debhelper (>= 12), dh-apparmor
 Homepage: https://github.com/Whonix/sandbox-app-launcher
 Vcs-Browser: https://github.com/Whonix/sandbox-app-launcher
 Vcs-Git: https://github.com/Whonix/sandbox-app-launcher.git
