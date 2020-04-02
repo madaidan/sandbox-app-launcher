@@ -1,3 +1,39 @@
+commit 7b649c56706b533c3bfbee280671dc93660d87ef
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Thu Apr 2 16:12:31 2020 -0400
+
+    remove trailing spaces
+
+commit 48d20a0b2ec78b57f6175b61a77feae88daaec1e
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Thu Apr 2 16:10:21 2020 -0400
+
+    apparmor packaging
+
+commit c23cf18275576b507b01570327a2b90e70e39c9e
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Thu Apr 2 16:08:51 2020 -0400
+
+    update path
+
+commit 6510f23db536beb2673f1d958ae4789b93a81246
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Thu Apr 2 16:07:45 2020 -0400
+
+    "make manpages" no longer required
+
+commit 2192043102d10052ad1185854092292093642013
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Thu Apr 2 16:05:51 2020 -0400
+
+    genmkfile / ronn are no longer build dependencies
+
+commit 54ba0fb61772602dee5b34e681632dc4b96ea3f0
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Thu Apr 2 12:34:57 2020 -0400
+
+    bumped changelog version
+
 commit 501774873175717ea586db6aa6a6e808b2b88cc3
 Author: Patrick Schleizer <adrelanos@riseup.net>
 Date:   Thu Apr 2 12:32:05 2020 -0400
