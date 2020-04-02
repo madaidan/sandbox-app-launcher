@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
     int rc = -1;
     scmp_filter_ctx ctx;
     int filter_fd;
-    char *filter_path = "seccomp-filter.bpf";
+    char *filter_path = "/usr/share/sandbox-app-launcher/seccomp-filter.bpf";
     int w_xor_x = 1;
 
     ctx = seccomp_init(SCMP_ACT_KILL);
