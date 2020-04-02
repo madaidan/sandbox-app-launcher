@@ -146,4 +146,7 @@ profile sandbox-app-launcher @{SYMLINK_DIR}/** flags=(attach_disconnected) {
   deny /{,var/}tmp/** m,
   deny /dev/shm/** m,
   deny /sys/fs/cgroup/** m,
+
+  # Site-specific additions and overrides. See local/README for details.
+  #include <local/sandbox-app-launcher>
 }
