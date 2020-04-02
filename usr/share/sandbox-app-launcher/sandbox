@@ -32,22 +32,20 @@ setup() {
     chmod 700 -R "${app_homedir}"
   fi
 
-  echo "b08dfa6083e7567a1921a715000001fb" > "${main_app_dir}/machine-id"
-
   ## Generate seccomp filter.
   compiler_flags="-lseccomp -ldl -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wl,-z,relro -Wl,-z,now"
 
   if ! [ -f "${seccomp_filter}" ]; then
-    gcc "${main_app_dir}/seccomp.c" -o "${main_app_dir}/seccomp" "${compiler_flags}"
+    gcc "${main_app_dir}/seccomp.c" -o "${main_app_dir}/seccomp" ${compiler_flags}
     chmod 700 "${main_app_dir}/seccomp"
     "${main_app_dir}/seccomp"
   fi
 
   if ! [ -f "${main_app_dir}/seccomp-filter-wx.bpf" ]; then
     cp "${main_app_dir}/seccomp.c" "${main_app_dir}/seccomp-wx.c"
-    sed -i 's/seccomp-filter\.bpf/seccomp-filter-wx\.bpf/' "${main_app_dir}/seccomp-wx.c"
-    sed -i 's/int w_xor_x = 1/int w_xor_x = 0/' "${main_app_dir}/seccomp-wx.c"
-    gcc "${main_app_dir}/seccomp-wx.c" -o "${main_app_dir}/seccomp-wx" "${compiler_flags}"
+    str_replace "seccomp-filter.bpf" "seccomp-filter-wx.bpf" "${main_app_dir}/seccomp-wx.c" >/dev/null
+    str_replace "int w_xor_x = 1" "int w_xor_x = 0" "${main_app_dir}/seccomp-wx.c" >/dev/null
+    gcc "${main_app_dir}/seccomp-wx.c" -o "${main_app_dir}/seccomp-wx" ${compiler_flags}
     chmod 700 "${main_app_dir}/seccomp-wx"
     "${main_app_dir}/seccomp-wx"
   fi
@@ -58,11 +56,11 @@ setup() {
   fi
 }
 
-create_symlinks() {    
-  app_path="$(true -P ${app_name})"
-  
+create_symlinks() {
+  app_path="$(type -P ${app_name})"
+
   if ! [ -e "${app_path}" ]; then
-    echo "ERROR: Could not find '${app_name}' in $PATH."
+    echo "ERROR: Could not find '${app_name}' in \$PATH."
     exit 1
   fi
 
