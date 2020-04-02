@@ -1,3 +1,46 @@
+commit afa245e619fd6f3d17e172c26f7d3439de9f73d4
+Merge: fb87aee 06f12f3
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Thu Apr 2 18:17:52 2020 -0400
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 06f12f397e2b67a5818547b87cc34731cff79d1d
+Merge: c6ec781 738a350
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Thu Apr 2 22:17:23 2020 +0000
+
+    Merge pull request #7 from madaidan/seccomp-path
+    
+    Fix seccomp filter file path
+
+commit c6ec781f25618f1d2258831d38a422e1d391b995
+Merge: fb87aee 4848a56
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Thu Apr 2 22:17:11 2020 +0000
+
+    Merge pull request #6 from madaidan/local
+    
+    Include apparmor local file
+
+commit 738a35060f98479e567032aaebfbd5038bfe6b04
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Thu Apr 2 22:06:42 2020 +0000
+
+    Fix seccomp filter file path
+
+commit 4848a561150e8c16cd24c509c74a2f858ff7a78c
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Thu Apr 2 22:00:10 2020 +0000
+
+    Include apparmor local file
+
+commit fb87aeefe20030f200d61cbe69502228c570cdb3
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Thu Apr 2 16:17:45 2020 -0400
+
+    bumped changelog version
+
 commit 7b649c56706b533c3bfbee280671dc93660d87ef
 Author: Patrick Schleizer <adrelanos@riseup.net>
 Date:   Thu Apr 2 16:12:31 2020 -0400
