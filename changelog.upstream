@@ -1,3 +1,54 @@
+commit 501774873175717ea586db6aa6a6e808b2b88cc3
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Thu Apr 2 12:32:05 2020 -0400
+
+    readme
+
+commit c53606b6b5c0cf98608872f1ffc0a2cacfd31d48
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Thu Apr 2 12:19:48 2020 -0400
+
+    lintian
+
+commit 99636330d7bc2f74a1c0334b4efc6bcbfa4eabe8
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Thu Apr 2 12:17:51 2020 -0400
+
+    created auto-generated-man-pages/sandbox-app-launcher.8
+    
+    using "genmkfile manpages"
+
+commit 0d977126c883dd84954d93cc7d96fea41baf65f7
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Thu Apr 2 12:17:26 2020 -0400
+
+    add skeleton man page
+
+commit 235276eb43172846ffe26af6f6709cedf3691c19
+Merge: 7a59925 7b5bc58
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Thu Apr 2 12:15:18 2020 -0400
+
+    Merge remote-tracking branch 'madaidan/move'
+
+commit 7b5bc5845b5457dbe0480589b511d1b6982c02e7
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Thu Apr 2 13:59:22 2020 +0000
+
+    Move script
+
+commit 7a599255662dd6e42b18d4d55e3e2381df6f9fb5
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Thu Apr 2 06:27:04 2020 -0400
+
+    copyright
+
+commit 8899c064e087a4e5a9bed16368cd629f909575c9
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Thu Apr 2 06:24:52 2020 -0400
+
+    add changelog for packaging
+
 commit 0106d2bd3f6508c34439b8d8d1f74dba8e70d162
 Author: Patrick Schleizer <adrelanos@riseup.net>
 Date:   Thu Apr 2 06:23:56 2020 -0400
