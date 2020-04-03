@@ -115,6 +115,7 @@ run_program() {
   --remount-ro ${main_app_dir} \
   --proc /proc \
   --tmpfs /tmp \
+  --ro-bind /tmp/.X11-unix /tmp/.X11-unix \
   --tmpfs /var/tmp \
   --tmpfs /var/cache \
   --tmpfs /var/run \

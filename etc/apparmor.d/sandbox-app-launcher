@@ -33,9 +33,12 @@ profile sandbox-app-launcher @{SYMLINK_DIR}/** flags=(attach_disconnected) {
   ## disables IPv6 and Tor only supports TCP.
   network inet tcp,
 
-  ## Allow DBus.
-  ## TODO: Restrict access.
-  dbus,
+  ## Only allow communicating with the D-Bus session bus.
+  ## This is safe since each app runs as their own user
+  ## with their own session bus. Allowing communication with
+  ## the system bus is dangerous because it allows messing
+  ## with services outside of the sandbox.
+  dbus bus=session,
 
   ## rlimit restrictions.
   ##
@@ -54,10 +57,8 @@ profile sandbox-app-launcher @{SYMLINK_DIR}/** flags=(attach_disconnected) {
   /{,usr/,usr/local/}{,s}bin/** rpix,
   /{,usr/,usr/local/}lib{,32,64}/ r,
   /{,usr/,usr/local/}lib{,32,64}/** rmpix,
-  /usr/{,local/}share/ r,
-  /usr/{,local/}share/** rpix,
-  /usr/{,local/}include/ r,
-  /usr/{,local/}include/** rpix,
+  /usr/{,local/}{share,include}/ r,
+  /usr/{,local/}{share,include}/** rpix,
   ## /usr/lib/ is mounted read-only.
   deny /usr/lib/python3/dist-packages/*/__pycache__/ w,
   deny /usr/lib/python3/dist-packages/*/__pycache__/** w,
@@ -75,8 +76,8 @@ profile sandbox-app-launcher @{SYMLINK_DIR}/** flags=(attach_disconnected) {
   /sys/devices/virtual/tty/console/active r,
   /sys/devices/virtual/dmi/id/{sys,board,bios}_vendor r,
   /sys/devices/system/node/node[0-9]*/meminfo r,
-  /sys/devices/system/cpu/present r,
-  /sys/devices/system/cpu/online r,
+  /sys/devices/system/cpu/ r,
+  /sys/devices/system/cpu/{present,online} r,
   /sys/devices/system/cpu/cpu[0-9]*/cache/index2/size r,
   /sys/class/ r,
   /sys/class/{tty,input,drm,sound}/ r,
@@ -133,6 +134,7 @@ profile sandbox-app-launcher @{SYMLINK_DIR}/** flags=(attach_disconnected) {
   /var/ r,
   /var/{lib,log,cache}/ r,
   /var/{lib,log}/** r,
+  /var/lib/command-not-found/commands.db rwk,
   /var/cache/** rwl,
   owner /var/{lib,log}/ rw,
   owner /var/{lib,log}/** rw,
