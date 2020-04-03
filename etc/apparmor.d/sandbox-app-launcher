@@ -33,9 +33,12 @@ profile sandbox-app-launcher @{SYMLINK_DIR}/** flags=(attach_disconnected) {
   ## disables IPv6 and Tor only supports TCP.
   network inet tcp,
 
-  ## Allow DBus.
-  ## TODO: Restrict access.
-  dbus,
+  ## Only allow communicating with the D-Bus session bus.
+  ## This is safe since each app runs as their own user
+  ## with their own session bus. Allowing communication with
+  ## the system bus is dangerous because it allows messing
+  ## with services outside of the sandbox.
+  dbus bus=session,
 
   ## rlimit restrictions.
   ##
