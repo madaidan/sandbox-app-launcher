@@ -1,3 +1,15 @@
+commit db1b7d803c710f2367e7c23c8e89c1d25b4849f1
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Fri Apr 3 05:02:12 2020 -0400
+
+    remove Makefile since no longer used
+
+commit 4cc7af786ee43154bd15e8a0f9cb40299c6e814d
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Thu Apr 2 18:23:14 2020 -0400
+
+    bumped changelog version
+
 commit afa245e619fd6f3d17e172c26f7d3439de9f73d4
 Merge: fb87aee 06f12f3
 Author: Patrick Schleizer <adrelanos@riseup.net>
