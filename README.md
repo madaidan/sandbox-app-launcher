@@ -1,7 +1,25 @@
 # application launcher to start apps in a restrictive sandbox #
 
-Runs each app as its own user, in a bubblewrap sandbox and confined
-by apparmor.
+sandbox-app-launcher runs each app as its own user, in a bubblewrap sandbox
+and confined by apparmor.
+
+The directory, `/shared`, is shared across all app sandboxes to transfer
+files across.
+
+This implements a permissions system to configure what apps can access.
+There are currently 4 available permissions:
+
+* Network access
+
+* Webcam access
+
+* Microphone access
+
+* Shared storage access (read-only or read-write)
+
+All apps the user installs will be automatically configured to run in
+the sandbox and a prompt will ask the user which permissions they wish to
+grant the application (not implemented yet).
 
 Currently a WIP and not for actual use.
 ## How to install `sandbox-app-launcher` using apt-get ##
