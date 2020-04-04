@@ -13,6 +13,8 @@ profile sandbox-app-launcher @{SYMLINK_DIR}/** flags=(attach_disconnected) {
   ## executing their own code.
   owner @{MAIN_APP_DIR}/*/ rw,
   owner @{MAIN_APP_DIR}/*/** rwlk,
+  /shared/ rw,
+  /shared/** rwlk,
 
   ## Allow us to send ourselves signals.
   ## TODO: Whitelist of allowed signals.
@@ -148,6 +150,12 @@ profile sandbox-app-launcher @{SYMLINK_DIR}/** flags=(attach_disconnected) {
   deny /{,var/}tmp/** m,
   deny /dev/shm/** m,
   deny /sys/fs/cgroup/** m,
+
+  ## Can leak some important kernel information such as kernel pointers.
+  deny /{,usr/}lib/modules/ rw,
+  deny /{,usr/}lib/modules/** rw,
+  deny /**/vmlinu{,z,x}* rw,
+  deny /**/System.map* rw,
 
   # Site-specific additions and overrides. See local/README for details.
   #include <local/sandbox-app-launcher>
