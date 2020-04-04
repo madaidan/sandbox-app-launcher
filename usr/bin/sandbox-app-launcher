@@ -92,6 +92,21 @@ run_program() {
     bwrap_args+="--unshare-net "
   fi
 
+  ## Optionally allow webcam access.
+  if [ "${allow_webcam}" = "yes" ]; then
+    for device in /dev/video*
+    do
+      if [ -f "${device}" ]; then
+        bwrap_args+="--dev-bind ${device} ${device} "
+      fi
+    done
+  fi
+
+  ## Optionally allow microphone access.
+  if [ "${allow_mic}" = "yes" ]; then
+    bwrap_args+="--dev-bind /dev/snd /dev/snd "
+  fi
+
   ## Shared storage.
   if [ "${shared_storage}" = "read-write" ]; then
     bwrap_args+="--bind ${shared_dir} ${shared_dir} "
