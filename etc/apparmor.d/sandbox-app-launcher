@@ -131,6 +131,10 @@ profile sandbox-app-launcher @{SYMLINK_DIR}/** flags=(attach_disconnected) {
   owner /dev/pts/* rw,
   owner /dev/shm/ r,
   owner /dev/shm/** rw,
+  ## Access to these devices are handled by bubblewrap.
+  /dev/video* rw,
+  /dev/snd/ r,
+  /dev/snd/** rw,
 
   ## /var and /run access.
   /var/ r,
