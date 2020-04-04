@@ -1,3 +1,140 @@
+commit cd504b43f657a9c8bd3d4be70a97addfb18789f9
+Merge: 1c78a8e af0a9e3
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Sat Apr 4 05:32:28 2020 -0400
+
+    Merge remote-tracking branch 'origin/master'
+
+commit af0a9e3a2745a7f9d840490795ac1bf0b01357b5
+Merge: 447634a 611387b
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Sat Apr 4 09:31:03 2020 +0000
+
+    Merge pull request #14 from madaidan/config
+    
+    Add some default app configs
+
+commit 447634a388f46f8c99e6fcef7b4642fe57c02d26
+Merge: 5196cdf 213f8ca
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Sat Apr 4 09:29:59 2020 +0000
+
+    Merge pull request #13 from madaidan/shared
+    
+    Add shared storage
+
+commit 5196cdfe37b219947096777616fc7b7a80c326e8
+Merge: 96c2c37 945bb07
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Sat Apr 4 09:29:27 2020 +0000
+
+    Merge pull request #12 from madaidan/path-check
+    
+    Get rid of create_symlinks()
+
+commit 96c2c370e7df9eb5f850ea26e332646858a4f7c0
+Merge: 1c78a8e 9381f8d
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Sat Apr 4 09:28:43 2020 +0000
+
+    Merge pull request #11 from madaidan/kernel
+    
+    Prevent some kernel infoleaks
+
+commit 611387b0d6643b84595e9342585bc49f096ec525
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sat Apr 4 00:10:52 2020 +0000
+
+    Add some default app configs
+
+commit 213f8ca8c091fc64b65c28700112c53fc61b8bc8
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Fri Apr 3 22:16:43 2020 +0000
+
+    Set the sticky bit
+
+commit e7b781a8ed02979cd9038d0c94a17577afe1954e
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Fri Apr 3 22:05:50 2020 +0000
+
+    Allow access to shared storage
+
+commit 8a0ae778425674eccf4b11d62d5305eb95134675
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Fri Apr 3 22:04:28 2020 +0000
+
+    Add shared storage
+
+commit 945bb071d1746731cb2544e824ea3d6295582c4f
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Fri Apr 3 21:29:56 2020 +0000
+
+    Get rid of create_symlinks
+
+commit 9381f8dab6039b9dcc22118e63f12301c88d0e09
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Fri Apr 3 21:25:14 2020 +0000
+
+    Prevent some kernel infoleaks
+
+commit 1c78a8e21c1360c40cb32dadcbcc298afa0ec3c7
+Merge: 14e98f2 16c2ea7
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Fri Apr 3 14:02:21 2020 -0400
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 16c2ea7f8e9433ecc8f8d578046bb7e3c2920f23
+Merge: e417cd9 4dd6cc3
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Fri Apr 3 18:01:48 2020 +0000
+
+    Merge pull request #9 from madaidan/aafixes
+    
+    Apparmor fixes
+
+commit e417cd97f0c3a41be7d2c1d8dcbdacce7a01bd20
+Merge: a531d55 9883ad6
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Fri Apr 3 18:01:32 2020 +0000
+
+    Merge pull request #8 from madaidan/x11
+    
+    Mount X11 socket
+
+commit a531d55e842c8d5f05a33647aea2a32397dee8cf
+Merge: 14e98f2 2371baf
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Fri Apr 3 18:01:25 2020 +0000
+
+    Merge pull request #10 from madaidan/dbus
+    
+    Only allow communicating with the D-Bus session bus
+
+commit 2371baf0fd53c17f256e7b4b874a86185f68f4d2
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Fri Apr 3 17:48:17 2020 +0000
+
+    Only allow communicating with the D-Bus session bus
+
+commit 4dd6cc32af963826372f8636113ba1575951bced
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Fri Apr 3 17:31:01 2020 +0000
+
+    Apparmor fixes
+
+commit 9883ad6f8e0f4624c764995183580eb0e4a280fd
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Fri Apr 3 13:57:17 2020 +0000
+
+    Mount X11 socket
+
+commit 14e98f2c92852d053388751b573b35594a53cff4
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Fri Apr 3 05:10:04 2020 -0400
+
+    bumped changelog version
+
 commit db1b7d803c710f2367e7c23c8e89c1d25b4849f1
 Author: Patrick Schleizer <adrelanos@riseup.net>
 Date:   Fri Apr 3 05:02:12 2020 -0400
