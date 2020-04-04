@@ -11,6 +11,7 @@ app_homedir="${main_app_dir}/${app_name}"
 app_path="$(type -P ${app_name})"
 seccomp_filter="${main_app_dir}/seccomp-filter.bpf"
 wx_whitelist="${main_app_dir}/wx_whitelist"
+shared_dir="/shared"
 
 if [ -f "/etc/sandbox-app-launcher/${app_name}.conf" ]; then
   . "/etc/sandbox-app-launcher/${app_name}.conf"
@@ -28,6 +29,10 @@ setup() {
 
   if ! [ -d "${symlink_dir}" ]; then
     mkdir -m 755 "${symlink_dir}"
+  fi
+
+  if ! [ -d "${shared_dir}" ]; then
+    mkdir -m 1777 "${shared_dir}"
   fi
 
   if ! getent passwd | sed -e 's/:.*//g' | grep -qw "${app_user}"; then
@@ -85,6 +90,13 @@ run_program() {
   ## Optionally remove network access by creating an empty net namespace.
   if [ "${allow_net}" = "no" ]; then
     bwrap_args+="--unshare-net "
+  fi
+
+  ## Shared storage.
+  if [ "${shared_storage}" = "read-write" ]; then
+    bwrap_args+="--bind ${shared_dir} ${shared_dir} "
+  elif [ "${shared_storage}" = "read-only" ]; then
+    bwrap_args+="--ro-bind ${shared_dir} ${shared_dir} "
   fi
 
   sudo -H -u "${app_user}" bash -c "
