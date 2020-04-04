@@ -1,3 +1,37 @@
+commit 34acd58341a9abec840dced5a60d77913414c8fb
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Sat Apr 4 16:39:27 2020 -0400
+
+    readme
+
+commit 2b504da350adaec0bb11af58e71775ae548317bb
+Merge: 07e2137 3a82a14
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Sat Apr 4 13:44:12 2020 -0400
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 3a82a1443a08d4f101d6f1468d3fa142b55b7eb0
+Merge: 07e2137 feb10ea
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Sat Apr 4 16:56:03 2020 +0000
+
+    Merge pull request #15 from madaidan/webcam-mic
+    
+    Add webcam and mic permissions
+
+commit feb10ea4f9ca83becdd992253e3e842765402872
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sat Apr 4 16:36:45 2020 +0000
+
+    Add webcam and mic permissions
+
+commit 07e213787a792ccf4f2528c3a15997040f1edb17
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Sat Apr 4 06:36:40 2020 -0400
+
+    bumped changelog version
+
 commit cd504b43f657a9c8bd3d4be70a97addfb18789f9
 Merge: 1c78a8e af0a9e3
 Author: Patrick Schleizer <adrelanos@riseup.net>
