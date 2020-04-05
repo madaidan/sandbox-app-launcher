@@ -18,16 +18,16 @@ wx_whitelist="${main_app_dir}/wx_whitelist"
 shared_dir="/shared"
 bwrap_args=""
 
+if ! [[ "${app_name}" =~ [0-9a-zA-Z/] ]]; then
+  echo "ERROR: Invalid character."
+  exit 1
+fi
+
 if [ -f "/etc/sandbox-app-launcher/${app_name}.conf" ]; then
   . "/etc/sandbox-app-launcher/${app_name}.conf"
 fi
 
 setup() {
-  if ! [[ "${app_name}" =~ [0-9a-zA-Z/] ]]; then
-    echo "ERROR: Invalid character."
-    exit 1
-  fi
-
   if ! [ -e "${app_path}" ]; then
     echo "ERROR: Could not find '${app_name}' in \$PATH."
     exit 1
