@@ -18,6 +18,17 @@ wx_whitelist="${main_app_dir}/wx_whitelist"
 shared_dir="/shared"
 bwrap_args=""
 
+error_handler() {
+  echo "
+## sandbox-app-launcher BUG.
+## BASH_COMMAND: ${BASH_COMMAND}
+## Please report this BUG!
+"
+  exit 1
+}
+
+trap "error_handler" ERR
+
 if ! [[ "${app_name}" =~ [0-9a-zA-Z/] ]]; then
   echo "ERROR: Invalid character."
   exit 1
