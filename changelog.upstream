@@ -1,3 +1,73 @@
+commit bfd79fe9bb9cd74d3b3f1260550fd095b065ac9f
+Merge: e11c2e4 6b0b3c1
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Sun Apr 5 14:50:48 2020 -0400
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 6b0b3c1112da7a9135760a40f79c6c1521f3cd1e
+Merge: e11c2e4 e49fa46
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Sun Apr 5 17:51:12 2020 +0000
+
+    Merge pull request #19 from madaidan/improvements
+    
+    Improvements
+
+commit e11c2e493fb5761b00f693f08a24163eea23b2a2
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Sun Apr 5 13:28:18 2020 -0400
+
+    bumped changelog version
+
+commit e49fa465b8553fc63b48803428cabf8940d81620
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sun Apr 5 17:24:35 2020 +0000
+
+    Check for root
+
+commit ccece85887ef3950db592f20ea47eb9e74056bd0
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sun Apr 5 17:21:22 2020 +0000
+
+    Quote variables
+
+commit efcbe0c0795596eaef8f76120f71c36173d7bf67
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sun Apr 5 17:20:34 2020 +0000
+
+    shift 1
+
+commit 784780bf16593a1944778540794d2b67bdd76081
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sun Apr 5 17:19:37 2020 +0000
+
+    Pass parameters
+
+commit b0a99dbf68823e7a1cac191b63722e97a1dfaa20
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sun Apr 5 17:11:32 2020 +0000
+
+    Add error_handler
+
+commit b8e35b441182ed27c1b4f0875e340d14a217e930
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sun Apr 5 15:49:07 2020 +0000
+
+    Check for an executable
+
+commit 8cbbe9eb55fbf6efb719bf11831b2669efb84ce0
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sun Apr 5 15:47:34 2020 +0000
+
+    Sanitize app_name before sourcing config file
+
+commit 0019c75d44074ed2f6eceb76b724c8da18823975
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sun Apr 5 15:37:24 2020 +0000
+
+    set -e
+
 commit ac376e07af85ce4c658865ba15399f62ae16bad7
 Merge: 6821752 26e2899
 Author: Patrick Schleizer <adrelanos@riseup.net>
