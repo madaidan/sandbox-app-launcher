@@ -30,6 +30,11 @@ error_handler() {
 
 trap "error_handler" ERR
 
+if ! [ "$(id -u)" = "0" ]; then
+  echo "ERROR: Must run as root."
+  exit 1
+fi
+
 if ! [[ "${app_name}" =~ [0-9a-zA-Z/] ]]; then
   echo "ERROR: Invalid character."
   exit 1
