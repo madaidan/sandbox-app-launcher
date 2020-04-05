@@ -28,7 +28,7 @@ if [ -f "/etc/sandbox-app-launcher/${app_name}.conf" ]; then
 fi
 
 setup() {
-  if ! [ -e "${app_path}" ]; then
+  if ! [ -x "${app_path}" ]; then
     echo "ERROR: Could not find '${app_name}' in \$PATH."
     exit 1
   fi
