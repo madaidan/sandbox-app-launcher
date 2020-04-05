@@ -113,15 +113,6 @@ run_program() {
   ## TODO: Network namespace - probably via ip netns
   ## TODO: Don't preserve the environment - env -i
 
-  ## Some systems do not have /lib{32,64}.
-  lib_dir="/lib /lib --ro-bind /usr/lib /usr/lib"
-  if [ -d /lib32 ]; then
-    lib_dir+=" --ro-bind /lib32 /lib32"
-  fi
-  if [ -d /lib64 ]; then
-    lib_dir+=" --ro-bind /lib64 /lib64"
-  fi
-
   ## Optionally remove network access by creating an empty net namespace.
   if [ "${allow_net}" = "no" ]; then
     bwrap_args+="--unshare-net "
@@ -132,14 +123,14 @@ run_program() {
     for device in /dev/video*
     do
       if [ -f "${device}" ]; then
-        bwrap_args+="--dev-bind ${device} ${device} "
+        bwrap_args+="--dev-bind-try ${device} ${device} "
       fi
     done
   fi
 
   ## Optionally allow microphone access.
   if [ "${allow_mic}" = "yes" ]; then
-    bwrap_args+="--dev-bind /dev/snd /dev/snd "
+    bwrap_args+="--dev-bind-try /dev/snd /dev/snd "
   fi
 
   ## Shared storage.
@@ -153,16 +144,20 @@ run_program() {
   bwrap \
   --ro-bind /bin /bin \
   --ro-bind /usr/bin /usr/bin \
-  --ro-bind ${lib_dir} \
+  --ro-bind /lib /lib \
+  --ro-bind-try /lib32 /lib32 \
+  --ro-bind-try /lib64 /lib64 \
+  --ro-bind /usr/lib /usr/lib \
+  --ro-bind-try /usr/local/lib /usr/local/lib \
   --ro-bind /usr/share /usr/share \
-  --ro-bind /usr/local/lib /usr/local/lib \
-  --ro-bind /usr/local/share /usr/local/share \
+  --ro-bind-try /usr/local/share /usr/local/share \
   --ro-bind /usr/include /usr/include \
   --ro-bind /etc /etc \
   --ro-bind-data 10 /etc/passwd \
   --ro-bind-data 11 /etc/group \
   --ro-bind ${main_app_dir}/machine-id /etc/machine-id \
   --ro-bind /var/lib /var/lib \
+  --tmpfs /var/lib/dbus \
   --ro-bind ${main_app_dir}/machine-id /var/lib/dbus/machine-id \
   --ro-bind /var/log /var/log \
   --ro-bind /sys/devices /sys/devices \
@@ -172,7 +167,7 @@ run_program() {
   --bind ${app_homedir} ${app_homedir} \
   --proc /proc \
   --tmpfs /tmp \
-  --ro-bind /tmp/.X11-unix /tmp/.X11-unix \
+  --ro-bind-try /tmp/.X11-unix /tmp/.X11-unix \
   --tmpfs /var/tmp \
   --tmpfs /var/cache \
   --ro-bind ${symlink_dir}/${app_name} ${symlink_dir}/${app_name} \
