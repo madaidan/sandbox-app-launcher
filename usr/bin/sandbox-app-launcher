@@ -13,7 +13,7 @@ app_name="${1}"
 shift 1
 app_user="sandbox-${app_name}"
 app_homedir="${appdata_dir}/${app_name}"
-app_path="$(type -P ${app_name})"
+app_path="$(type -P "${app_name}")"
 seccomp_filter="${auto_dir}/seccomp-filter.bpf"
 wx_whitelist="${main_app_dir}/wx_whitelist"
 shared_dir="/shared"
@@ -69,7 +69,7 @@ setup() {
     useradd -m -d "${app_homedir}" -s /sbin/nologin "${app_user}"
   fi
 
-  if ! [ "$(stat -c %a ${app_homedir})" = "700" ]; then
+  if ! [ "$(stat -c %a "${app_homedir}")" = "700" ]; then
     chmod 700 -R "${app_homedir}"
   fi
 
