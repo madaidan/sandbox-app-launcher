@@ -16,7 +16,7 @@ app_homedir="${appdata_dir}/${app_name}"
 app_path="$(type -P "${app_name}")"
 seccomp_filter="${auto_dir}/seccomp-filter.bpf"
 wx_whitelist="${main_app_dir}/wx_whitelist"
-shared_dir="/shared"
+shared_dir="${appdata_dir}/shared"
 bwrap_args=""
 
 error_handler() {
@@ -47,6 +47,11 @@ fi
 setup() {
   if ! [ -x "${app_path}" ]; then
     echo "ERROR: Could not find '${app_name}' in \$PATH."
+    exit 1
+  fi
+
+  if [ "${app_name}" = "shared" ]; then
+    echo "ERROR: The app name cannot be 'shared'."
     exit 1
   fi
 
