@@ -176,8 +176,8 @@ run_program() {
   --tmpfs /var/tmp \
   --tmpfs /var/cache \
   --ro-bind ${symlink_dir}/${app_name} ${symlink_dir}/${app_name} \
-  --tmpfs /var/run \
   --tmpfs /run \
+  --symlink /run /var/run \
   --dev /dev \
   --chdir ${app_homedir} \
   --setenv HOME ${app_homedir} \
