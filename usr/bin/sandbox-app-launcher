@@ -141,9 +141,9 @@ run_program() {
 
   ## Shared storage.
   if [ "${shared_storage}" = "read-write" ]; then
-    bwrap_args+="--bind ${shared_dir} ${shared_dir} "
+    bwrap_args+="--bind ${shared_dir} ${shared_dir} --bind /shared /shared "
   elif [ "${shared_storage}" = "read-only" ]; then
-    bwrap_args+="--ro-bind ${shared_dir} ${shared_dir} "
+    bwrap_args+="--ro-bind ${shared_dir} ${shared_dir} --ro-bind /shared /shared "
   fi
 
   sudo -H -u "${app_user}" bash -c "
