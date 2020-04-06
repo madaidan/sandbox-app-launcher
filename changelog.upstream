@@ -1,3 +1,58 @@
+commit 9187c1737326c59b763f2189767bf4344aeb550e
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Mon Apr 6 13:30:04 2020 -0400
+
+    lintian
+
+commit c175c24153146ad43791f83f979a7ce67debd078
+Merge: 4948d69 bd8713c
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Mon Apr 6 13:28:10 2020 -0400
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 4948d693bef8cd8e553f60895b909fc33df9b3f6
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Mon Apr 6 13:24:27 2020 -0400
+
+    bumped changelog version
+
+commit bd8713ca637d3727de1c71d424343c48cc749f70
+Merge: 77451d2 cd70c78
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Mon Apr 6 17:24:11 2020 +0000
+
+    Merge pull request #27 from madaidan/shared
+    
+    Allow access to shared storage symlink
+
+commit 77451d2a371c7598ae64799c188b21182cf0dcc7
+Merge: b10b94a 853a6e9
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Mon Apr 6 17:23:47 2020 +0000
+
+    Merge pull request #26 from madaidan/run
+    
+    Symlink /run to /var/run
+
+commit cd70c782fd97be0df24186b1728a29aae963b0b0
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Mon Apr 6 17:02:45 2020 +0000
+
+    Allow access to shared storage symlink
+
+commit 1cb84ae4b9f247b3ec9258bdced8eac369d78b7e
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Mon Apr 6 17:01:48 2020 +0000
+
+    Allow access to shared storage symlink
+
+commit 853a6e9ad2b0d6cba4ff1157c7b603a61fa894f9
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Mon Apr 6 16:39:53 2020 +0000
+
+    Symlink /run to /var/run
+
 commit b10b94a46d3791de155a3d7076876aea162c0f7b
 Merge: d58737d 3a9ac86
 Author: Patrick Schleizer <adrelanos@riseup.net>
