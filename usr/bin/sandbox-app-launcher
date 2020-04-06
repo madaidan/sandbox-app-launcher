@@ -112,7 +112,7 @@ setup() {
   cat <<EOF > "${wrapper_dir}/${app_name}"
 #!/bin/bash
 dbus-launch
-${app_path} \${@}
+"${app_path}" "\${@}"
 EOF
     chmod 755 "${wrapper_dir}/${app_name}"
   fi
@@ -181,8 +181,8 @@ run_program() {
   --tmpfs /var/tmp \
   --tmpfs /var/cache \
   --ro-bind ${wrapper_dir}/${app_name} ${wrapper_dir}/${app_name} \
-  --tmpfs /var/run \
   --tmpfs /run \
+  --symlink /run /var/run \
   --dev /dev \
   --chdir ${app_homedir} \
   --setenv HOME ${app_homedir} \
