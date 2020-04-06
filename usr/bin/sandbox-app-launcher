@@ -112,7 +112,7 @@ setup() {
   cat <<EOF > "${wrapper_dir}/${app_name}"
 #!/bin/bash
 dbus-launch
-${app_path} ${@}
+${app_path} \${@}
 EOF
     chmod 755 "${wrapper_dir}/${app_name}"
   fi
@@ -207,7 +207,7 @@ run_program() {
   11< <(getent group root ${app_user} nobody) \
   12< ${seccomp_filter} \
   ${bwrap_args} \
-  ${wrapper_dir}/${app_name}"
+  ${wrapper_dir}/${app_name} ${@}"
 
   ## Don't leave any left-over processes such as the D-Bus daemon.
   killall -9 -u "${app_user}"
