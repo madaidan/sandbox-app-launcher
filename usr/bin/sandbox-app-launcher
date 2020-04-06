@@ -164,7 +164,6 @@ run_program() {
   --ro-bind /var/lib /var/lib \
   --tmpfs /var/lib/dbus \
   --ro-bind ${main_app_dir}/machine-id /var/lib/dbus/machine-id \
-  --ro-bind /var/log /var/log \
   --ro-bind /sys/devices /sys/devices \
   --ro-bind /sys/class /sys/class \
   --ro-bind /sys/bus /sys/bus \
