@@ -1,3 +1,137 @@
+commit b10b94a46d3791de155a3d7076876aea162c0f7b
+Merge: d58737d 3a9ac86
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Mon Apr 6 10:51:11 2020 -0400
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 3a9ac86528bc4be8b871447e2a7f8501fc560d92
+Merge: aa8acfb a9ed89b
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Mon Apr 6 14:50:34 2020 +0000
+
+    Merge pull request #25 from madaidan/sanitize
+    
+    Sanitize app_name before anything else and fix app_path
+
+commit aa8acfbbaacadb59f4f8ff8dbff836ea626e2090
+Merge: 3a60db0 e2e31c3
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Mon Apr 6 14:49:36 2020 +0000
+
+    Merge pull request #23 from madaidan/log
+    
+    Don't allow access to logs
+
+commit a9ed89b2b7008a2217e99f83f4ec8e615403059a
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Mon Apr 6 14:42:26 2020 +0000
+
+    Fix app_path
+
+commit 01ae7fa8a9474a4e7baf279d864136f8b342e011
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Mon Apr 6 14:38:17 2020 +0000
+
+    Sanitize app_name before anything else
+
+commit 3a60db01de7a42c390b6903ba163e7e25e454399
+Merge: 4996ebf 6c8ea87
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Mon Apr 6 14:27:45 2020 +0000
+
+    Merge pull request #24 from madaidan/shared-storage
+    
+    Move shared storage
+
+commit 6c8ea87c7d84e6456d2c7d44cb9549ae6e4b7815
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Mon Apr 6 14:25:25 2020 +0000
+
+    Symlink shared storage to /shared
+
+commit 700019fd2226daa7439071f0aca5b440bdf33013
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Mon Apr 6 14:24:40 2020 +0000
+
+    Move shared storage
+
+commit 9ea0a86692bbdfbc76da6e7f33723e4ebe8a205b
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Mon Apr 6 14:24:01 2020 +0000
+
+    Move shared storage
+
+commit e2e31c3f33c0f7dc1554cb923bb9ad4bb17fe6fc
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Mon Apr 6 14:19:08 2020 +0000
+
+    Don't allow access to logs
+
+commit e125e5c3528a4c072db624c6d3b293a66f4c8ccf
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Mon Apr 6 14:18:52 2020 +0000
+
+    Don't allow access to logs
+
+commit d58737d363d370d92758bc573c4646d6e04d48c0
+Merge: 7662bdd 4996ebf
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Mon Apr 6 03:49:26 2020 -0400
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 4996ebf28effa3d4fe3dbf3104b4fbdfa0bce361
+Merge: 286310c 42cf82b
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Mon Apr 6 07:46:00 2020 +0000
+
+    Merge pull request #22 from madaidan/tests
+    
+    Add some tests
+
+commit 286310c8d92b3a383e7e080044a8fd4180fae863
+Merge: 0e92fe5 79c283a
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Mon Apr 6 07:36:29 2020 +0000
+
+    Merge pull request #21 from madaidan/wx-fix
+    
+    Fix W^X
+
+commit 0e92fe5d8234be0ceb5ced7230191d115cf357e2
+Merge: 7662bdd d72c82c
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Mon Apr 6 07:36:11 2020 +0000
+
+    Merge pull request #20 from madaidan/try
+    
+    Don't fail if some directories don't exist
+
+commit 42cf82b50d9a98a6e1bdf5480fc22dad1425a9bc
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Mon Apr 6 00:55:42 2020 +0000
+
+    Add some tests
+
+commit 79c283a748abeb778206c5a2887cd3fd7326b4e5
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sun Apr 5 22:38:41 2020 +0000
+
+    Fix W^X
+
+commit d72c82cecbd151e2bfe640484cdfc93a3d498ceb
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sun Apr 5 21:04:57 2020 +0000
+
+    Don't fail if some directories don't exist
+
+commit 7662bdd3044b8df7f1ae35e3c57a63cf31f51213
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Sun Apr 5 15:06:19 2020 -0400
+
+    bumped changelog version
+
 commit bfd79fe9bb9cd74d3b3f1260550fd095b065ac9f
 Merge: e11c2e4 6b0b3c1
 Author: Patrick Schleizer <adrelanos@riseup.net>
