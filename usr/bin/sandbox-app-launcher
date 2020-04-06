@@ -202,7 +202,10 @@ run_program() {
   11< <(getent group root ${app_user} nobody) \
   12< ${seccomp_filter} \
   ${bwrap_args} \
-  ${symlink_dir}/${app_name} ${@}"
+  dbus-launch && ${symlink_dir}/${app_name} ${@}"
+
+  ## Don't leave any left-over process such as the D-Bus daemon.
+  killall -u "${app_user}"
 }
 
 setup
