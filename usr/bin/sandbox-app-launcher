@@ -209,8 +209,8 @@ run_program() {
   ${bwrap_args} \
   ${wrapper_dir}/${app_name}"
 
-  ## Don't leave any left-over process such as the D-Bus daemon.
-  killall -u "${app_user}"
+  ## Don't leave any left-over processes such as the D-Bus daemon.
+  killall -9 -u "${app_user}"
 }
 
 setup
