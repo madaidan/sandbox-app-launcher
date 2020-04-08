@@ -1,3 +1,74 @@
+commit b05cd425d84160dfac04c4516d581633913f8cd7
+Merge: d600297 0600ebf
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Wed Apr 8 13:16:36 2020 +0000
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 0600ebf2bf7e9861fa070a17554b52d6fdcf65e9
+Merge: d600297 cfa4822
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Mon Apr 6 19:49:24 2020 +0000
+
+    Merge pull request #28 from madaidan/dbus
+    
+    Start a D-Bus session bus inside the sandbox
+
+commit cfa48224a92b5b28ca6ca4857a4867611996d4af
+Merge: 7715f66 d600297
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Mon Apr 6 19:49:15 2020 +0000
+
+    Merge branch 'master' into dbus
+
+commit 7715f66b37f919f2729262fa699343697d256a24
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Mon Apr 6 18:39:52 2020 +0000
+
+    Quotes and fix merge conflict
+
+commit 24400f585908545ebe7474349d3a6c1c3fe0c16a
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Mon Apr 6 18:17:54 2020 +0000
+
+    Fix parameters
+
+commit 4fd758acc7a99dfa53a826aca71b2496af3d7fbd
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Mon Apr 6 18:13:35 2020 +0000
+
+    killall -9
+
+commit 803a15ae8209af522ba3540def53e02001cb1b0d
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Mon Apr 6 18:11:47 2020 +0000
+
+    Change symlink_dir to wrapper_dir
+
+commit b2502e11ae2edd766a30d3b66c92258193d7d08b
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Mon Apr 6 18:10:32 2020 +0000
+
+    Change symlinks to wrappers that run dbus-launch
+
+commit 2c78191fad168ffdb94fa5445a1c0da226648245
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Mon Apr 6 17:38:05 2020 +0000
+
+    Depend on dbus-x11
+
+commit e357fc19e4488a85856ebb19e507f1403d894213
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Mon Apr 6 17:37:48 2020 +0000
+
+    Start a D-Bus session bus
+
+commit d6002976e161fceb1660b3659a25322b45b97e54
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Mon Apr 6 13:32:26 2020 -0400
+
+    bumped changelog version
+
 commit 9187c1737326c59b763f2189767bf4344aeb550e
 Author: Patrick Schleizer <adrelanos@riseup.net>
 Date:   Mon Apr 6 13:30:04 2020 -0400
