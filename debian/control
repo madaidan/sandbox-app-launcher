@@ -14,7 +14,7 @@ Standards-Version: 4.3.0
 Package: sandbox-app-launcher
 Architecture: all
 Depends: sudo, bubblewrap, apparmor, libseccomp-dev, helper-scripts,
- ${misc:Depends}
+ dbus-x11, ${misc:Depends}
 Description: application launcher to start apps in a restrictive sandbox
  sandbox-app-launcher runs each app as its own user, in a bubblewrap sandbox
  and confined by apparmor.
