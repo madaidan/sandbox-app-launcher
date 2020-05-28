@@ -11,6 +11,11 @@
 profile sandbox-app-launcher @{WRAPPER_DIR}/** flags=(attach_disconnected) {
   / r,
 
+  ## Needed for apps to setup further sandboxing like Firefox/Chromium.
+  capability sys_admin,
+  capability sys_chroot,
+  capability sys_ptrace,
+
   ## Let the app do whatever they want with their own data except
   ## executing their own code.
   owner @{HOME_DIR}/*/ rw,

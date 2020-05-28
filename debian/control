@@ -33,6 +33,8 @@ Description: application launcher to start apps in a restrictive sandbox
  .
   * Shared storage access (read-only or read-write)
  .
+  * Dynamic native code execution
+ .
  All apps the user installs will be automatically configured to run in
  the sandbox and a prompt will ask the user which permissions they wish to
  grant the application (not implemented yet).
