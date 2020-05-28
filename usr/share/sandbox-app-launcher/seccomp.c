@@ -43,6 +43,7 @@ int main(int argc, char *argv[])
     ALLOW_SYSCALL (chmod);
     ALLOW_SYSCALL (chown);
     ALLOW_SYSCALL (chown32);
+    ALLOW_SYSCALL (chroot);
     ALLOW_SYSCALL (clock_getres);
     ALLOW_SYSCALL (clock_gettime);
     ALLOW_SYSCALL (clock_nanosleep);
