@@ -102,11 +102,6 @@ setup() {
     "${auto_dir}/seccomp-wx"
   fi
 
-  ## Some apps break with W^X so allow opting out.
-  if grep -qw "${app_name}" "${wx_whitelist}"; then
-    seccomp_filter="${auto_dir}/seccomp-filter-wx.bpf"
-  fi
-
   ## Create wrappers.
   if ! [ -e "${wrapper_dir}/${app_name}" ]; then
   cat <<EOF > "${wrapper_dir}/${app_name}"
@@ -149,6 +144,24 @@ run_program() {
     bwrap_args+="--bind ${shared_dir} ${shared_dir} --bind /shared /shared "
   elif [ "${shared_storage}" = "read-only" ]; then
     bwrap_args+="--ro-bind ${shared_dir} ${shared_dir} --ro-bind /shared /shared "
+  fi
+
+  ## Optionally allow dynamic native code execution.
+  ##
+  ## This allows creating memory mappings that are both
+  ## writable and executable and allows transitioning
+  ## a writable memory mapping to executable i.e. violating
+  ## W^X.
+  ##
+  ## This is generally a security issue since it allows an
+  ## attacker to execute new arbitary code so preventing this
+  ## will force the attacker to use the already existing code
+  ## (ROP/JOP) which is far more limited.
+  ##
+  ## Although, some things require this such as JIT engines in
+  ## browsers so it must be optional.
+  if [ "${allow_dynamic_native_code_exec}" = "yes" ]; then
+    seccomp_filter="${auto_dir}/seccomp-filter-wx.bpf"
   fi
 
   sudo -H -u "${app_user}" bash -c "
