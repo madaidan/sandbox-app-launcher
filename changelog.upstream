@@ -1,3 +1,70 @@
+commit f7ebe35440679dea17f4608f83c8b09b239a7460
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Thu May 28 09:47:03 2020 -0400
+
+    readme
+
+commit a538be879c62b6d49ca8180eb8dd1af401bc256c
+Merge: 738c855 39fd059
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Thu May 28 08:37:32 2020 -0400
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 39fd0599cbcdde7d88162b82fcbb9e37889b1493
+Merge: b44d78f 00b12a3
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Thu May 28 12:29:43 2020 +0000
+
+    Merge pull request #30 from madaidan/further_sandboxing
+    
+    Let apps setup further sandboxing beyond sandbox-app-launcher
+
+commit b44d78f27276b9d6d12d7c56794840637915868c
+Merge: 738c855 a11b6e7
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Thu May 28 12:29:33 2020 +0000
+
+    Merge pull request #29 from madaidan/dynamic_native_code_exec
+    
+    Make W^X a normal permission
+
+commit 00b12a33a6cc072447e31df945616bc98cc5d9f8
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Thu May 28 02:14:29 2020 +0000
+
+    Allow chroot
+
+commit a882b7de4c5c9a7d472d98e00d8bf56ab800863d
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Thu May 28 02:14:02 2020 +0000
+
+    Allow capabilities needed for the app's own sandboxing
+
+commit a11b6e7550fc8fcb1db54f740381eadf26dc790e
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Thu May 28 01:50:43 2020 +0000
+
+    Update control
+
+commit 09df002cd5f4ad16b701b2c4b4ac914e9516084e
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Thu May 28 01:48:55 2020 +0000
+
+    Delete wx_whitelist
+
+commit 8ee5d5b43eaa785fb48547d07eade48196aaaeab
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Thu May 28 01:47:13 2020 +0000
+
+    Make W^X a normal permission
+
+commit 738c855ea1acab995b298af340a4f3fb19f2a692
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Thu Apr 16 08:41:58 2020 -0400
+
+    bumped changelog version
+
 commit f441997c5dd89de523fc9859f144e6cfdc5eb54c
 Author: Patrick Schleizer <adrelanos@riseup.net>
 Date:   Wed Apr 15 14:05:36 2020 -0400
