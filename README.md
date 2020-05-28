@@ -17,6 +17,8 @@ There are currently 4 available permissions:
 
 * Shared storage access (read-only or read-write)
 
+* Dynamic native code execution
+
 All apps the user installs will be automatically configured to run in
 the sandbox and a prompt will ask the user which permissions they wish to
 grant the application (not implemented yet).
