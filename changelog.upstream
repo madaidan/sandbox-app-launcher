@@ -1,3 +1,46 @@
+commit b40d3dc00e8a00cbcda64c4be7185f798c2fe440
+Merge: 10df33b effeb71
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Fri May 29 07:41:00 2020 -0400
+
+    Merge remote-tracking branch 'origin/master'
+
+commit effeb7186e19f427caf8c23e7dafca9ed770fdbb
+Merge: 4d21c94 6fb9b09
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Fri May 29 11:39:20 2020 +0000
+
+    Merge pull request #32 from madaidan/configs
+    
+    Add W^X configs
+
+commit 4d21c94ca24cac55c3582d790517490c47964d36
+Merge: 10df33b c1ab8e5
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Fri May 29 11:38:47 2020 +0000
+
+    Merge pull request #31 from madaidan/fixes
+    
+    Some fixes
+
+commit 6fb9b09a240ab8cf6a43605e44be8f875d048526
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Thu May 28 23:46:23 2020 +0000
+
+    Create chromium.conf
+
+commit 1f42e9b7bc2944d871f9c756d0a4170c5a6fba1b
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Thu May 28 23:35:44 2020 +0000
+
+    Add W^X configs
+
+commit 10df33b6e86b3e745748c0fd3ba6d78ad5a056d8
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Thu May 28 09:47:04 2020 -0400
+
+    bumped changelog version
+
 commit f7ebe35440679dea17f4608f83c8b09b239a7460
 Author: Patrick Schleizer <adrelanos@riseup.net>
 Date:   Thu May 28 09:47:03 2020 -0400
@@ -28,6 +71,12 @@ Date:   Thu May 28 12:29:33 2020 +0000
     Merge pull request #29 from madaidan/dynamic_native_code_exec
     
     Make W^X a normal permission
+
+commit c1ab8e52c1a79c56f6436b545eea1c8a9cd72462
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Thu May 28 02:46:54 2020 +0000
+
+    Some fixes
 
 commit 00b12a33a6cc072447e31df945616bc98cc5d9f8
 Author: madaidan <50278627+madaidan@users.noreply.github.com>
