@@ -1,0 +1,158 @@
+  ## Copyright (C) 2012 - 2020 ENCRYPTED SUPPORT LP <adrelanos@riseup.net>
+  ## See the file COPYING for copying conditions.
+
+  / r,
+
+  ## Needed for apps to setup further sandboxing like Firefox/Chromium.
+  capability sys_admin,
+  capability sys_chroot,
+  capability sys_ptrace,
+
+  ## Let the app do whatever they want with their own data except
+  ## executing their own code.
+  owner @{HOME_DIR}/*/ rw,
+  owner @{HOME_DIR}/*/** rwlk,
+  @{SHARED_DIR}/ rw,
+  @{SHARED_DIR}/** rwlk,
+
+  ## Allow us to send ourselves signals.
+  ## TODO: Whitelist of allowed signals.
+  ## TODO: Distinguish between apps.
+  signal peer=sandbox-app-launcher,
+  signal (receive) set=(int, term, kill) peer=unconfined,
+
+  ## Allow us to ptrace ourselves.
+  ## TODO: Distinguish between apps.
+  ptrace (read, readby, tracedby) peer=sandbox-app-launcher,
+
+  ## TODO: Restrict if possible.
+  unix,
+
+  ## Network access.
+  ##
+  ## Only IPv4 TCP traffic is allowed as Whonix
+  ## disables IPv6 and Tor only supports TCP.
+  network inet tcp,
+
+  ## Only allow communicating with the D-Bus session bus.
+  ## This is safe since each app runs as their own user
+  ## with their own session bus. Allowing communication with
+  ## the system bus is dangerous because it allows messing
+  ## with services outside of the sandbox.
+  dbus bus=session,
+
+  ## rlimit restrictions.
+  ##
+  ## Only allow a maximum of 200 processes to prevent things such as
+  ## fork bombs.
+  ## TODO: More rlimit restrictions.
+  set rlimit nproc <= 200,
+
+  ## Programs and libraries.
+  ##
+  ## All programs and libraries are read-only to prevent malware from
+  ## compromising a specific program. Updates will be handled by APT.
+  ## TODO: Environment scrubbing.
+  /usr/ r,
+  /{,usr/,usr/local/}{,s}bin/ r,
+  /{,usr/,usr/local/}{,s}bin/** rpix,
+  /{,usr/,usr/local/}lib{,32,64}/ r,
+  /{,usr/,usr/local/}lib{,32,64}/** rmpix,
+  /usr/{,local/}{share,include}/ r,
+  /usr/{,local/}{share,include}/** rpix,
+  ## /usr/lib/ is mounted read-only.
+  deny /usr/lib/python3/dist-packages/*/__pycache__/ w,
+  deny /usr/lib/python3/dist-packages/*/__pycache__/** w,
+
+  ## Sysfs access.
+  /sys/ r,
+  /sys/devices/ r,
+  /sys/devices/**/{uevent,config} r,
+  /sys/devices/pci[0-9]*/**/ r,
+  /sys/devices/pci[0-9]*/**/{resource,boot_vga,class,vendor,device,irq,revision,subsystem_vendor,port_no} r,
+  /sys/devices/pci[0-9]*/**/drm/**/{,enabled,status} r,
+  /sys/devices/pci[0-9]*/**/sound/**/pcm_class r,
+  /sys/devices/pci[0-9]*/**/backlight/**/* r,
+  /sys/devices/virtual/tty/tty[0-9]*/active r,
+  /sys/devices/virtual/tty/console/active r,
+  /sys/devices/virtual/dmi/id/{sys,board,bios}_vendor r,
+  /sys/devices/system/node/node[0-9]*/meminfo r,
+  /sys/devices/system/cpu/ r,
+  /sys/devices/system/cpu/{present,online} r,
+  /sys/devices/system/cpu/cpu[0-9]*/cache/index2/size r,
+  /sys/class/ r,
+  /sys/class/{tty,input,drm,sound}/ r,
+  /sys/bus/ r,
+  /sys/bus/pci/devices/ r,
+  /sys/fs/cgroup/** rw,
+
+  ## Procfs access.
+  ## TODO: Restrict access further.
+  @{PROC}/ r,
+  owner @{PROC}/@{pid}/{cgroup,cmdline,comm,sessionid,mounts,stat,status,sched,maps,auxv,attr/current,fd/,environ,limits,mountinfo,task/} r,
+  owner @{PROC}/@{pid}/{setgroups,gid_map,uid_map,attr/exec,oom_score_adj} rw,
+  owner @{PROC}/@{pid}/task/*/stat r,
+  owner @{PROC}/@{pid}/fdinfo/* r,
+  @{PROC}/{stat,cpuinfo,filesystems,meminfo,swaps,uptime} r,
+  @{PROC}/sys/** r,
+
+  deny /proc/*/{statm,smaps} r,
+  deny /proc/*/net/ r,
+  deny /proc/*/net/** r,
+
+  ## Tmpfs access.
+  ##
+  ## Read-only access is given to files the user is not an owner of
+  ## and read-write access is given to files the user is owner of.
+  /{,var/}tmp/ r,
+  /{,var/}tmp/** r,
+  owner /{,var/}tmp/ rw,
+  owner /{,var/}tmp/** rwlk,
+
+  ## Config files.
+  /etc/ r,
+  /etc/** r,
+
+  ## Device access.
+  /dev/ r,
+  /dev/console r,
+  /dev/random rw,
+  /dev/urandom rw,
+  /dev/null rw,
+  /dev/zero rw,
+  /dev/full rw,
+  owner /dev/stdin rw,
+  owner /dev/stdout r,
+  owner /dev/stderr rw,
+  /dev/tty rw,
+  owner /dev/ptmx rw,
+  /dev/pts/ r,
+  owner /dev/pts/* rw,
+  owner /dev/shm/ r,
+  owner /dev/shm/** rw,
+  ## Access to these devices are handled by bubblewrap.
+  /dev/video* rw,
+  /dev/snd/ r,
+  /dev/snd/** rw,
+
+  ## /var and /run access.
+  /var/ r,
+  /var/{lib,cache}/ r,
+  /var/lib/** r,
+  /var/lib/command-not-found/commands.db rwk,
+  /var/cache/** rwl,
+  owner /var/lib/ rw,
+  owner /var/lib/** rw,
+  /{,var/}run/ r,
+  /{,var/}run/** rw,
+  /{,var/}run/shm/** rwl,
+  owner /{,var/}run/** rwk,
+
+  ## Can leak some important kernel information such as kernel pointers.
+  deny /{,usr/}lib/modules/ rw,
+  deny /{,usr/}lib/modules/** rw,
+  deny /**/vmlinu{,z,x}* rw,
+  deny /**/System.map* rw,
+
+  # Site-specific additions and overrides. See local/README for details.
+  #include <local/sandbox-app-launcher>
