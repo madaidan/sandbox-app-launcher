@@ -23,7 +23,7 @@ Description: application launcher to start apps in a restrictive sandbox
  files across.
  .
  This implements a permissions system to configure what apps can access.
- There are currently 4 available permissions:
+ There are currently 5 available permissions:
  .
   * Network access
  .
