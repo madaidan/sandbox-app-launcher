@@ -93,8 +93,7 @@ setup() {
   compiler_flags="-lseccomp -ldl -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wl,-z,relro -Wl,-z,now"
 
   if ! [ -f "${seccomp_filter}" ]; then
-    "${main_app_dir}/autogen-seccomp" "${main_app_dir}/seccomp-whitelist"
-    mv "${auto_dir}/seccomp-filter.c" "${auto_dir}/seccomp.c"
+    "${main_app_dir}/autogen-seccomp" "${main_app_dir}/seccomp-whitelist" > "${auto_dir}/seccomp.c"
     gcc "${auto_dir}/seccomp.c" -o "${auto_dir}/seccomp" ${compiler_flags}
     chmod 700 "${auto_dir}/seccomp"
     "${auto_dir}/seccomp"
@@ -105,8 +104,7 @@ setup() {
     for replace_syscall in mmap mmap2 mprotect pkey_mprotect shmat; do
       str_replace "#${replace_syscall}" "${replace_syscall}" "${auto_dir}/seccomp-whitelist-wx" >/dev/null
     done
-    "${main_app_dir}/autogen-seccomp" "${auto_dir}/seccomp-whitelist-wx"
-    mv "${auto_dir}/seccomp-filter.c" "${auto_dir}/seccomp-wx.c"
+    "${main_app_dir}/autogen-seccomp" "${auto_dir}/seccomp-whitelist-wx" > "${auto_dir}/seccomp-wx.c"
     str_replace "seccomp-filter.bpf" "seccomp-filter-wx.bpf" "${auto_dir}/seccomp-wx.c" >/dev/null
     gcc "${auto_dir}/seccomp-wx.c" -o "${auto_dir}/seccomp-wx" ${compiler_flags}
     chmod 700 "${auto_dir}/seccomp-wx"
