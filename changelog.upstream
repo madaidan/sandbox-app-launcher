@@ -1,3 +1,67 @@
+commit a71985c99b63794b69f66d21a4018de71e0e0370
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Wed Jun 3 09:55:58 2020 -0400
+
+    readme
+
+commit bd030e39bdc9d53f73d42acdb666bcbc2449735f
+Merge: 2b46561 77ff1c4
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Sat May 30 16:20:03 2020 -0400
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 77ff1c454292fe10c06e8f1f22dcf52e08647b4b
+Merge: e2c8ba0 589d5cc
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Sat May 30 20:17:57 2020 +0000
+
+    Merge pull request #35 from madaidan/desc
+    
+    Fix description
+
+commit e2c8ba08e7d98d24d20663b7bbae9a32733b531e
+Merge: 1bf888b d9da64a
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Sat May 30 20:17:40 2020 +0000
+
+    Merge pull request #34 from madaidan/seccomp
+    
+    Auto-generate seccomp filter
+
+commit 1bf888b3ac942c2e5045b2bed498c8a87c5a7c83
+Merge: 2b46561 d6b76fd
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Sat May 30 20:13:34 2020 +0000
+
+    Merge pull request #33 from madaidan/filesystem-wx
+    
+    Extend W^X permission to the filesystem
+
+commit d9da64a575dde846b80917150b548347182befd5
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sat May 30 18:45:41 2020 +0000
+
+    Auto-generate seccomp filter
+
+commit 589d5ccd3496483255c43985db0bbe4d15f21d58
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sat May 30 18:40:07 2020 +0000
+
+    Fix description
+
+commit d6b76fd792fa1369f26406b3219798b86bd42ea8
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sat May 30 01:38:50 2020 +0000
+
+    Extend W^X permission to the filesystem
+
+commit 2b46561dad95c1f14523db2d50ef712437c1c6f8
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Fri May 29 07:41:26 2020 -0400
+
+    bumped changelog version
+
 commit b40d3dc00e8a00cbcda64c4be7185f798c2fe440
 Merge: 10df33b effeb71
 Author: Patrick Schleizer <adrelanos@riseup.net>
