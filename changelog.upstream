@@ -1,8 +1,36 @@
+commit 7368e588dee403b6882296e393f29b7622c7e516
+Merge: 98e32f7 c0cb14e
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Wed Jun 3 10:00:13 2020 -0400
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 98e32f7a69abffd17ea39588f788b9f61f7bd356
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Wed Jun 3 09:55:59 2020 -0400
+
+    bumped changelog version
+
 commit a71985c99b63794b69f66d21a4018de71e0e0370
 Author: Patrick Schleizer <adrelanos@riseup.net>
 Date:   Wed Jun 3 09:55:58 2020 -0400
 
     readme
+
+commit c0cb14e5559ce2da8ef7fa774fde764e31c054c3
+Merge: 77ff1c4 14bc604
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Sun May 31 12:08:58 2020 +0000
+
+    Merge pull request #36 from madaidan/autogen-seccomp
+    
+    Improve autogen-seccomp
+
+commit 14bc6049f4a7e3ebb8877f7debb4432541808b70
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sun May 31 00:04:49 2020 +0000
+
+    Improve autogen-seccomp
 
 commit bd030e39bdc9d53f73d42acdb666bcbc2449735f
 Merge: 2b46561 77ff1c4
