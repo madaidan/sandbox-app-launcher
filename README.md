@@ -7,7 +7,7 @@ The directory, `/shared`, is shared across all app sandboxes to transfer
 files across.
 
 This implements a permissions system to configure what apps can access.
-There are currently 4 available permissions:
+There are currently 5 available permissions:
 
 * Network access
 
