@@ -16,50 +16,59 @@ if ! [ -f "${whitelist_file}" ]; then
   exit 1
 fi
 
-while read -r syscall; do
-  actual_syscall=""
-  arg_num=""
-  syscall_arg=""
-  arg_rule=""
+generate_filter() {
+  while read -r syscall; do
+    actual_syscall=""
+    arg_num=""
+    syscall_arg=""
+    arg_rule=""
 
-  if [[ "${syscall}" =~ ^# ]]; then
-    continue
-  fi
+    if [[ "${syscall}" =~ ^# ]]; then
+      continue
+    fi
 
-  if [ "${syscall}" = "" ]; then
-    continue
-  fi
+    if [ "${syscall}" = "" ]; then
+      continue
+    fi
 
-  if ! [[ "${syscall}" =~ [0-9a-zA-Z/] ]]; then
-    echo "ERROR: Entry contains invalid character: '${syscall}'"
-    continue
-  fi
+    if ! [[ "${syscall}" =~ [0-9a-zA-Z/] ]]; then
+      echo "ERROR: Entry contains invalid character: '${syscall}'"
+      continue
+    fi
 
-  if ! read -r actual_syscall arg_num syscall_arg <<< "${syscall}"; then
-    echo "ERROR: Cannot parse: '${syscall}'"
-    continue
-  fi
+    if ! read -r actual_syscall arg_num syscall_arg <<< "${syscall}"; then
+      echo "ERROR: Cannot parse: '${syscall}'"
+      continue
+    fi
 
-  if [ "${arg_num}" = "" ]; then
-    whitelisted_syscalls+="  ALLOW_SYSCALL (${syscall});
+    if [ "${actual_syscall}" = "@include" ]; then
+      generate_filter "${arg_num}"
+      continue
+    fi
+
+    if [ "${arg_num}" = "" ]; then
+      whitelisted_syscalls+="  ALLOW_SYSCALL (${syscall});
 "
-    continue
-  fi
+      continue
+    fi
 
-  if ! [ "${arg_num}" = "0" ] && ! [ "${arg_num}" = "1" ] && ! [ "${arg_num}" = "2" ]; then
-    echo "ERROR: Not a valid argument number: ${arg_num}"
-    continue
-  fi
+    if ! [ "${arg_num}" = "0" ] && ! [ "${arg_num}" = "1" ] && ! [ "${arg_num}" = "2" ]; then
+      echo "ERROR: Not a valid argument number: ${arg_num}"
+      continue
+    fi
 
-  if [ "${actual_syscall}" = "ioctl" ]; then
-    ## TODO: Can we remove this exception without opening up holes?
-    whitelisted_syscalls+="  ALLOW_IOCTL (${syscall_arg});
+    if [ "${actual_syscall}" = "ioctl" ]; then
+      ## TODO: Can we remove this exception without opening up holes?
+      whitelisted_syscalls+="  ALLOW_IOCTL (${syscall_arg});
 "
-  else
-    whitelisted_syscalls+="  ALLOW_ARG${arg_num} (${actual_syscall}, ${syscall_arg});
+    else
+      whitelisted_syscalls+="  ALLOW_ARG${arg_num} (${actual_syscall}, ${syscall_arg});
 "
-  fi
-done < "${whitelist_file}"
+    fi
+  done < "${1}"
+}
+
+generate_filter "${whitelist_file}"
 
 echo "#include <seccomp.h>
 #include <unistd.h>
