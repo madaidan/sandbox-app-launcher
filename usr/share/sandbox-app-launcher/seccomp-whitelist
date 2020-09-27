@@ -380,10 +380,3 @@ shmat 2 0
 shmat 2 SHM_RND
 shmat 2 SHM_RDONLY
 shmat 2 SHM_REMAP
-
-## Disable W^X.
-#mmap
-#mmap2
-#mprotect
-#pkey_mprotect
-#shmat

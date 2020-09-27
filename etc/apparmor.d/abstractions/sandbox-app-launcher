@@ -151,8 +151,8 @@
   ## Can leak some important kernel information such as kernel pointers.
   deny /{,usr/}lib/modules/ rw,
   deny /{,usr/}lib/modules/** rw,
-  deny /**/vmlinu{,z,x}* rw,
-  deny /**/System.map* rw,
+  deny /**vmlinu{,z,x}* rw,
+  deny /**System.map* rw,
 
   # Site-specific additions and overrides. See local/README for details.
   #include <local/sandbox-app-launcher>
