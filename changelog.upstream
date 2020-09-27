@@ -1,3 +1,67 @@
+commit c7565cd98722c3d275ccf0fef6d164858cd13f70
+Merge: 3ed8648 1e692da
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Sun Sep 27 07:34:54 2020 -0400
+
+    Merge remote-tracking branch 'github/master'
+
+commit 1e692dab76241c2fc25f2f767273844d5acfcc9a
+Merge: 00887fd 6993d9f
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Sun Sep 27 11:32:57 2020 +0000
+
+    Merge pull request #40 from madaidan/unneeded
+    
+    Remove uneeded /
+
+commit 6993d9f89b1923e7aacb2290b1bd6c1febfec9d4
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Fri Sep 4 21:20:30 2020 +0000
+
+    Remove uneeded /
+
+commit 00887fd9c57ba7b323ae1daccb899c0d0e971fa1
+Merge: bb8544f 0fe462b
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Tue Jun 23 14:36:41 2020 +0000
+
+    Merge pull request #39 from madaidan/fstack-protector-all
+    
+    Use -fstack-protector-all
+
+commit bb8544f5b48c0c5d311d91041d0cf3d3ea579026
+Merge: 3ed8648 5141af0
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Tue Jun 23 14:36:24 2020 +0000
+
+    Merge pull request #38 from madaidan/include
+    
+    Don't create seccomp-whitelist-wx in the script
+
+commit 0fe462bb52c23dcbb69102d5735b896cd231a823
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sun Jun 21 23:47:21 2020 +0000
+
+    Use -fstack-protector-all
+
+commit 5141af032e65b4813c3e5121b6d76cdcf0c66d3a
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Thu Jun 18 18:57:18 2020 +0000
+
+    Create seccomp-whitelist-wx
+
+commit 144c20103d00dc21edfb21f96bacd74371e9204d
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Thu Jun 18 18:49:23 2020 +0000
+
+    Support include statements
+
+commit 3ed8648c9e19aa9a2c9b8b815938d73bf96c4c22
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Tue Jun 16 09:33:21 2020 -0400
+
+    bumped changelog version
+
 commit dd555375772495bb55e104ba9528219ef59d6451
 Merge: 67dcc94 92a59b0
 Author: Patrick Schleizer <adrelanos@riseup.net>
