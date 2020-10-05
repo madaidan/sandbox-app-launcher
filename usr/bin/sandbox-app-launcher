@@ -7,8 +7,9 @@ set -e
 
 app_name="${1}"
 shift 1
+: ${app_path:="$(type -P "${app_name}" || true)"}
 
-if ! [[ "${app_name}" =~ [0-9a-zA-Z/] ]]; then
+if ! [[ "${app_name}" =~ [0-9a-zA-Z/] ]] || ! [[ "${app_path}" =~ [0-9a-zA-Z/] ]]; then
   echo "ERROR: Invalid character."
   exit 1
 fi
@@ -20,7 +21,6 @@ wrapper_dir_wx="${wrapper_dir}-wx"
 appdata_dir="/home/sandbox-app-launcher-appdata"
 app_user="sandbox-${app_name}"
 app_homedir="${appdata_dir}/${app_name}"
-app_path="$(type -P "${app_name}" || true)"
 seccomp_filter="${auto_dir}/seccomp-filter.bpf"
 wx_whitelist="${main_app_dir}/wx_whitelist"
 shared_dir="${appdata_dir}/shared"
@@ -100,7 +100,7 @@ setup() {
   fi
 
   if ! [ -f "${main_app_dir}/seccomp-filter-wx.bpf" ]; then
-    "${main_app_dir}/autogen-seccomp" "${auto_dir}/seccomp-whitelist-wx" > "${auto_dir}/seccomp-wx.c"
+    "${main_app_dir}/autogen-seccomp" "${main_app_dir}/seccomp-whitelist-wx" > "${auto_dir}/seccomp-wx.c"
     str_replace "seccomp-filter.bpf" "seccomp-filter-wx.bpf" "${auto_dir}/seccomp-wx.c" >/dev/null
     gcc "${auto_dir}/seccomp-wx.c" -o "${auto_dir}/seccomp-wx" ${compiler_flags}
     chmod 700 "${auto_dir}/seccomp-wx"
@@ -201,6 +201,7 @@ run_program() {
   --tmpfs /var/tmp \
   --tmpfs /var/cache \
   --ro-bind ${wrapper_dir}/${app_name} ${wrapper_dir}/${app_name} \
+  --ro-bind ${app_path} ${app_path} \
   --tmpfs /run \
   --symlink /run /var/run \
   --dev /dev \
