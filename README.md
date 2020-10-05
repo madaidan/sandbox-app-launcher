@@ -26,7 +26,7 @@ grant the application (not implemented yet).
 Currently a WIP and not for actual use.
 ## How to install `sandbox-app-launcher` using apt-get ##
 
-1\. Download [Whonix's Signing Key]().
+1\. Download Whonix's Signing Key.
 
 ```
 wget https://www.whonix.org/patrick.asc
