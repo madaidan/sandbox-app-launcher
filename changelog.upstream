@@ -1,3 +1,43 @@
+commit a9aa4065b79f0544749fd36d5bb060553cc9fe59
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Mon Oct 5 07:02:50 2020 -0400
+
+    readme
+
+commit d43d8fc2e40ea910d5497e1db4d5a9613d2e1f60
+Merge: 376e06f fa4a519
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Mon Oct 5 06:13:20 2020 -0400
+
+    Merge remote-tracking branch 'github/master'
+
+commit fa4a5194d3639772987146a6bddd4e315c6e663d
+Merge: 376e06f b94dd05
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Mon Oct 5 09:45:51 2020 +0000
+
+    Merge pull request #41 from madaidan/app_path
+    
+    Support overwriting app_path
+
+commit b94dd056e353a7d656a7456d581f41d18151e816
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sun Oct 4 18:21:20 2020 +0000
+
+    Sanitize app_path
+
+commit 095db0d75573ced41ecad82a9f279ed16433c644
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sun Oct 4 18:17:10 2020 +0000
+
+    Support overwriting app_path
+
+commit 376e06fed258a84217a2123a6d3812719e9243e9
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Sun Sep 27 11:46:29 2020 -0400
+
+    bumped changelog version
+
 commit c7565cd98722c3d275ccf0fef6d164858cd13f70
 Merge: 3ed8648 1e692da
 Author: Patrick Schleizer <adrelanos@riseup.net>
