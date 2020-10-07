@@ -137,6 +137,11 @@ setup() {
   if ! [ -e "${wrapper_dir}/${app_name}" ]; then
     cat <<EOF > "${wrapper_dir}/${app_name}"
 #!/bin/bash
+
+if [ -x /etc/X11/Xsession.d/20torbrowser ]; then
+  source /etc/X11/Xsession.d/20torbrowser
+fi
+
 dbus-launch
 "${app_path}" "\${@}"
 EOF
