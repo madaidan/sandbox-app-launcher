@@ -9,9 +9,11 @@ app_name="${1}"
 shift 1
 : ${app_path:="$(type -P "${app_name}" || true)"}
 
-if ! [[ "${app_name}" =~ [0-9a-zA-Z/] ]] || ! [[ "${app_path}" =~ [0-9a-zA-Z/] ]]; then
-  echo "ERROR: Invalid character."
-  exit 1
+if ! [[ "${app_name}" =~ [0-9a-zA-Z/] ]]; then
+  if ! [[ "${app_path}" =~ [0-9a-zA-Z/] ]]; then
+    echo "ERROR: Invalid character."
+    exit 1
+  fi
 fi
 
 main_app_dir="/usr/share/sandbox-app-launcher"
@@ -25,6 +27,10 @@ seccomp_filter="${auto_dir}/seccomp-filter.bpf"
 wx_whitelist="${main_app_dir}/wx_whitelist"
 shared_dir="${appdata_dir}/shared"
 bwrap_args=""
+
+if [ "${app_name}" = "torbrowser" ]; then
+  app_path="${app_homedir}/.tb/tor-browser/Browser/start-tor-browser"
+fi
 
 error_handler() {
   echo "
@@ -47,7 +53,7 @@ if [ -f "/etc/sandbox-app-launcher/${app_name}.conf" ]; then
 fi
 
 setup() {
-  if ! [ -x "${app_path}" ]; then
+  if ! [ -x "${app_path}" ] && ! [ "${app_name}" = "torbrowser" ]; then
     echo "ERROR: Could not find '${app_name}' in \$PATH."
     exit 1
   fi
@@ -131,6 +137,11 @@ setup() {
   if ! [ -e "${wrapper_dir}/${app_name}" ]; then
     cat <<EOF > "${wrapper_dir}/${app_name}"
 #!/bin/bash
+
+if [ -x /etc/X11/Xsession.d/20torbrowser ]; then
+  source /etc/X11/Xsession.d/20torbrowser
+fi
+
 dbus-launch
 "${app_path}" "\${@}"
 EOF
@@ -171,6 +182,14 @@ run_program() {
     bwrap_args+="--ro-bind ${shared_dir} ${shared_dir} --ro-bind /shared /shared "
   fi
 
+  ## Install Tor Browser.
+  if [ "${app_name}" = "torbrowser" ]; then
+    if ! [ -d "${app_homedir}/.tb" ]; then
+      echo -e "INFO: Installing Tor Browser in sandbox...\n"
+      sudo -H -u "${app_user}" bash -c "tb_skip_functions+=' remount_exec tb_start_tor_browser ' torbrowser"
+    fi
+  fi
+
   sudo -H -u "${app_user}" bash -c "
   bwrap \
   --ro-bind /bin /bin \
@@ -204,6 +223,8 @@ run_program() {
   --ro-bind ${app_path} ${app_path} \
   --tmpfs /run \
   --symlink /run /var/run \
+  --ro-bind-try /run/anon-ws-disable-stacked-tor/127.0.0.1_9150.sock /run/anon-ws-disable-stacked-tor/127.0.0.1_9150.sock \
+  --ro-bind-try /run/anon-ws-disable-stacked-tor/127.0.0.1_9151.sock /run/anon-ws-disable-stacked-tor/127.0.0.1_9151.sock \
   --dev /dev \
   --chdir ${app_homedir} \
   --setenv HOME ${app_homedir} \
