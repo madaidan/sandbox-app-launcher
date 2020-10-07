@@ -10,12 +10,12 @@ shift 1
 : ${app_path:="$(type -P "${app_name}" || true)"}
 
 if ! [[ "${app_name}" =~ [0-9a-zA-Z/] ]]; then
-   echo "ERROR: Invalid character in app_name."
+   echo "ERROR: Invalid character in app_name." >&2
    exit 1
 fi
 
 if ! [[ "${app_path}" =~ [0-9a-zA-Z/] ]]; then
-   echo "ERROR: Invalid character in app_path."
+   echo "ERROR: Invalid character in app_path." >&2
    exit 1
 fi
 
@@ -40,14 +40,14 @@ error_handler() {
 ## sandbox-app-launcher BUG.
 ## BASH_COMMAND: ${BASH_COMMAND}
 ## Please report this BUG!
-"
+" >&2
   exit 1
 }
 
 trap "error_handler" ERR
 
 if ! [ "$(id -u)" = "0" ]; then
-  echo "ERROR: Must run as root."
+  echo "ERROR: Must run as root." >&2
   exit 1
 fi
 
@@ -57,12 +57,12 @@ fi
 
 setup() {
   if ! [ -x "${app_path}" ] && ! [ "${app_name}" = "torbrowser" ]; then
-    echo "ERROR: Could not find '${app_name}' in \$PATH."
+    echo "ERROR: Could not find '${app_name}' in \$PATH." >&2
     exit 1
   fi
 
   if [ "${app_name}" = "shared" ]; then
-    echo "ERROR: The app name cannot be 'shared'."
+    echo "ERROR: The app name cannot be 'shared'." >&2
     exit 1
   fi
 
