@@ -10,12 +10,12 @@ shift 1
 : ${app_path:="$(type -P "${app_name}" || true)"}
 
 if ! [[ "${app_name}" =~ [0-9a-zA-Z/] ]]; then
-   echo "ERROR: Invalid character."
+   echo "ERROR: Invalid character in app_name."
    exit 1
 fi
 
 if ! [[ "${app_path}" =~ [0-9a-zA-Z/] ]]; then
-   echo "ERROR: Invalid character."
+   echo "ERROR: Invalid character in app_path."
    exit 1
 fi
 
