@@ -1,3 +1,83 @@
+commit d20cd73686168f5251eb1386b2f59f60db66f34c
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Wed Oct 7 10:33:00 2020 -0400
+
+    write errors to stderr
+
+commit 1f78c1311e93f11763e4edd90c09109fd6c3ef36
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Wed Oct 7 10:32:17 2020 -0400
+
+    output
+
+commit c8fde629cf82f4a01e523c07af1f53bac7180a2a
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Wed Oct 7 10:31:49 2020 -0400
+
+    fix nested if
+    
+    https://github.com/Whonix/sandbox-app-launcher/pull/43#discussion_r501059244
+
+commit 605dd7e3b0c2c00865362aa3a1929d638b3e6b0e
+Merge: 0cf16aa 47b1908
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Wed Oct 7 10:31:07 2020 -0400
+
+    Merge remote-tracking branch 'github/master'
+
+commit 47b19087cb051a2c90cd9c47bd5e97a9d1e50e7d
+Merge: 0cf16aa 3ccec8a
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Wed Oct 7 14:30:16 2020 +0000
+
+    Merge pull request #43 from madaidan/torbrowser
+    
+    Add Tor Browser support
+
+commit 3ccec8a7e4013c2446906002a7d010dbf9926dbb
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Wed Oct 7 13:55:34 2020 +0000
+
+    Allow access to Tor sockets
+
+commit 3a202e344ecbbbfa34562e6fdd1b7e019ef69efd
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Wed Oct 7 13:51:04 2020 +0000
+
+    Source environment variables if needed
+
+commit 47eb742c950623c4789c07d4ba9f5cd0f5c5bc35
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Wed Oct 7 13:49:49 2020 +0000
+
+    Skip remount_exec and tb_start_tor_browser
+    
+    `$HOME` is set via `sudo -H` so it doesn't need to be manually altered
+
+commit 3e7086e990ddca5c0a8f7c21d5a1146259220b91
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Tue Oct 6 20:54:30 2020 +0000
+
+    Exempt Tor Browser from $PATH check
+
+commit cbca7516b46ee9c57133fdcbfa1464d1783012ee
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Tue Oct 6 20:49:07 2020 +0000
+
+    Create torbrowser.conf
+
+commit 1bb9da236210ab22c385d3968acf91bbef7bbcde
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Tue Oct 6 20:48:30 2020 +0000
+
+    Tor Browser support
+
+commit 0cf16aafbab401381e43e12c77838f6d30d90048
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Mon Oct 5 07:02:51 2020 -0400
+
+    bumped changelog version
+
 commit a9aa4065b79f0544749fd36d5bb060553cc9fe59
 Author: Patrick Schleizer <adrelanos@riseup.net>
 Date:   Mon Oct 5 07:02:50 2020 -0400
