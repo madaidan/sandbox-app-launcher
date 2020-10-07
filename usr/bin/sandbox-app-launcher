@@ -181,7 +181,7 @@ run_program() {
   if [ "${app_name}" = "torbrowser" ]; then
     if ! [ -d "${app_homedir}/.tb" ]; then
       echo -e "INFO: Installing Tor Browser in sandbox...\n"
-      sudo -H -u "${app_user}" HOME="${app_homedir}" tb_no_start="true" torbrowser
+      sudo -H -u "${app_user}" bash -c "tb_skip_functions+=' remount_exec tb_start_tor_browser ' torbrowser"
     fi
   fi
 
