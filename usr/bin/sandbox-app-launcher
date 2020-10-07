@@ -10,10 +10,13 @@ shift 1
 : ${app_path:="$(type -P "${app_name}" || true)"}
 
 if ! [[ "${app_name}" =~ [0-9a-zA-Z/] ]]; then
-  if ! [[ "${app_path}" =~ [0-9a-zA-Z/] ]]; then
-    echo "ERROR: Invalid character."
-    exit 1
-  fi
+   echo "ERROR: Invalid character."
+   exit 1
+fi
+
+if ! [[ "${app_path}" =~ [0-9a-zA-Z/] ]]; then
+   echo "ERROR: Invalid character."
+   exit 1
 fi
 
 main_app_dir="/usr/share/sandbox-app-launcher"
