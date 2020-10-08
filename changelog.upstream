@@ -1,3 +1,80 @@
+commit 7ea61eb417e3581b9556afbf203cd9bca9e77c08
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Thu Oct 8 11:41:13 2020 -0400
+
+    || true
+
+commit 6591a039768fabcf0be7b04bfabebfa901686fe6
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Thu Oct 8 11:40:04 2020 -0400
+
+    grep -q
+
+commit 4de49ecc70a6a7110191d291b294f50f682fb618
+Merge: ac95d39 d4962df
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Thu Oct 8 11:39:11 2020 -0400
+
+    Merge remote-tracking branch 'github/master'
+
+commit d4962df33b9b2cb05afa57497aa784236d08ca93
+Merge: 0cf4397 2fc0e15
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Thu Oct 8 15:37:50 2020 +0000
+
+    Merge pull request #42 from madaidan/postrm
+    
+    Don't try to remove users if they don't exist
+
+commit 0cf439713a6115935187acdde0f2c2d3653b9cd7
+Merge: ac95d39 11f3ad3
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Thu Oct 8 15:37:08 2020 +0000
+
+    Merge pull request #45 from madaidan/bwrap_args
+    
+    Split bwrap_args into 2
+
+commit 11f3ad3c4e3e56810a16136f34010b5893ccccd8
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Thu Oct 8 15:30:04 2020 +0000
+
+    Split bwrap_args into 2
+
+commit ac95d393579005b5d64c83cd3b5779eee9dba3af
+Merge: 39ab4dc 1ad819b
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Thu Oct 8 11:22:48 2020 -0400
+
+    Merge remote-tracking branch 'github/master'
+
+commit 1ad819bebf741bb774ce75e83f4b7000c2671866
+Merge: 39ab4dc 271b81f
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Thu Oct 8 15:21:17 2020 +0000
+
+    Merge pull request #44 from madaidan/fixes
+    
+    Fixes
+
+commit 271b81f8dbc696728bd452688746026e69382b9e
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Thu Oct 8 13:15:34 2020 +0000
+
+    Fix ptrace/signal
+
+commit eed43d40b43deadb918223ad50a2bb3294332734
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Thu Oct 8 12:09:56 2020 +0000
+
+    Only mount Tor sockets when using Tor Browser and be less verbose
+
+commit 39ab4dc14ac8a770072bdaf3292587df48a04f23
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Wed Oct 7 10:33:25 2020 -0400
+
+    bumped changelog version
+
 commit d20cd73686168f5251eb1386b2f59f60db66f34c
 Author: Patrick Schleizer <adrelanos@riseup.net>
 Date:   Wed Oct 7 10:33:00 2020 -0400
@@ -71,6 +148,12 @@ Author: madaidan <50278627+madaidan@users.noreply.github.com>
 Date:   Tue Oct 6 20:48:30 2020 +0000
 
     Tor Browser support
+
+commit 2fc0e15c2896fffda7444faed25cb336c500748c
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Tue Oct 6 20:16:39 2020 +0000
+
+    Don't try to remove users if they don't exist
 
 commit 0cf16aafbab401381e43e12c77838f6d30d90048
 Author: Patrick Schleizer <adrelanos@riseup.net>
