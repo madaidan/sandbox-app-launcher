@@ -12,6 +12,12 @@
 profile sandbox-app-launcher @{WRAPPER_DIR}/** flags=(attach_disconnected) {
   #include <abstractions/sandbox-app-launcher>
 
+  ## Allow us to send ourselves signals.
+  signal peer=sandbox-app-launcher,
+
+  ## Allow us to ptrace ourselves.
+  ptrace (read, readby, tracedby) peer=sandbox-app-launcher,
+
   ## Deny W^X violations.
   deny @{HOME_DIR}/*/** xm,
   deny @{SHARED_DIR}/** xm,
@@ -22,6 +28,12 @@ profile sandbox-app-launcher @{WRAPPER_DIR}/** flags=(attach_disconnected) {
 
 profile sandbox-app-launcher-wx @{WRAPPER_DIR_WX}/** flags=(attach_disconnected) {
   #include <abstractions/sandbox-app-launcher>
+
+  ## Allow us to send ourselves signals.
+  signal peer=sandbox-app-launcher-wx,
+
+  ## Allow us to ptrace ourselves.
+  ptrace (read, readby, tracedby) peer=sandbox-app-launcher-wx,
 
   ## Allow W^X violations.
   owner @{HOME_DIR}/*/** rwmlkix,
