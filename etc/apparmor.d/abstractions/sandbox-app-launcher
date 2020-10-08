@@ -15,15 +15,9 @@
   @{SHARED_DIR}/ rw,
   @{SHARED_DIR}/** rwlk,
 
-  ## Allow us to send ourselves signals.
-  ## TODO: Whitelist of allowed signals.
-  ## TODO: Distinguish between apps.
-  signal peer=sandbox-app-launcher,
+  ## Allow killing unconfined processes. Apps are run as other
+  ## users anyway so this is safe.
   signal (receive) set=(int, term, kill) peer=unconfined,
-
-  ## Allow us to ptrace ourselves.
-  ## TODO: Distinguish between apps.
-  ptrace (read, readby, tracedby) peer=sandbox-app-launcher,
 
   ## TODO: Restrict if possible.
   unix,
