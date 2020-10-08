@@ -146,7 +146,7 @@ if [ -x /etc/X11/Xsession.d/20torbrowser ]; then
 fi
 
 dbus-launch
-"${app_path}" "\${@}"
+"${app_path}" "\${@}" 1>/dev/null
 EOF
     chmod 755 "${wrapper_dir}/${app_name}"
   fi
@@ -188,9 +188,9 @@ run_program() {
   ## Install Tor Browser.
   if [ "${app_name}" = "torbrowser" ]; then
     if ! [ -d "${app_homedir}/.tb" ]; then
-      echo -e "INFO: Installing Tor Browser in sandbox...\n"
       sudo -H -u "${app_user}" bash -c "tb_skip_functions+=' remount_exec tb_start_tor_browser ' torbrowser"
     fi
+    bwrap_args+="--ro-bind-try /run/anon-ws-disable-stacked-tor/127.0.0.1_9150.sock /run/anon-ws-disable-stacked-tor/127.0.0.1_9150.sock --ro-bind-try /run/anon-ws-disable-stacked-tor/127.0.0.1_9151.sock /run/anon-ws-disable-stacked-tor/127.0.0.1_9151.sock "
   fi
 
   sudo -H -u "${app_user}" bash -c "
@@ -226,8 +226,6 @@ run_program() {
   --ro-bind ${app_path} ${app_path} \
   --tmpfs /run \
   --symlink /run /var/run \
-  --ro-bind-try /run/anon-ws-disable-stacked-tor/127.0.0.1_9150.sock /run/anon-ws-disable-stacked-tor/127.0.0.1_9150.sock \
-  --ro-bind-try /run/anon-ws-disable-stacked-tor/127.0.0.1_9151.sock /run/anon-ws-disable-stacked-tor/127.0.0.1_9151.sock \
   --dev /dev \
   --chdir ${app_homedir} \
   --setenv HOME ${app_homedir} \
