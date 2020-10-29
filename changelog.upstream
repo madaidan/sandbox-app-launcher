@@ -1,3 +1,31 @@
+commit e78bf74b26985d5e2d7dbf02c1ebff69aca70225
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Thu Oct 29 14:04:25 2020 -0400
+
+    fix
+
+commit 38fc2abea7589a2d2032b7631978eecb6f9bf5f2
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Thu Oct 29 14:02:46 2020 -0400
+
+    set owner of app_homedir to app_user
+    
+    https://forums.whonix.org/t/system-wide-sandboxing-framework-sandbox-app-launcher/9008/206
+
+commit 7422542236cf913708e2c042826e6f26d3d06e21
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Thu Oct 29 13:39:34 2020 -0400
+
+    port from useradd to adduser
+    
+    https://forums.whonix.org/t/system-wide-sandboxing-framework-sandbox-app-launcher/9008/205
+
+commit 544987bf7ecee70cf8956c703e0abf8b0d41b71d
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Thu Oct 8 13:41:32 2020 -0400
+
+    bumped changelog version
+
 commit 7ea61eb417e3581b9556afbf203cd9bca9e77c08
 Author: Patrick Schleizer <adrelanos@riseup.net>
 Date:   Thu Oct 8 11:41:13 2020 -0400
