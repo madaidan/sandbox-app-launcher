@@ -98,6 +98,10 @@ setup() {
     mkdir --parents "${app_homedir}"
   fi
 
+  if ! [ "$(stat -c "%U" "${app_homedir}")" = "700" ]; then
+    chown --recursive "${app_user}" "${app_homedir}"
+  fi
+
   if ! [ "$(stat -c %a "${app_homedir}")" = "700" ]; then
     chmod 700 -R "${app_homedir}"
   fi
