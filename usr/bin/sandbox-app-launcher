@@ -91,7 +91,11 @@ setup() {
   fi
 
   if ! getent passwd | sed -e 's/:.*//g' | grep -qw "${app_user}"; then
-    useradd -m -d "${app_homedir}" -s /sbin/nologin "${app_user}"
+    adduser --no-create-home --disabled-login --gecos "" "${app_user}"
+  fi
+
+  if ! [ -d "${app_homedir}" ]; then
+    mkdir --parents "${app_homedir}"
   fi
 
   if ! [ "$(stat -c %a "${app_homedir}")" = "700" ]; then
