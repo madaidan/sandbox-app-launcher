@@ -98,7 +98,7 @@ setup() {
     mkdir --parents "${app_homedir}"
   fi
 
-  if ! [ "$(stat -c "%U" "${app_homedir}")" = "700" ]; then
+  if ! [ "$(stat -c "%U" "${app_homedir}")" = "${app_user}" ]; then
     chown --recursive "${app_user}" "${app_homedir}"
   fi
 
