@@ -1,3 +1,15 @@
+commit 0408cb4f2c845be5293b720192fc4c290ffa92fc
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Thu Oct 29 16:46:01 2020 -0400
+
+    set correct HOME variable during Tor Browser installation
+
+commit 0d0416cadaf379fd1827f3a03ddfe9f887b4564e
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Thu Oct 29 15:59:45 2020 -0400
+
+    bumped changelog version
+
 commit e78bf74b26985d5e2d7dbf02c1ebff69aca70225
 Author: Patrick Schleizer <adrelanos@riseup.net>
 Date:   Thu Oct 29 14:04:25 2020 -0400
