@@ -146,8 +146,7 @@ setup() {
   fi
 
   ## Create wrappers.
-  if ! [ -e "${wrapper_script}" ]; then
-    cat <<EOF > "${wrapper_script}"
+  cat <<EOF > "${wrapper_script}"
 #!/bin/bash
 
 if [ -x /etc/X11/Xsession.d/20torbrowser ]; then
@@ -157,8 +156,8 @@ fi
 dbus-launch
 "${app_path}" "\${@}" 1>/dev/null
 EOF
-    chmod 755 "${wrapper_script}"
-  fi
+
+  chmod 755 "${wrapper_script}"
 }
 
 run_program() {
