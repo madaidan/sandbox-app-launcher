@@ -333,4 +333,4 @@ run_program() {
 }
 
 setup
-run_program
+run_program "${@}"
