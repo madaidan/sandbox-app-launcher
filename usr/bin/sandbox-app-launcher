@@ -97,7 +97,7 @@ setup() {
   fi
 
   if ! getent passwd | sed -e 's/:.*//g' | grep -qw "${app_user}"; then
-    adduser --no-create-home --disabled-login --gecos "" "${app_user}" >/dev/null
+    adduser --home "${app_homedir}" --no-create-home --disabled-login --gecos "" "${app_user}" >/dev/null
   fi
 
   if ! [ -d "${app_homedir}" ]; then
