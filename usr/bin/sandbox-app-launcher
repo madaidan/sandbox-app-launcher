@@ -170,7 +170,9 @@ EOF
   ## Debugging.
   if [ -o xtrace ]; then
   cat >> "${wrapper_script}" << 'EOF'
+
 set -x
+
 EOF
   fi
 
@@ -211,7 +213,7 @@ dbus-launch >/dev/null
 EOF
 
   cat << EOF >> "${wrapper_script}"
-"${app_path}" "\${@}" 1>/dev/null
+"${app_path}" "\${@}"
 EOF
 
   ## Debugging.
