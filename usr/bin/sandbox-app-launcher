@@ -288,6 +288,7 @@ run_program() {
   --setenv LOGNAME ${app_user} \
   --setenv XAUTHORITY ${app_homedir}/.Xauthority \
   --setenv SHELL /sbin/nologin \
+  --setenv started_by_sandbox_app_launcher true \
   --unsetenv SUDO_USER \
   --unsetenv SUDO_UID \
   --unsetenv SUDO_GID \
