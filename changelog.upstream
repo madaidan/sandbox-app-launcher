@@ -1,3 +1,29 @@
+commit 9441406458bb36230c2c57f1f4c00922a16d5cbf
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Sat Oct 31 06:27:20 2020 -0400
+
+    comment
+
+commit bbcb91f0b0180062186282949d745ed3f0f25bcc
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Sat Oct 31 06:25:20 2020 -0400
+
+    port to use tb-starter's new tb_no_start=true environment variable
+    
+    for easier readability than tb_skip_functions
+
+commit 489589bfd0463e0867c4f07b4c923244528f2804
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Sat Oct 31 06:20:19 2020 -0400
+
+    remove remount_exec from tb_skip_functions since this was fixed in tb-starter
+
+commit 816592bf792481cb80c807cd8e37dbbffc6ee7b6
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Sat Oct 31 06:08:40 2020 -0400
+
+    bumped changelog version
+
 commit 47774f8a648aaba5792b7e223156f1a019f222c3
 Author: Patrick Schleizer <adrelanos@riseup.net>
 Date:   Sat Oct 31 06:00:03 2020 -0400
