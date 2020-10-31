@@ -1,3 +1,15 @@
+commit 1e1a493419239ef99989f0955b80e26255935c50
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Sat Oct 31 06:35:19 2020 -0400
+
+    show error message if no program name is given
+
+commit eec964414f6924f6262a45d7b8ee11d1464f87cc
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Sat Oct 31 06:28:44 2020 -0400
+
+    bumped changelog version
+
 commit 9441406458bb36230c2c57f1f4c00922a16d5cbf
 Author: Patrick Schleizer <adrelanos@riseup.net>
 Date:   Sat Oct 31 06:27:20 2020 -0400
