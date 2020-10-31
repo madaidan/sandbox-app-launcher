@@ -37,26 +37,6 @@ wx_whitelist="${main_app_dir}/wx_whitelist"
 shared_dir="${appdata_dir}/shared"
 bwrap_args=""
 
-xsession_d_file_list_executable=(
-  /etc/X11/Xsession.d/20torbrowser
-  /etc/X11/Xsession.d/20uwt
-  /etc/X11/Xsession.d/20whonix
-  /etc/X11/Xsession.d/20whonix-welcome-page
-  /etc/X11/Xsession.d/40open_link_confirmation
-  /etc/X11/Xsession.d/40open_link_confirmation_kde
-  /etc/X11/Xsession.d/50anon-apps-config
-  /etc/X11/Xsession.d/50default_editor
-  /etc/X11/Xsession.d/50tb_default_browser
-  /etc/X11/Xsession.d/50torbrowser_default_browser
-  /etc/X11/Xsession.d/50security-misc
-)
-
-xsession_d_file_list_existing=(
-  /etc/X11/Xsession.d/20qt-gnome-desktop-session-id
-  /etc/X11/Xsession.d/20qt-x11-no-mitshm
-  /etc/X11/Xsession.d/25xdg-qubes-settings
-)
-
 if [ "${app_name}" = "torbrowser" ]; then
   app_path="${app_homedir}/.tb/tor-browser/Browser/start-tor-browser"
 fi
@@ -171,28 +151,55 @@ setup() {
   fi
 
   ## Create wrapper.
-  cat <<EOF > "${wrapper_script}"
+  rm --force "${wrapper_script}"
+  touch "${wrapper_script}"
+
+  cat >> "${wrapper_script}" << 'EOF'
 #!/bin/bash
 
-for file_name in $xsession_d_file_list_executable ; do
+xsession_d_file_list_executable=(
+  "/etc/X11/Xsession.d/20torbrowser"
+  "/etc/X11/Xsession.d/20uwt"
+  "/etc/X11/Xsession.d/20whonix"
+  "/etc/X11/Xsession.d/20whonix-welcome-page"
+  "/etc/X11/Xsession.d/40open_link_confirmation"
+  "/etc/X11/Xsession.d/40open_link_confirmation_kde"
+  "/etc/X11/Xsession.d/50anon-apps-config"
+  "/etc/X11/Xsession.d/50default_editor"
+  "/etc/X11/Xsession.d/50tb_default_browser"
+  "/etc/X11/Xsession.d/50torbrowser_default_browser"
+  "/etc/X11/Xsession.d/50security-misc"
+)
+
+xsession_d_file_list_existing=(
+  "/etc/X11/Xsession.d/20qt-gnome-desktop-session-id"
+  "/etc/X11/Xsession.d/20qt-x11-no-mitshm"
+  "/etc/X11/Xsession.d/25xdg-qubes-settings"
+)
+
+for file_name in "${xsession_d_file_list_executable[@]}" ; do
   if [ -x "$file_name" ]; then
     source "$file_name"
   fi
 done
 
-for file_name in $xsession_d_file_list_existing ; do
+for file_name in "${xsession_d_file_list_existing[@]}" ; do
   if [ -x "$file_name" ]; then
     source "$file_name"
   fi
 done
 
 dbus-launch
+EOF
+
+  cat << EOF >> "${wrapper_script}"
 "${app_path}" "\${@}" 1>/dev/null
 EOF
 
   ## Debugging.
   if [ -o xtrace ]; then
     cat "${wrapper_script}"
+    bash -n "${wrapper_script}"
   fi
 
   chmod 755 "${wrapper_script}"
