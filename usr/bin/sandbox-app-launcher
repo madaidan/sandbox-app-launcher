@@ -157,6 +157,11 @@ dbus-launch
 "${app_path}" "\${@}" 1>/dev/null
 EOF
 
+  ## Debugging.
+  if [ -o xtrace ]; then
+    cat "${wrapper_script}"
+  fi
+
   chmod 755 "${wrapper_script}"
 }
 
