@@ -71,25 +71,11 @@ setup() {
     exit 1
   fi
 
-  if ! [ -d "${main_app_dir}" ]; then
-    mkdir -m 755 "${main_app_dir}"
-  fi
-
-  if ! [ -d "${auto_dir}" ]; then
-    mkdir -m 755 "${auto_dir}"
-  fi
-
-  if ! [ -d "${wrapper_dir}" ]; then
-    mkdir -m 755 "${wrapper_dir}"
-  fi
-
-  if ! [ -d "${wrapper_dir_wx}" ]; then
-    mkdir -m 755 "${wrapper_dir_wx}"
-  fi
-
-  if ! [ -d "${appdata_dir}" ]; then
-    mkdir -m 755 "${appdata_dir}"
-  fi
+  for dir in main_app_dir auto_dir wrapper_dir wrapper_dir_wx appdata_dir; do
+    if ! [ -d "${dir}" ]; then
+      mkdir -m 755 "${dir}"
+    fi
+  done
 
   if ! [ -d "${shared_dir}" ]; then
     mkdir -m 1777 "${shared_dir}"
