@@ -1,3 +1,43 @@
+commit 47774f8a648aaba5792b7e223156f1a019f222c3
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Sat Oct 31 06:00:03 2020 -0400
+
+    hide output by adduser
+
+commit f7a70b40286842f981feb81f0cca4ad04d7ebd57
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Sat Oct 31 05:54:47 2020 -0400
+
+    selectively parse /etc/X11/Xsession.d files
+    
+    https://forums.whonix.org/t/system-wide-sandboxing-framework-sandbox-app-launcher/9008/210
+
+commit 36e3a4860498f00fc12158a5cb5c5662024ba281
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Sat Oct 31 05:38:17 2020 -0400
+
+    debugging
+
+commit 41bf8e806b9b0dc314d1421e4066bdb3271b94c4
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Sat Oct 31 05:36:43 2020 -0400
+
+    re-generate wrapper script to make sure it's updated
+
+commit f84b79d9a4e2e64bad310c479739166b63cd0879
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Sat Oct 31 05:35:45 2020 -0400
+
+    refactoring
+    
+    introduce variable wrapper_script
+
+commit 1418e0d6fd141622a43bec5eb498ad415746efb8
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Fri Oct 30 09:56:54 2020 -0400
+
+    bumped changelog version
+
 commit 0408cb4f2c845be5293b720192fc4c290ffa92fc
 Author: Patrick Schleizer <adrelanos@riseup.net>
 Date:   Thu Oct 29 16:46:01 2020 -0400
