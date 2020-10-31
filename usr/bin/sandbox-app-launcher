@@ -108,7 +108,15 @@ setup() {
   fi
 
   if ! [ "$(stat -c %a "${app_homedir}")" = "700" ]; then
-    chmod 700 -R "${app_homedir}"
+    ## command:
+    ## find /home/sandbox-app-launcher-appdata/torbrowser/.tb/tor-browser -executable -type f
+    ## output:
+    ## /home/sandbox-app-launcher-appdata/torbrowser/.tb/tor-browser/start-tor-browser.desktop
+    ## /home/sandbox-app-launcher-appdata/torbrowser/.tb/tor-browser/Browser/libmozavcodec.so
+    ## ...
+    #chmod --recursive 700 "${app_homedir}"
+    ## Therefore do not use --recursive.
+    chmod 700 "${app_homedir}"
   fi
 
   ## Generate seccomp filter.
