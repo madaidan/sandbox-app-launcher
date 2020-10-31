@@ -133,7 +133,7 @@ setup() {
   ## violating W^X.
   ##
   ## This is generally a security issue since it allows an
-  ## attacker to execute new arbitary code so preventing this
+  ## attacker to execute new arbitrary code so preventing this
   ## will force the attacker to use the already existing code
   ## (ROP/JOP) which is far more limited.
   ##
