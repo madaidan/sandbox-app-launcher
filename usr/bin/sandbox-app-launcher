@@ -229,6 +229,7 @@ run_program() {
   ## Install Tor Browser.
   if [ "${app_name}" = "torbrowser" ]; then
     if ! [ -d "${app_homedir}/.tb" ]; then
+      ## Use tb-starter (by Whonix developers) to install Tor Browser.
       sudo -H -u "${app_user}" HOME="${app_homedir}" tb_no_start=true torbrowser
     fi
     bwrap_args+="--ro-bind-try /run/anon-ws-disable-stacked-tor/127.0.0.1_9150.sock /run/anon-ws-disable-stacked-tor/127.0.0.1_9150.sock "
