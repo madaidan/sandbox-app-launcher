@@ -1,3 +1,29 @@
+commit 581cb2f8bdc6e5781db8302f13e07d8bb95d6e42
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Sat Oct 31 07:44:03 2020 -0400
+
+    start `torbrowser` (as installer) with `tb_installer_started_by_sandbox_app_launcher=true`
+
+commit 89602f94b21cabaab9f546e1911035f8e2a0ad7a
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Sat Oct 31 07:34:54 2020 -0400
+
+    introduce environment variable `started_by_sandbox_app_launcher=true`
+    
+    so tb-starter (by Whonix developers) can act accordingly
+
+commit 9b39503d7f4bb132abb4a82ac9c80102210e2b43
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Sat Oct 31 07:23:14 2020 -0400
+
+    fix /etc/X11/Xsession.d processing
+
+commit d05ed31337dbf3fbc75c327baca0d473be49e62a
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Sat Oct 31 06:36:11 2020 -0400
+
+    bumped changelog version
+
 commit 1e1a493419239ef99989f0955b80e26255935c50
 Author: Patrick Schleizer <adrelanos@riseup.net>
 Date:   Sat Oct 31 06:35:19 2020 -0400
