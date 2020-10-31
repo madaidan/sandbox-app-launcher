@@ -189,7 +189,7 @@ for file_name in "${xsession_d_file_list_existing[@]}" ; do
   fi
 done
 
-dbus-launch
+dbus-launch >/dev/null
 EOF
 
   cat << EOF >> "${wrapper_script}"
