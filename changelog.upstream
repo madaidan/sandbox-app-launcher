@@ -1,3 +1,41 @@
+commit e8291d6884c2bf4c022b01f0056ffdf0b639e629
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Sat Oct 31 10:06:26 2020 -0400
+
+    fix, test -x vs test -e
+
+commit 006d608ac9e163393350c9ed7a3d6db7c0485e5a
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Sat Oct 31 10:01:21 2020 -0400
+
+    fix, pass command line parameters to to `${wrapper_script} ${@}`
+
+commit c09d5ca693924f4bd2a80a70b911ba8a67072707
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Sat Oct 31 09:28:48 2020 -0400
+
+    debugging
+
+commit 921e2d012c0b594fc8558d1b58c962d9dbf42b27
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Sat Oct 31 09:25:54 2020 -0400
+
+    fix, do not run `chmod --recursive 700 "${app_homedir}"`
+    
+    https://forums.whonix.org/t/system-wide-sandboxing-framework-sandbox-app-launcher/9008/224
+
+commit 5ea42f5aa4defe83702fbdebf7fa67db7ec82939
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Sat Oct 31 09:01:41 2020 -0400
+
+    debugging
+
+commit 5500a0e7ed8c8841ddc2b01c724e5b9af46fd369
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Sat Oct 31 08:52:07 2020 -0400
+
+    bumped changelog version
+
 commit 2cac091d672f1ca608e8f0779dde356bd008b1a3
 Author: Patrick Schleizer <adrelanos@riseup.net>
 Date:   Sat Oct 31 08:51:36 2020 -0400
