@@ -1,3 +1,27 @@
+commit 2cac091d672f1ca608e8f0779dde356bd008b1a3
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Sat Oct 31 08:51:36 2020 -0400
+
+    fix wrapper_script variable
+
+commit 25fec6182c27cf885d66679c606709d6615cfc51
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Sat Oct 31 08:31:23 2020 -0400
+
+    hide output by dbus-launch
+
+commit 4f737bf69c5ba29c6c56548f69f96ec00fb01c7b
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Sat Oct 31 08:29:30 2020 -0400
+
+    fix, set home dir with adduser
+
+commit c2539228024a2f86572ff72fcf16dff7d99698b6
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Sat Oct 31 07:52:01 2020 -0400
+
+    bumped changelog version
+
 commit 581cb2f8bdc6e5781db8302f13e07d8bb95d6e42
 Author: Patrick Schleizer <adrelanos@riseup.net>
 Date:   Sat Oct 31 07:44:03 2020 -0400
