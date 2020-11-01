@@ -81,6 +81,26 @@ if [ -f "/etc/sandbox-app-launcher/${app_name}.conf" ]; then
   . "/etc/sandbox-app-launcher/${app_name}.conf"
 fi
 
+## Optionally allow dynamic native code execution.
+##
+## This allows creating memory mappings that are both
+## writable and executable, allows transitioning a
+## writable memory mapping to executable and allows
+## executing programs from writable directories i.e.
+## violating W^X.
+##
+## This is generally a security issue since it allows an
+## attacker to execute new arbitrary code so preventing this
+## will force the attacker to use the already existing code
+## (ROP/JOP) which is far more limited.
+##
+## Although, some things require this such as JIT engines in
+## browsers so it must be optional.
+if [ "${allow_dynamic_native_code_exec}" = "yes" ]; then
+  seccomp_filter="${auto_dir}/seccomp-filter-wx.bpf"
+  wrapper_dir="${wrapper_dir_wx}"
+fi
+
 error_handler() {
   echo "
 ## sandbox-app-launcher BUG.
@@ -148,26 +168,6 @@ setup() {
     gcc "${auto_dir}/seccomp-wx.c" -o "${auto_dir}/seccomp-wx" ${compiler_flags}
     chmod 700 "${auto_dir}/seccomp-wx"
     "${auto_dir}/seccomp-wx"
-  fi
-
-  ## Optionally allow dynamic native code execution.
-  ##
-  ## This allows creating memory mappings that are both
-  ## writable and executable, allows transitioning a
-  ## writable memory mapping to executable and allows
-  ## executing programs from writable directories i.e.
-  ## violating W^X.
-  ##
-  ## This is generally a security issue since it allows an
-  ## attacker to execute new arbitrary code so preventing this
-  ## will force the attacker to use the already existing code
-  ## (ROP/JOP) which is far more limited.
-  ##
-  ## Although, some things require this such as JIT engines in
-  ## browsers so it must be optional.
-  if [ "${allow_dynamic_native_code_exec}" = "yes" ]; then
-    seccomp_filter="${auto_dir}/seccomp-filter-wx.bpf"
-    wrapper_dir="${wrapper_dir_wx}"
   fi
 
   ## Create wrapper.
