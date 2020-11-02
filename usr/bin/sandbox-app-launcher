@@ -5,10 +5,36 @@
 
 set -e
 
-if [ $# -eq 0 ]; then
-    echo "Usage: program [OPTIONS]" >&2
-    exit 1
-fi
+while :
+do
+      case $1 in
+      setup)
+        setup_sandbox="1"
+        shift
+        break
+        ;;
+      run)
+        start_program="1"
+        shift
+        break
+        ;;
+      help)
+        echo "Usage: sandbox-app-launcher [OPTION] [PROGRAM]
+
+  setup       Setup the sandbox for the program.
+  run         Execute the program within the sandbox.
+  
+Examples:
+  sandbox-app-launcher setup firefox
+  sandbox-app-launcher run firefox"
+        exit
+        ;;
+      *)
+        echo "ERROR: Invalid argument. See the 'help' command for details."
+        exit 1
+        ;;
+      esac
+done
 
 app_name="${1}"
 shift 1
@@ -40,6 +66,42 @@ if [ "${app_name}" = "torbrowser" ]; then
   app_path="${app_homedir}/.tb/tor-browser/Browser/start-tor-browser"
 fi
 
+if ! [ -x "${app_path}" ] && ! [ "${app_name}" = "torbrowser" ]; then
+  echo "ERROR: Could not find '${app_name}' in \$PATH." >&2
+  exit 1
+fi
+
+if [ "${app_name}" = "shared" ]; then
+  echo "ERROR: The app name cannot be 'shared'." >&2
+  exit 1
+fi
+
+if [ -f "/etc/sandbox-app-launcher/${app_name}.conf" ]; then
+  . "/etc/sandbox-app-launcher/${app_name}.conf"
+fi
+
+## Optionally allow dynamic native code execution.
+##
+## This allows creating memory mappings that are both
+## writable and executable, allows transitioning a
+## writable memory mapping to executable and allows
+## executing programs from writable directories i.e.
+## violating W^X.
+##
+## This is generally a security issue since it allows an
+## attacker to execute new arbitrary code so preventing this
+## will force the attacker to use the already existing code
+## (ROP/JOP) which is far more limited.
+##
+## Although, some things require this such as JIT engines in
+## browsers so it must be optional.
+if [ "${allow_dynamic_native_code_exec}" = "yes" ]; then
+  seccomp_filter="${auto_dir}/seccomp-filter-wx.bpf"
+  wrapper_dir="${wrapper_dir_wx}"
+fi
+
+wrapper_script="${wrapper_dir}/${app_name}"
+
 error_handler() {
   echo "
 ## sandbox-app-launcher BUG.
@@ -51,45 +113,17 @@ error_handler() {
 
 trap "error_handler" ERR
 
-if ! [ "$(id -u)" = "0" ]; then
-  echo "ERROR: Must run as root." >&2
-  exit 1
-fi
-
-if [ -f "/etc/sandbox-app-launcher/${app_name}.conf" ]; then
-  . "/etc/sandbox-app-launcher/${app_name}.conf"
-fi
-
 setup() {
-  if ! [ -x "${app_path}" ] && ! [ "${app_name}" = "torbrowser" ]; then
-    echo "ERROR: Could not find '${app_name}' in \$PATH." >&2
+  if ! [ "$(id -u)" = "0" ]; then
+    echo "ERROR: The setup must be run as root." >&2
     exit 1
   fi
 
-  if [ "${app_name}" = "shared" ]; then
-    echo "ERROR: The app name cannot be 'shared'." >&2
-    exit 1
-  fi
-
-  if ! [ -d "${main_app_dir}" ]; then
-    mkdir -m 755 "${main_app_dir}"
-  fi
-
-  if ! [ -d "${auto_dir}" ]; then
-    mkdir -m 755 "${auto_dir}"
-  fi
-
-  if ! [ -d "${wrapper_dir}" ]; then
-    mkdir -m 755 "${wrapper_dir}"
-  fi
-
-  if ! [ -d "${wrapper_dir_wx}" ]; then
-    mkdir -m 755 "${wrapper_dir_wx}"
-  fi
-
-  if ! [ -d "${appdata_dir}" ]; then
-    mkdir -m 755 "${appdata_dir}"
-  fi
+  for dir in main_app_dir auto_dir wrapper_dir wrapper_dir_wx appdata_dir; do
+    if ! [ -d "${dir}" ]; then
+      mkdir -m 755 "${dir}"
+    fi
+  done
 
   if ! [ -d "${shared_dir}" ]; then
     mkdir -m 1777 "${shared_dir}"
@@ -136,28 +170,6 @@ setup() {
     chmod 700 "${auto_dir}/seccomp-wx"
     "${auto_dir}/seccomp-wx"
   fi
-
-  ## Optionally allow dynamic native code execution.
-  ##
-  ## This allows creating memory mappings that are both
-  ## writable and executable, allows transitioning a
-  ## writable memory mapping to executable and allows
-  ## executing programs from writable directories i.e.
-  ## violating W^X.
-  ##
-  ## This is generally a security issue since it allows an
-  ## attacker to execute new arbitary code so preventing this
-  ## will force the attacker to use the already existing code
-  ## (ROP/JOP) which is far more limited.
-  ##
-  ## Although, some things require this such as JIT engines in
-  ## browsers so it must be optional.
-  if [ "${allow_dynamic_native_code_exec}" = "yes" ]; then
-    seccomp_filter="${auto_dir}/seccomp-filter-wx.bpf"
-    wrapper_dir="${wrapper_dir_wx}"
-  fi
-
-  wrapper_script="${wrapper_dir}/${app_name}"
 
   ## Create wrapper.
   rm --force "${wrapper_script}"
@@ -332,5 +344,14 @@ run_program() {
   killall -9 -u "${app_user}"
 }
 
-setup
-run_program "${@}"
+if [ "${setup_sandbox}" = "1" ]; then
+  setup
+elif [ "${start_program}" = "1" ]; then
+  if [ -d "${app_homedir}" ]; then
+    run_program "${@}"
+  else
+    echo "ERROR: The sandbox for this program has not been set up yet. Please execute:
+    
+sudo sandbox-app-launcher setup ${app_name}"
+  fi
+fi
