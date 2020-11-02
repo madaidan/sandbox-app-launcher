@@ -1,3 +1,61 @@
+commit 79d7971fca2217a5e555ed136bb72e3acbfbe180
+Merge: 579aa47 b70901b
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Mon Nov 2 02:53:44 2020 -0500
+
+    Merge remote-tracking branch 'github/master'
+
+commit b70901b6ecc959c9515f7343d37c44c7d87d6097
+Merge: 579aa47 97939c6
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Mon Nov 2 07:52:20 2020 +0000
+
+    Merge pull request #46 from madaidan/improvements
+    
+    Various improvements
+
+commit 97939c6eb14d358581cb993b88f079fa4ede4ef7
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sun Nov 1 18:32:32 2020 +0000
+
+    Set wrapper_script later
+
+commit 1846ae51b6b86fe1eb0bb8cf23ac9fb5547de57a
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sun Nov 1 00:57:09 2020 +0000
+
+    Enable/disable W^X outside of setup
+
+commit 5281c4370616dc49329c8612442ed39fcb152144
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sun Nov 1 00:19:33 2020 +0000
+
+    Split setup and run_program into separate command line arguments
+
+commit 2ba347bcb964960c634070b81d90200245ca5a6e
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sat Oct 31 23:44:44 2020 +0000
+
+    Fix typo
+
+commit 3755ee4690f240fd339f56d9b6eb152e646bc6e1
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sat Oct 31 23:44:04 2020 +0000
+
+    Set wrapper_script at the top like everything else
+
+commit b29fafb5aaa0ec9d5390eb63b4e8ce1f5da3774c
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sat Oct 31 23:43:17 2020 +0000
+
+    Use for loop
+
+commit 579aa4722b14c82332a6603e903032cb75036143
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Sat Oct 31 10:26:16 2020 -0400
+
+    bumped changelog version
+
 commit e8291d6884c2bf4c022b01f0056ffdf0b639e629
 Author: Patrick Schleizer <adrelanos@riseup.net>
 Date:   Sat Oct 31 10:06:26 2020 -0400
