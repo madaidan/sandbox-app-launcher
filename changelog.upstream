@@ -1,3 +1,31 @@
+commit aea08bc22d3ba706ded33120deb95461ba035659
+Merge: aa83b80 12a2177
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Thu Nov 5 02:22:04 2020 -0500
+
+    Merge remote-tracking branch 'github/master'
+
+commit 12a2177d2d34fc1ba3a88334922b8c5defa43572
+Merge: aa83b80 92392a6
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Thu Nov 5 06:28:39 2020 +0000
+
+    Merge pull request #47 from madaidan/username
+    
+    Shorten usernames
+
+commit 92392a673e781a1839987b235f81c5799ffda892
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Mon Nov 2 20:50:20 2020 +0000
+
+    Shorten usernames
+
+commit aa83b80addce1b06c0025caffd59f98fe96bf8ba
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Mon Nov 2 02:53:57 2020 -0500
+
+    bumped changelog version
+
 commit 79d7971fca2217a5e555ed136bb72e3acbfbe180
 Merge: 579aa47 b70901b
 Author: Patrick Schleizer <adrelanos@riseup.net>
