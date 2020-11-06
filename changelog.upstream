@@ -1,3 +1,31 @@
+commit 0036c4aa28d2a8879fb411eebf7e1acc58942e44
+Merge: 7dd634c 7dfa4a8
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Fri Nov 6 10:16:34 2020 -0500
+
+    Merge remote-tracking branch 'github/master'
+
+commit 7dfa4a8b10fd70628554e9837928d93acbcb29e8
+Merge: 7dd634c 27ce1c5
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Fri Nov 6 15:14:04 2020 +0000
+
+    Merge pull request #48 from madaidan/var
+    
+    Remove unused variable from autogen-seccomp and set -e
+
+commit 27ce1c5c41a072b52a74a7a86202cae9598148ae
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Thu Nov 5 18:33:18 2020 +0000
+
+    Remove unused variable and set -e
+
+commit 7dd634c6c56b7404f9774ff6d71c672eaaa1b37c
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Thu Nov 5 02:22:14 2020 -0500
+
+    bumped changelog version
+
 commit aea08bc22d3ba706ded33120deb95461ba035659
 Merge: aa83b80 12a2177
 Author: Patrick Schleizer <adrelanos@riseup.net>
