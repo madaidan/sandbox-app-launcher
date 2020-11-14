@@ -55,32 +55,25 @@
   /usr/{,local/}{share,include}/ r,
   /usr/{,local/}{share,include}/** rpix,
   ## /usr/lib/ is mounted read-only.
-  deny /usr/lib/python3/dist-packages/*/__pycache__/ w,
-  deny /usr/lib/python3/dist-packages/*/__pycache__/** w,
+  deny /usr/lib/python3/dist-packages/*/__pycache__/{,**} w,
 
   ## Sysfs access.
-  /sys/ r,
-  /sys/devices/ r,
-  /sys/devices/**/{uevent,config} r,
-  /sys/devices/pci[0-9]*/**/ r,
-  /sys/devices/pci[0-9]*/**/{resource,boot_vga,class,vendor,device,irq,revision,subsystem_vendor,port_no} r,
-  /sys/devices/pci[0-9]*/**/drm/**/{,enabled,status} r,
-  /sys/devices/pci[0-9]*/**/sound/**/pcm_class r,
-  /sys/devices/pci[0-9]*/**/backlight/**/* r,
-  /sys/devices/virtual/tty/tty[0-9]*/active r,
-  /sys/devices/virtual/tty/console/active r,
-  /sys/devices/virtual/dmi/id/{sys,board,bios}_vendor r,
-  /sys/devices/virtual/dmi/id/product_name r,
-  /sys/devices/system/node/ r,
-  /sys/devices/system/node/node[0-9]*/meminfo r,
-  /sys/devices/system/cpu/ r,
-  /sys/devices/system/cpu/{present,online} r,
-  /sys/devices/system/cpu/cpu[0-9]*/cache/index2/size r,
-  /sys/class/ r,
-  /sys/class/{tty,input,drm,sound}/ r,
-  /sys/bus/ r,
-  /sys/bus/pci/devices/ r,
-  /sys/fs/cgroup/** rw,
+  @{sys}/ r,
+  @{sys}/devices/ r,
+  @{sys}/devices/**/{uevent,config} r,
+  @{sys}/devices/pci[0-9]*/**/{,resource,boot_vga,class,vendor,device,irq,revision,subsystem_vendor,port_no} r,
+  @{sys}/devices/pci[0-9]*/**/drm/**/{,enabled,status} r,
+  @{sys}/devices/pci[0-9]*/**/sound/**/pcm_class r,
+  @{sys}/devices/pci[0-9]*/**/backlight/**/* r,
+  @{sys}/devices/virtual/tty/{,tty[0-9]*/active,console/active} r,
+  @{sys}/devices/virtual/dmi/id/{sys,board,bios}_vendor r,
+  @{sys}/devices/virtual/dmi/id/product_name r,
+  @{sys}/devices/system/node/{,node[0-9]*/meminfo} r,
+  @{sys}/devices/system/cpu/{,present,online,cpu[0-9]*/cache/index2/size} r,
+  @{sys}/class/{,tty,input,drm,sound}/ r,
+  @{sys}/bus/ r,
+  @{sys}/bus/pci/devices/ r,
+  @{sys}/fs/cgroup/** rw,
 
   ## Procfs access.
   ## TODO: Restrict access further.
@@ -89,23 +82,20 @@
   owner @{PROC}/@{pid}/{setgroups,gid_map,uid_map,attr/exec,oom_score_adj} rw,
   @{PROC}/{stat,cpuinfo,filesystems,meminfo,swaps,uptime} r,
   @{PROC}/sys/** r,
-
-  deny /proc/*/{statm,smaps} r,
-  deny /proc/*/net/ r,
-  deny /proc/*/net/** r,
+  ## TODO: Review.
+  deny @{PROC}/@{pids}/{statm,smaps} r,
+  deny @{PROC}/@{pids}/net/{,**} r,
 
   ## Tmpfs access.
   ##
   ## Read-only access is given to files the user is not an owner of
   ## and read-write access is given to files the user is owner of.
-  /{,var/}tmp/ r,
-  /{,var/}tmp/** r,
+  /{,var/}tmp/{,**} r,
   owner /{,var/}tmp/ rw,
   owner /{,var/}tmp/** rwlk,
 
   ## Config files.
-  /etc/ r,
-  /etc/** r,
+  /etc/{,**} r,
 
   ## Device access.
   /dev/ r,
@@ -130,21 +120,19 @@
   /dev/snd/** rw,
 
   ## /var and /run access.
-  /var/ r,
-  /var/{lib,cache}/ r,
+  ## TODO: Remove write permissions. Should be mounted read-only anyway.
+  /var/{,lib,cache}/ r,
   /var/lib/** r,
   /var/lib/command-not-found/commands.db rwk,
   /var/cache/** rwl,
-  owner /var/lib/ rw,
-  owner /var/lib/** rw,
+  owner /var/lib/{,**} rw,
   /{,var/}run/ r,
   /{,var/}run/** rw,
   /{,var/}run/shm/** rwl,
   owner /{,var/}run/** rwk,
 
   ## Can leak some important kernel information such as kernel pointers.
-  deny /{,usr/}lib/modules/ rw,
-  deny /{,usr/}lib/modules/** rw,
+  deny /{,usr/}lib/modules/{,**} rw,
   deny /**vmlinu{,z,x}* rw,
   deny /**System.map* rw,
 
