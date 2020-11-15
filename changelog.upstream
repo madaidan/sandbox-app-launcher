@@ -1,3 +1,37 @@
+commit cf6bee257bfd657788fe077716fa7cdf728ccd12
+Merge: 9ea3492 c33e03e
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Sun Nov 15 13:01:48 2020 -0500
+
+    Merge remote-tracking branch 'github/master'
+
+commit c33e03eb7039a58723cdfc32b4840d087984f518
+Merge: 9ea3492 554750c
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Sun Nov 15 17:51:18 2020 +0000
+
+    Merge pull request #49 from madaidan/cleanup
+    
+    Cleanup AppArmor profiles
+
+commit 554750c3cf5cdb84c986af2e1446bcf4d487bea0
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sat Nov 14 20:37:40 2020 +0000
+
+    Cleanup
+
+commit bb37a49b02115cf598f2892546c28e2be0e5fbb3
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Sat Nov 14 20:32:48 2020 +0000
+
+    Use tunables
+
+commit 9ea3492cedf6523453d1787dcaffa93f770581c1
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Fri Nov 6 10:16:40 2020 -0500
+
+    bumped changelog version
+
 commit 0036c4aa28d2a8879fb411eebf7e1acc58942e44
 Merge: 7dd634c 7dfa4a8
 Author: Patrick Schleizer <adrelanos@riseup.net>
