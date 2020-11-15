@@ -23,7 +23,7 @@ profile sandbox-app-launcher @{WRAPPER_DIR}/** flags=(attach_disconnected) {
   deny @{SHARED_DIR}/** xm,
   deny /{,var/}tmp/** xm,
   deny /dev/shm/** m,
-  deny /sys/fs/cgroup/** m,
+  deny @{sys}/fs/cgroup/** m,
 }
 
 profile sandbox-app-launcher-wx @{WRAPPER_DIR_WX}/** flags=(attach_disconnected) {
@@ -40,5 +40,5 @@ profile sandbox-app-launcher-wx @{WRAPPER_DIR_WX}/** flags=(attach_disconnected)
   @{SHARED_DIR}/** rwmlkix,
   owner /{,var/}tmp/** rwmlkix,
   owner /dev/shm/** rwm,
-  /sys/fs/cgroup/** rwm,
+  @{sys}/fs/cgroup/** rwm,
 }
