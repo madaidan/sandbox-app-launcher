@@ -1,3 +1,37 @@
+commit 44df6c2f9fde6372ea3e15a908662aea7b2fe1ac
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Thu Dec 24 04:19:03 2020 -0500
+
+    quotes
+
+commit 46419fccc0ed0d22199df4de22175e566aad9e44
+Merge: c203fa8 243225e
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Thu Dec 24 04:15:17 2020 -0500
+
+    Merge remote-tracking branch 'github/master'
+
+commit 243225e5497dd91452c3258472a584999d44a561
+Merge: c203fa8 dce2819
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Thu Dec 24 09:15:03 2020 +0000
+
+    Merge pull request #50 from madaidan/fix
+    
+    Fix issue when creating directories
+
+commit dce2819d46697954b71ea4781320113e9a967459
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Wed Dec 23 22:29:43 2020 +0000
+
+    Fix issue when creating directories
+
+commit c203fa8d0e733ec6b4e4c6b3084354d0ad8d16e4
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Sun Nov 15 13:14:17 2020 -0500
+
+    bumped changelog version
+
 commit cf6bee257bfd657788fe077716fa7cdf728ccd12
 Merge: 9ea3492 c33e03e
 Author: Patrick Schleizer <adrelanos@riseup.net>
