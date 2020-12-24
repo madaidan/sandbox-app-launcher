@@ -194,6 +194,7 @@ xsession_d_file_list_executable=(
   "/etc/X11/Xsession.d/20uwt"
   "/etc/X11/Xsession.d/20whonix"
   "/etc/X11/Xsession.d/20whonix-welcome-page"
+  "/etc/X11/Xsession.d/20software_rendering_in_vms"
   "/etc/X11/Xsession.d/40open_link_confirmation"
   "/etc/X11/Xsession.d/40open_link_confirmation_kde"
   "/etc/X11/Xsession.d/50anon-apps-config"
