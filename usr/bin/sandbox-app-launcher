@@ -23,7 +23,7 @@ do
 
   setup       Setup the sandbox for the program.
   run         Execute the program within the sandbox.
-  
+
 Examples:
   sandbox-app-launcher setup firefox
   sandbox-app-launcher run firefox"
@@ -119,7 +119,7 @@ setup() {
     exit 1
   fi
 
-  for dir in main_app_dir auto_dir wrapper_dir wrapper_dir_wx appdata_dir; do
+  for dir in ${main_app_dir} ${auto_dir} ${wrapper_dir} ${wrapper_dir_wx} ${appdata_dir}; do
     if ! [ -d "${dir}" ]; then
       mkdir -m 755 "${dir}"
     fi
