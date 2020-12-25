@@ -1,3 +1,31 @@
+commit 4d787025ae522f7d1e3340bd351f9ed27d2f1f1a
+Merge: 1553fc3 a6ee54c
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Fri Dec 25 03:02:17 2020 -0500
+
+    Merge remote-tracking branch 'github/master'
+
+commit a6ee54c409f39234104399db4e733d44b43043c9
+Merge: 1553fc3 1ed2ebb
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Fri Dec 25 07:55:21 2020 +0000
+
+    Merge pull request #51 from madaidan/software_rendering_in_vms
+    
+    Add 20software_rendering_in_vms
+
+commit 1ed2ebbb898757f36defdb87a5acdd7158d1050b
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Thu Dec 24 20:32:45 2020 +0000
+
+    Add 20software_rendering_in_vms
+
+commit 1553fc31bdab090420ee6782f28d4e29586a1a63
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Thu Dec 24 11:33:48 2020 -0500
+
+    bumped changelog version
+
 commit 44df6c2f9fde6372ea3e15a908662aea7b2fe1ac
 Author: Patrick Schleizer <adrelanos@riseup.net>
 Date:   Thu Dec 24 04:19:03 2020 -0500
