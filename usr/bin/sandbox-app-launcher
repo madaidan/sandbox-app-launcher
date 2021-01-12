@@ -161,6 +161,11 @@ setup() {
     chmod 700 "${app_homedir}"
   fi
 
+  ## https://forums.whonix.org/t/system-wide-sandboxing-framework-sandbox-app-launcher/9008/311
+  if ! test -f /etc/machine-id ; then
+    touch /etc/machine-id
+  fi
+
   ## Generate seccomp filter.
   compiler_flags="-lseccomp -ldl -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fstack-protector-all -Wformat -Werror=format-security -Wl,-z,relro -Wl,-z,now"
 
