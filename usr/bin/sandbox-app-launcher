@@ -124,9 +124,17 @@ setup() {
       mkdir -m 755 "${dir}"
     fi
   done
+  for dir in "${main_app_dir}" "${auto_dir}" "${wrapper_dir}" "${wrapper_dir_wx}" "${appdata_dir}"; do
+    if ! [ "$(stat -c %a "${dir}")" = "755" ]; then
+        chmod 755 "${dir}"
+    fi
+  done
 
   if ! [ -d "${shared_dir}" ]; then
     mkdir -m 1777 "${shared_dir}"
+  fi
+  if ! [ "$(stat -c %a "${shared_dir}")" = "1777" ]; then
+    chmod 1777 "${dir}"
   fi
 
   if ! getent passwd | sed -e 's/:.*//g' | grep -qw "${app_user}"; then
@@ -134,7 +142,7 @@ setup() {
   fi
 
   if ! [ -d "${app_homedir}" ]; then
-    mkdir --parents "${app_homedir}"
+    mkdir -m 700 --parents "${app_homedir}"
   fi
 
   if ! [ "$(stat -c "%U" "${app_homedir}")" = "${app_user}" ]; then
@@ -275,13 +283,13 @@ run_program() {
   if [ "${app_name}" = "torbrowser" ]; then
     if ! [ -d "${app_homedir}/.tb" ]; then
       ## Use tb-starter (by Whonix developers) to install Tor Browser.
-      sudo -H -u "${app_user}" HOME="${app_homedir}" tb_no_start=true tb_installer_started_by_sandbox_app_launcher=true torbrowser
+      sudo --set-home --user="${app_user}" HOME="${app_homedir}" tb_no_start=true tb_installer_started_by_sandbox_app_launcher=true torbrowser
     fi
     bwrap_args+="--ro-bind-try /run/anon-ws-disable-stacked-tor/127.0.0.1_9150.sock /run/anon-ws-disable-stacked-tor/127.0.0.1_9150.sock "
     bwrap_args+="--ro-bind-try /run/anon-ws-disable-stacked-tor/127.0.0.1_9151.sock /run/anon-ws-disable-stacked-tor/127.0.0.1_9151.sock "
   fi
 
-  sudo -H -u "${app_user}" bash -c "
+  sudo --set-home --user="${app_user}" bash -c "
   bwrap \
   --ro-bind /bin /bin \
   --ro-bind /usr/bin /usr/bin \
@@ -348,7 +356,7 @@ run_program() {
 if [ "${setup_sandbox}" = "1" ]; then
   setup
 elif [ "${start_program}" = "1" ]; then
-  if [ -d "${app_homedir}" ]; then
+  if sudo --set-home --user="${app_user}" test -d "${app_homedir}" ; then
     run_program "${@}"
   else
     echo "ERROR: The sandbox for this program has not been set up yet. Please execute:
