@@ -1,3 +1,29 @@
+commit 76e9f0e1d9de010736b1168ec8420e697249fee8
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Tue Jan 12 02:34:06 2021 -0500
+
+    create /etc/machine-id if not existing
+    
+    https://forums.whonix.org/t/system-wide-sandboxing-framework-sandbox-app-launcher/9008/311
+
+commit ffd45c6efdb26b971a143b8845728ff3da060d82
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Tue Jan 12 02:29:13 2021 -0500
+
+    fix permissions if messed up by something
+    (such as Qubes home folder implementation or after restoration of backup)
+    
+    use sudo long instead of short parameters
+    
+    fix setup already done check:
+    https://forums.whonix.org/t/system-wide-sandboxing-framework-sandbox-app-launcher/9008/310
+
+commit 41047e02339da79139c694b584bef6c224962c07
+Author: Patrick Schleizer <adrelanos@riseup.net>
+Date:   Fri Dec 25 07:30:42 2020 -0500
+
+    bumped changelog version
+
 commit 4d787025ae522f7d1e3340bd351f9ed27d2f1f1a
 Merge: 1553fc3 a6ee54c
 Author: Patrick Schleizer <adrelanos@riseup.net>

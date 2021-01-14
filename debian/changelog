@@ -1,3 +1,9 @@
+sandbox-app-launcher (0:3.8-1) unstable; urgency=medium
+
+  * New upstream version (local package).
+
+ -- Patrick Schleizer <adrelanos@riseup.net>  Thu, 14 Jan 2021 07:35:12 +0000
+
 sandbox-app-launcher (0:3.7-1) unstable; urgency=medium
 
   * New upstream version (local package).
