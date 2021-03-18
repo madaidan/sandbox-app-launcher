@@ -1,3 +1,45 @@
+commit 6048a6239520b05c8e6fcdbd0e16c3f632643eff
+Author: Patrick Schleizer <adrelanos@whonix.org>
+Date:   Thu Mar 18 06:03:47 2021 -0400
+
+    fix, sandbox -> sal
+    
+    https://github.com/Whonix/sandbox-app-launcher/pull/53
+
+commit b29f6afd54848a2b8f4bf426ee5956bd3e98eae0
+Merge: 0f4dc7c b684f53
+Author: Patrick Schleizer <adrelanos@whonix.org>
+Date:   Thu Mar 18 06:02:13 2021 -0400
+
+    Merge remote-tracking branch 'github-whonix/master'
+
+commit b684f533fd7bb2c928112c564e835b74cbc34e2c
+Merge: 0f4dc7c 3e1632b
+Author: Patrick Schleizer <adrelanos@whonix.org>
+Date:   Thu Mar 18 06:00:10 2021 -0400
+
+    Merge pull request #52 from madaidan/uninstall
+    
+    Add option to remove app data
+
+commit 3e1632b667bd429347f17ae4ce8d07dcd430c6a9
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Thu Mar 18 00:34:21 2021 +0000
+
+    Unneeded whitespace
+
+commit b7c63b52ffa0b57aa0b1f27b216043a1bc5db779
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Thu Mar 18 00:29:57 2021 +0000
+
+    Add option to remove app data
+
+commit 0f4dc7c8736c6cf5e8d1ce9c8d3551cdfeb73fcf
+Author: Patrick Schleizer <adrelanos@whonix.org>
+Date:   Wed Mar 17 12:29:07 2021 -0400
+
+    bumped changelog version
+
 commit e4dfae9080e3ac0e10283b60d1c98c257c55b2ff
 Author: Patrick Schleizer <adrelanos@whonix.org>
 Date:   Wed Mar 17 12:29:06 2021 -0400
