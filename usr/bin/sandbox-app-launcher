@@ -18,15 +18,22 @@ do
         shift
         break
         ;;
+      remove)
+        remove="1"
+        shift
+        break
+        ;;
       help)
         echo "Usage: sandbox-app-launcher [OPTION] [PROGRAM]
 
   setup       Setup the sandbox for the program.
   run         Execute the program within the sandbox.
+  remove      Remove all application data and configuration files.
 
 Examples:
   sandbox-app-launcher setup firefox
-  sandbox-app-launcher run firefox"
+  sandbox-app-launcher run firefox
+  sandbox-app-launcher remove firefox"
         exit
         ;;
       *)
@@ -358,6 +365,26 @@ run_program() {
   killall -9 -u "${app_user}"
 }
 
+remove_app() {
+  if ! [ "$(id -u)" = "0" ]; then
+    echo "ERROR: The removal process must be run as root." >&2
+    exit 1
+  fi
+
+  if getent passwd | grep -q "${app_user}"; then
+    userdel --remove --force "${app_user}"
+  else
+    echo "ERROR: User '${app_user}' does not exist."
+  fi
+
+  if [ -f "${wrapper_script}" ]; then
+    rm "${wrapper_script}"
+  else
+    echo "ERROR: File '${wrapper_script}' does not exist."
+  fi
+}
+
+
 if [ "${setup_sandbox}" = "1" ]; then
   setup
 elif [ "${start_program}" = "1" ]; then
@@ -368,4 +395,6 @@ elif [ "${start_program}" = "1" ]; then
 
 sudo sandbox-app-launcher setup ${app_name}"
   fi
+elif [ "${remove}" = "1" ]; then
+  remove_app
 fi
