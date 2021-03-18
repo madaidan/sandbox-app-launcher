@@ -384,7 +384,6 @@ remove_app() {
   fi
 }
 
-
 if [ "${setup_sandbox}" = "1" ]; then
   setup
 elif [ "${start_program}" = "1" ]; then
