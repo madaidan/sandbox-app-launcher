@@ -65,7 +65,6 @@ appdata_dir="/home/sandbox-app-launcher-appdata"
 app_user="sal-${app_name}"
 app_homedir="${appdata_dir}/${app_name}"
 seccomp_filter="${auto_dir}/seccomp-filter.bpf"
-wx_whitelist="${main_app_dir}/wx_whitelist"
 shared_dir="${appdata_dir}/shared"
 bwrap_args=""
 
