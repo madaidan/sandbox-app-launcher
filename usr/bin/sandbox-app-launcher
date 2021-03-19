@@ -191,6 +191,12 @@ setup() {
     "${auto_dir}/seccomp-wx"
   fi
 
+  ## Compile syscall stub. See syscall-stub.c for details.
+  if ! [ -f "${auto_dir}/syscall-stub.so" ]; then
+    gcc "${main_app_dir}/syscall-stub.c" -shared -ldl -fpic -o "${auto_dir}/syscall-stub.so"
+    chmod 755 "${auto_dir}/syscall-stub.so"
+  fi
+
   ## Create wrapper.
   rm --force "${wrapper_script}"
   touch "${wrapper_script}"
@@ -332,6 +338,7 @@ run_program() {
   --tmpfs /var/cache \
   --ro-bind ${wrapper_script} ${wrapper_script} \
   --ro-bind ${app_path} ${app_path} \
+  --ro-bind ${auto_dir}/syscall-stub.so ${auto_dir}/syscall-stub.so \
   --tmpfs /run \
   --symlink /run /var/run \
   --dev /dev \
@@ -341,6 +348,7 @@ run_program() {
   --setenv LOGNAME ${app_user} \
   --setenv XAUTHORITY ${app_homedir}/.Xauthority \
   --setenv SHELL /sbin/nologin \
+  --setenv LD_PRELOAD ${auto_dir}/syscall-stub.so \
   --setenv started_by_sandbox_app_launcher true \
   --unsetenv SUDO_USER \
   --unsetenv SUDO_UID \
