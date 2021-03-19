@@ -1,3 +1,39 @@
+commit d738472012b98cd90fe191038defead26202c346
+Merge: bb8bc32 e2d747e
+Author: Patrick Schleizer <adrelanos@whonix.org>
+Date:   Fri Mar 19 12:41:01 2021 -0400
+
+    Merge remote-tracking branch 'github-whonix/master'
+
+commit e2d747e7d1afc4f91b4f66aeb568c321c4436795
+Merge: bb8bc32 6c5357f
+Author: Patrick Schleizer <adrelanos@whonix.org>
+Date:   Fri Mar 19 12:35:40 2021 -0400
+
+    Merge pull request #56 from madaidan/wording
+    
+    Better wording
+
+commit bb8bc32ed48b495db29377548c3ffae1e833098a
+Author: Patrick Schleizer <adrelanos@whonix.org>
+Date:   Fri Mar 19 10:40:23 2021 -0400
+
+    improve invocation of grep
+    
+    https://forums.whonix.org/t/system-wide-sandboxing-framework-sandbox-app-launcher/9008/331
+
+commit 6c5357f0053d708bd0f4335d1ac2e9f9fd677c2f
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Fri Mar 19 14:38:22 2021 +0000
+
+    Better wording
+
+commit 1c389bb06e54baa6b1ac98842b8b128d96ad130e
+Author: Patrick Schleizer <adrelanos@whonix.org>
+Date:   Fri Mar 19 08:49:33 2021 -0400
+
+    bumped changelog version
+
 commit c90af3eeea7eacf6689820a461549a617808a733
 Merge: 444b515 6ced893
 Author: Patrick Schleizer <adrelanos@whonix.org>
