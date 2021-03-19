@@ -144,8 +144,16 @@ setup() {
     chmod 1777 "${dir}"
   fi
 
+  ## Create the user that the sandboxed application will run as.
   if ! getent passwd | sed -e 's/:.*//g' | grep -qw "${app_user}"; then
-    adduser --home "${app_homedir}" --no-create-home --disabled-login --gecos "" "${app_user}" >/dev/null
+    ## Use 'adduser' on Debian or Ubuntu systems but 'useradd' on other systems
+    ## for portability.
+    ## https://github.com/madaidan/sandbox-app-launcher/issues/9
+    if grep -qE "NAME=\"Debian GNU/Linux\"|NAME=\"Ubuntu\"" /etc/os-release; then
+      adduser --home "${app_homedir}" --no-create-home --disabled-login --gecos "" "${app_user}" >/dev/null
+    else
+      useradd --home-dir "${app_homedir}" --no-create-home "${app_user}" >/dev/null
+    fi
   fi
 
   if ! [ -d "${app_homedir}" ]; then
