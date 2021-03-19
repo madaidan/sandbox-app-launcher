@@ -1,3 +1,52 @@
+commit c90af3eeea7eacf6689820a461549a617808a733
+Merge: 444b515 6ced893
+Author: Patrick Schleizer <adrelanos@whonix.org>
+Date:   Fri Mar 19 08:41:15 2021 -0400
+
+    Merge remote-tracking branch 'github-whonix/master'
+
+commit 6ced893da6826a004fcdc99d4057c48c061d1bec
+Merge: faa6a67 11b47c1
+Author: Patrick Schleizer <adrelanos@whonix.org>
+Date:   Fri Mar 19 08:28:46 2021 -0400
+
+    Merge pull request #55 from madaidan/ioctls
+    
+    Permit FICLONE and SIOCGIWMODE ioctls
+
+commit faa6a67ba5007080fc7d6e3123474e5dbaa97968
+Merge: 444b515 56efb0d
+Author: Patrick Schleizer <adrelanos@whonix.org>
+Date:   Fri Mar 19 08:28:09 2021 -0400
+
+    Merge pull request #54 from madaidan/useradd
+    
+    Use useradd on non-Debian systems
+
+commit 11b47c1dc6421a6d3450c1f4737146c051e76391
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Fri Mar 19 02:25:52 2021 +0000
+
+    Include fs.h and wireless.h
+
+commit 460c55c0ff8147a61d81f2c10ebed468e516c3ae
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Fri Mar 19 02:25:17 2021 +0000
+
+    Permit FICLONE and SIOCGIWMODE ioctls
+
+commit 56efb0d0adbf2a8da2cc1f93ed1afcea2ce9f955
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Thu Mar 18 23:26:09 2021 +0000
+
+    Use useradd on non-Debian systems
+
+commit 444b5156f1edd2b139183bc528d06988b8541bd7
+Author: Patrick Schleizer <adrelanos@whonix.org>
+Date:   Thu Mar 18 09:07:57 2021 -0400
+
+    bumped changelog version
+
 commit 83782c91e14e0af8cf62084603f4ef9d6bef7a4a
 Author: Patrick Schleizer <adrelanos@whonix.org>
 Date:   Thu Mar 18 08:57:21 2021 -0400
