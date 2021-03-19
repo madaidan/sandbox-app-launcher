@@ -115,10 +115,12 @@ inotify_add_watch
 inotify_init
 inotify_init1
 inotify_rm_watch
+ioctl 1 FICLONE
 ioctl 1 FIOCLEX
 ioctl 1 FIONBIO
 ioctl 1 FIONREAD
 ioctl 1 RNDGETENTCNT
+ioctl 1 SIOCGIWMODE
 ioctl 1 TCGETS
 ioctl 1 TCSETS
 ioctl 1 TCSETSW

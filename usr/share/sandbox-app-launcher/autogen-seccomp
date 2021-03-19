@@ -82,6 +82,8 @@ echo "#include <seccomp.h>
 #include <linux/shm.h>
 #include <linux/random.h>
 #include <linux/vt.h>
+#include <linux/fs.h>
+#include <linux/wireless.h>
 
 #define ALLOW_SYSCALL(call) { if (seccomp_rule_add (ctx, SCMP_ACT_ALLOW, SCMP_SYS(call), 0) < 0) goto out; }
 #define ALLOW_IOCTL(call) { if (seccomp_rule_add (ctx, SCMP_ACT_ALLOW, SCMP_SYS(ioctl), 1, SCMP_A1 (SCMP_CMP_MASKED_EQ, 0xFFFFFFFFu, (int) call), 0) < 0) goto out; }
