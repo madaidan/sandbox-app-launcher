@@ -13,7 +13,7 @@ do
         shift
         break
         ;;
-      run)
+      start)
         start_program="1"
         shift
         break
@@ -24,15 +24,15 @@ do
         break
         ;;
       help)
-        echo "Usage: sandbox-app-launcher [OPTION] [PROGRAM]
+        echo "Usage: sandbox-app-launcher [OPTION] [APPLICATION]
 
-  setup       Setup the sandbox for the program.
-  run         Execute the program within the sandbox.
+  setup       Setup the sandbox for the application.
+  start       Execute the application within the sandbox.
   remove      Remove all application data and configuration files.
 
 Examples:
   sandbox-app-launcher setup firefox
-  sandbox-app-launcher run firefox
+  sandbox-app-launcher start firefox
   sandbox-app-launcher remove firefox"
         exit
         ;;
