@@ -108,6 +108,10 @@ fi
 
 wrapper_script="${wrapper_dir}/${app_name}"
 
+if [ "$(id -u)" = "0" ]; then
+  sal_is_run_with_root=true
+fi
+
 error_handler() {
   echo "
 ## sandbox-app-launcher BUG.
@@ -131,10 +135,6 @@ sudo sandbox-app-launcher setup ${app_name}
     exit 1
   fi
 }
-
-if [ "$(id -u)" = "0" ]; then
-  sal_is_run_with_root=true
-fi
 
 setup() {
   if ! [ "$(id -u)" = "0" ]; then
