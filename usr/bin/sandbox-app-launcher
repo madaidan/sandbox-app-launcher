@@ -126,19 +126,11 @@ setup() {
   fi
 
   for dir in "${main_app_dir}" "${auto_dir}" "${wrapper_dir}" "${wrapper_dir_wx}" "${appdata_dir}"; do
-    if ! [ -d "${dir}" ]; then
-      mkdir -m 755 "${dir}"
-    fi
-  done
-  for dir in "${main_app_dir}" "${auto_dir}" "${wrapper_dir}" "${wrapper_dir_wx}" "${appdata_dir}"; do
     if ! [ "$(stat -c %a "${dir}")" = "755" ]; then
         chmod 755 "${dir}"
     fi
   done
 
-  if ! [ -d "${shared_dir}" ]; then
-    mkdir -m 1777 "${shared_dir}"
-  fi
   if ! [ "$(stat -c %a "${shared_dir}")" = "1777" ]; then
     chmod 1777 "${dir}"
   fi
@@ -178,24 +170,6 @@ setup() {
   ## https://forums.whonix.org/t/system-wide-sandboxing-framework-sandbox-app-launcher/9008/311
   if ! test -f /etc/machine-id ; then
     touch /etc/machine-id
-  fi
-
-  ## Generate seccomp filter.
-  compiler_flags="-lseccomp -ldl -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fstack-protector-all -Wformat -Werror=format-security -Wl,-z,relro -Wl,-z,now"
-
-  if ! [ -f "${seccomp_filter}" ]; then
-    "${main_app_dir}/autogen-seccomp" "${main_app_dir}/seccomp-whitelist" > "${auto_dir}/seccomp.c"
-    gcc "${auto_dir}/seccomp.c" -o "${auto_dir}/seccomp" ${compiler_flags}
-    chmod 700 "${auto_dir}/seccomp"
-    "${auto_dir}/seccomp"
-  fi
-
-  if ! [ -f "${main_app_dir}/seccomp-filter-wx.bpf" ]; then
-    "${main_app_dir}/autogen-seccomp" "${main_app_dir}/seccomp-whitelist-wx" > "${auto_dir}/seccomp-wx.c"
-    str_replace "seccomp-filter.bpf" "seccomp-filter-wx.bpf" "${auto_dir}/seccomp-wx.c" >/dev/null
-    gcc "${auto_dir}/seccomp-wx.c" -o "${auto_dir}/seccomp-wx" ${compiler_flags}
-    chmod 700 "${auto_dir}/seccomp-wx"
-    "${auto_dir}/seccomp-wx"
   fi
 
   ## Create wrapper.
