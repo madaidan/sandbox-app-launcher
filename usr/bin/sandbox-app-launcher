@@ -137,7 +137,7 @@ sudo sandbox-app-launcher setup ${app_name}
 }
 
 setup() {
-  if ! [ "$(id -u)" = "0" ]; then
+  if ! [ "${sal_is_run_with_root}" = "true" ]; then
     echo "ERROR: The setup must be run as root." >&2
     exit 1
   fi
@@ -384,7 +384,7 @@ run_program() {
 }
 
 remove_app() {
-  if ! [ "$(id -u)" = "0" ]; then
+   if ! [ "${sal_is_run_with_root}" = "true" ]; then
     echo "ERROR: The removal process must be run as root." >&2
     exit 1
   fi
