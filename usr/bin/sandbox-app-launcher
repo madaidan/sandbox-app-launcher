@@ -384,7 +384,7 @@ run_program() {
 }
 
 remove_app() {
-   if ! [ "${sal_is_run_with_root}" = "true" ]; then
+  if ! [ "${sal_is_run_with_root}" = "true" ]; then
     echo "ERROR: The removal process must be run as root." >&2
     exit 1
   fi
