@@ -1,3 +1,46 @@
+commit e011cab3ee3aef392eb6203c32da6a7e6bfff540
+Merge: b1dab9e 3bf2daf
+Author: Patrick Schleizer <adrelanos@whonix.org>
+Date:   Sat Mar 20 09:05:34 2021 -0400
+
+    Merge remote-tracking branch 'github-whonix/master'
+
+commit 3bf2dafb4981b9484bd49783fdb5255cab91e66e
+Merge: caf5d5b efd2885
+Author: Patrick Schleizer <adrelanos@whonix.org>
+Date:   Sat Mar 20 09:03:30 2021 -0400
+
+    Merge pull request #58 from madaidan/postinst
+    
+    Move some setup code into postinst script
+
+commit caf5d5b39113eafd8c5144a61fc26788aafcb8d4
+Merge: b1dab9e 27e327f
+Author: Patrick Schleizer <adrelanos@whonix.org>
+Date:   Sat Mar 20 08:41:40 2021 -0400
+
+    Merge pull request #57 from madaidan/wx_whitelist
+    
+    Remove wx_whitelist
+
+commit efd288515b061e41c22ef2d02d86b36377dd6e90
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Fri Mar 19 22:38:18 2021 +0000
+
+    Move some setup code into postinst script
+
+commit 27e327fd3a6c587fa921d5ccae286d0cadbc495d
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Fri Mar 19 21:53:38 2021 +0000
+
+    Remove wx_whitelist
+
+commit b1dab9e33926029f82d9eeca2f5c20757d7d717c
+Author: Patrick Schleizer <adrelanos@whonix.org>
+Date:   Fri Mar 19 12:41:16 2021 -0400
+
+    bumped changelog version
+
 commit d738472012b98cd90fe191038defead26202c346
 Merge: bb8bc32 e2d747e
 Author: Patrick Schleizer <adrelanos@whonix.org>
