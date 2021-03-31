@@ -141,7 +141,10 @@ setup() {
     echo "ERROR: The setup must be run as root." >&2
     exit 1
   fi
+  setup_or_check
+}
 
+setup_or_check() {
   for dir in "${main_app_dir}" "${auto_dir}" "${wrapper_dir}" "${wrapper_dir_wx}" "${appdata_dir}"; do
     ## Check if the required directories exist.
     if ! [ -d "${dir}" ]; then
@@ -150,7 +153,7 @@ setup() {
     fi
     if ! [ "$(stat -c %a "${dir}")" = "755" ]; then
       ## Fix permissions.
-      chmod 755 "${dir}"
+      run_if_root chmod 755 "${dir}"
     fi
   done
 
@@ -161,7 +164,7 @@ setup() {
   fi
   if ! [ "$(stat -c %a "${shared_dir}")" = "1777" ]; then
     ## Fix permissions.
-    chmod 1777 "${shared_dir}"
+    run_if_root chmod 1777 "${shared_dir}"
   fi
 
   ## Create the user that the sandboxed application will run as.
@@ -170,18 +173,18 @@ setup() {
     ## for portability.
     ## https://github.com/madaidan/sandbox-app-launcher/issues/9
     if grep --quiet --invert-match --extended-regexp 'NAME="Debian|NAME="Ubuntu' /etc/os-release; then
-      adduser --home "${app_homedir}" --no-create-home --disabled-login --gecos "" "${app_user}" >/dev/null
+      run_if_root adduser --home "${app_homedir}" --no-create-home --disabled-login --gecos "" "${app_user}" >/dev/null
     else
-      useradd --home-dir "${app_homedir}" --no-create-home "${app_user}" >/dev/null
+      run_if_root useradd --home-dir "${app_homedir}" --no-create-home "${app_user}" >/dev/null
     fi
   fi
 
   if ! [ -d "${app_homedir}" ]; then
-    mkdir -m 700 --parents "${app_homedir}"
+    run_if_root mkdir -m 700 --parents "${app_homedir}"
   fi
 
   if ! [ "$(stat -c "%U" "${app_homedir}")" = "${app_user}" ]; then
-    chown --recursive "${app_user}" "${app_homedir}"
+    run_if_root chown --recursive "${app_user}" "${app_homedir}"
   fi
 
   if ! [ "$(stat -c %a "${app_homedir}")" = "700" ]; then
@@ -191,19 +194,19 @@ setup() {
     ## /home/sandbox-app-launcher-appdata/torbrowser/.tb/tor-browser/start-tor-browser.desktop
     ## /home/sandbox-app-launcher-appdata/torbrowser/.tb/tor-browser/Browser/libmozavcodec.so
     ## ...
-    #chmod --recursive 700 "${app_homedir}"
+    #run_if_root chmod --recursive 700 "${app_homedir}"
     ## Therefore do not use --recursive.
-    chmod 700 "${app_homedir}"
+    run_if_root chmod 700 "${app_homedir}"
   fi
 
   ## https://forums.whonix.org/t/system-wide-sandboxing-framework-sandbox-app-launcher/9008/311
   if ! test -f /etc/machine-id ; then
-    touch /etc/machine-id
+    run_if_root touch /etc/machine-id
   fi
 
   ## Create wrapper.
-  rm --force "${wrapper_script}"
-  touch "${wrapper_script}"
+  run_if_root rm -f "${wrapper_script}"
+  run_if_root touch "${wrapper_script}"
 
   cat >> "${wrapper_script}" << 'EOF'
 #!/bin/bash
@@ -265,10 +268,14 @@ EOF
     bash -n "${wrapper_script}"
   fi
 
-  chmod 755 "${wrapper_script}"
+  if ! [ "$(stat -c %a "${wrapper_script}")" = "700" ]; then
+    run_if_root chmod 755 "${wrapper_script}"
+  fi
 }
 
 run_program() {
+  setup_or_check
+
   ## Fix permissions if running as root.
   for dir in "${main_app_dir}" "${auto_dir}" "${wrapper_dir}" "${wrapper_dir_wx}" "${appdata_dir}"; do
     if ! [ "$(stat -c %a "${dir}")" = "755" ]; then
