@@ -147,8 +147,9 @@ setup() {
     if ! [ -d "${dir}" ]; then
       echo "ERROR: Directory '${dir}' does not exist. This package was not installed properly." >&2
       exit 1
-    ## Fix permissions.
-    elif ! [ "$(stat -c %a "${dir}")" = "755" ]; then
+    fi
+    if ! [ "$(stat -c %a "${dir}")" = "755" ]; then
+      ## Fix permissions.
       chmod 755 "${dir}"
     fi
   done
@@ -157,8 +158,9 @@ setup() {
   if ! [ -d "${shared_dir}" ]; then
     echo "ERROR: Directory '${shared_dir}' does not exist. This package was not installed properly." >&2
     exit 1
-  ## Fix permissions.
-  elif ! [ "$(stat -c %a "${shared_dir}")" = "1777" ]; then
+  fi
+  if ! [ "$(stat -c %a "${shared_dir}")" = "1777" ]; then
+    ## Fix permissions.
     chmod 1777 "${shared_dir}"
   fi
 
