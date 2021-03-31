@@ -277,16 +277,6 @@ EOF
 run_program() {
   setup_or_check
 
-  ## Fix permissions if running as root.
-  for dir in "${main_app_dir}" "${auto_dir}" "${wrapper_dir}" "${wrapper_dir_wx}" "${appdata_dir}"; do
-    if ! [ "$(stat -c %a "${dir}")" = "755" ]; then
-      run_if_root chmod 755 "${dir}"
-    fi
-  done
-  if ! [ "$(stat -c %a "${shared_dir}")" = "1777" ]; then
-    run_if_root chmod 1777 "${shared_dir}"
-  fi
-
   ## TODO: X11 sandbox - not needed if we switch to wayland
   ## TODO: IPC namespace
   ## TODO: Network namespace - probably via ip netns
