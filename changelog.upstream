@@ -1,3 +1,25 @@
+commit 24ca2da82bc90add9cc1fe38ccb826714c4127fd
+Author: Patrick Schleizer <adrelanos@whonix.org>
+Date:   Wed Mar 31 16:10:23 2021 -0400
+
+    wait (blocking) for processes inside the sandbox to be killed
+
+commit f939fe8b579063478576e8fab02e3468a09dd03c
+Author: Patrick Schleizer <adrelanos@whonix.org>
+Date:   Wed Mar 31 15:36:47 2021 -0400
+
+    replace dynamic wrapper script creation with static script
+    
+    for code simplification
+    
+    https://forums.whonix.org/t/system-wide-sandboxing-framework-sandbox-app-launcher/9008/352
+
+commit 1c00f84b719ef36185c54f7e187f886265b95161
+Author: Patrick Schleizer <adrelanos@whonix.org>
+Date:   Wed Mar 31 11:12:46 2021 -0400
+
+    bumped changelog version
+
 commit 133558cc97d3ee0523f555a53dfb2c9a1cd5daa8
 Author: Patrick Schleizer <adrelanos@whonix.org>
 Date:   Wed Mar 31 10:38:09 2021 -0400
