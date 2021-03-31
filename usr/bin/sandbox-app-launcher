@@ -106,8 +106,6 @@ if [ "${allow_dynamic_native_code_exec}" = "yes" ]; then
   wrapper_dir="${wrapper_dir_wx}"
 fi
 
-wrapper_script="${wrapper_dir}/${app_name}"
-
 if [ "$(id -u)" = "0" ]; then
   sal_is_run_with_root=true
 fi
@@ -134,94 +132,6 @@ sudo sandbox-app-launcher setup ${app_name}
 (Debugging information: ${@})" >&2
     exit 1
   fi
-}
-
-create_wrapper() {
-  read -r -d '' wrapper_part_1 <<'EOF' || true
-#!/bin/bash
-EOF
-
-  ## Debugging.
-  if [ -o xtrace ]; then
-    read -r -d '' wrapper_part_2 <<'EOF' || true
-
-set -x
-
-EOF
-  else
-      wrapper_part_2=""
-  fi
-
-  read -r -d '' wrapper_part_3 <<'EOF' || true
-xsession_d_file_list_executable=(
-  "/etc/X11/Xsession.d/20torbrowser"
-  "/etc/X11/Xsession.d/20uwt"
-  "/etc/X11/Xsession.d/20whonix"
-  "/etc/X11/Xsession.d/20whonix-welcome-page"
-  "/etc/X11/Xsession.d/20software_rendering_in_vms"
-  "/etc/X11/Xsession.d/40open_link_confirmation"
-  "/etc/X11/Xsession.d/40open_link_confirmation_kde"
-  "/etc/X11/Xsession.d/50anon-apps-config"
-  "/etc/X11/Xsession.d/50default_editor"
-  "/etc/X11/Xsession.d/50tb_default_browser"
-  "/etc/X11/Xsession.d/50torbrowser_default_browser"
-  "/etc/X11/Xsession.d/50security-misc"
-)
-
-xsession_d_file_list_existing=(
-  "/etc/X11/Xsession.d/20qt-gnome-desktop-session-id"
-  "/etc/X11/Xsession.d/20qt-x11-no-mitshm"
-  "/etc/X11/Xsession.d/25xdg-qubes-settings"
-)
-
-for file_name in "${xsession_d_file_list_executable[@]}" ; do
-  if [ -x "$file_name" ]; then
-    source "$file_name"
-  fi
-done
-
-for file_name in "${xsession_d_file_list_existing[@]}" ; do
-  if [ -e "$file_name" ]; then
-    source "$file_name"
-  fi
-done
-
-dbus-launch >/dev/null
-EOF
-
-  ## Need to be careful with newlines because `cat` by default removes newlines
-  ## at the end. That would break the
-  ## if [ "$wrapper_script_contents_existing" = "$wrapper_content_final" ]; then
-  ## below.
-  wrapper_part_4="
-\"${app_path}\" \"\${@}\""
-
-  wrapper_content_final="\
-$wrapper_part_1
-$wrapper_part_2
-$wrapper_part_3
-$wrapper_part_4"
-
-  if test -r "${wrapper_script}" ; then
-    true "INFO: wrapper_script already exists."
-    wrapper_script_contents_existing="$(cat "${wrapper_script}")"
-  else
-    true "INFO: wrapper_script does not exist yet."
-  fi
-
-  if [ "$wrapper_script_contents_existing" = "$wrapper_content_final" ]; then
-     true "INFO: No need to re-generate wrapper_script."
-     return 0
-  fi
-  true "INFO: re-generate wrapper_script..."
-
-  ## Debugging.
-  #echo "$wrapper_script_contents_existing" > a
-  #echo "$wrapper_content_final" > b
-
-  run_if_root rm -f "${wrapper_script}"
-  run_if_root touch "${wrapper_script}"
-  echo "$wrapper_content_final" | run_if_root tee -a "${wrapper_script}" >/dev/null
 }
 
 setup() {
@@ -292,17 +202,6 @@ setup_or_check() {
   if ! test -f /etc/machine-id ; then
     run_if_root touch /etc/machine-id
   fi
-
-  create_wrapper
-
-  if ! [ "$(stat -c %a "${wrapper_script}")" = "755" ]; then
-    run_if_root chmod 755 "${wrapper_script}"
-  fi
-
-  ## Debugging.
-  if [ -o xtrace ]; then
-    bash -n "${wrapper_script}"
-  fi
 }
 
 run_program() {
@@ -350,7 +249,24 @@ run_program() {
     bwrap_args+="--ro-bind-try /run/anon-ws-disable-stacked-tor/127.0.0.1_9151.sock /run/anon-ws-disable-stacked-tor/127.0.0.1_9151.sock "
   fi
 
-  sudo --set-home --user="${app_user}" bash -c "
+  wrapper_script="/usr/share/sandbox-app-launcher/wrapper-script"
+
+  ## Debugging.
+  if [ -o xtrace ]; then
+    ## read by wrapper_script
+    sandbox_app_launcher_debug=true
+  else
+    sandbox_app_launcher_debug=false
+  fi
+
+  ## variables app_path and sandbox_app_launcher_debug are read by wrapper_script.
+
+  sudo \
+    --set-home \
+    --user="${app_user}" \
+    sandbox_app_launcher_debug="$sandbox_app_launcher_debug" \
+    app_path="$app_path" \
+    bash -c "
   bwrap \
   --ro-bind /bin /bin \
   --ro-bind /usr/bin /usr/bin \
@@ -424,12 +340,6 @@ remove_app() {
     userdel --remove --force "${app_user}"
   else
     echo "INFO: User '${app_user}' does not exist, probably already removed earlier, OK."
-  fi
-
-  if [ -f "${wrapper_script}" ]; then
-    rm "${wrapper_script}"
-  else
-    echo "INFO: File '${wrapper_script}' does not exist, probably already removed earlier, OK."
   fi
 
   echo "INFO: Done, removal complete, OK."
