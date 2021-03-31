@@ -121,6 +121,43 @@ error_handler() {
 
 trap "error_handler" ERR
 
+kill_processes_inside_sandbox() {
+  pids="$(pgrep --uid="${app_user}" 2>/dev/null)" || true
+  if [ "$pids" = "" ]; then
+     return 0
+  fi
+
+  ## Don't leave any left-over processes such as the D-Bus daemon.
+  killall -9 -u "${app_user}"
+
+  ## Cannot use bash built-in `wait` since that would fail if command is run
+  ## from a different shell.
+  ## /usr/bin/sandbox-app-launcher: line 129: wait: pid 12973 is not a child of this shell
+  #wait $pids
+
+  ## This is not the cleanest way. Would be better if there was a tool
+  ## that can block until a list of pids has terminated to avoid a hardcoded
+  ## `sleep 0.2`.
+  while true ; do
+    ## `ps` will exit 0 if at least one pid is still running.
+    ## `ps` will exit 1 if no pid not even one is running.
+    ## Examples:
+    ##
+    ## `ps --no-header -p 1` -> exit code: 0
+    ##
+    ## pid 1 really exists.
+    ## pid 555555 does not exist.
+    ## `ps --no-header -p 1 555555` -> exit code: 0
+    ## ps still exit 0.
+    if ! ps --no-header -p $pids &>/dev/null ; then
+      break
+    fi
+    sleep 0.2 &
+    ## Non-blocking. Process even loop such as signals.
+    wait "$!"
+  done
+}
+
 run_if_root() {
   if [ "${sal_is_run_with_root}" = "true" ]; then
     "${@}"
@@ -326,8 +363,9 @@ run_program() {
   ${bwrap_args} \
   ${wrapper_script} ${@}"
 
-  ## Don't leave any left-over processes such as the D-Bus daemon.
-  killall -9 -u "${app_user}"
+  kill_processes_inside_sandbox
+
+  true "OK"
 }
 
 remove_app() {
@@ -335,6 +373,8 @@ remove_app() {
     echo "ERROR: The removal process must be run as root." >&2
     exit 1
   fi
+
+  kill_processes_inside_sandbox
 
   if getent passwd | grep -q "${app_user}"; then
     userdel --remove --force "${app_user}"
