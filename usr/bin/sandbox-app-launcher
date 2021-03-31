@@ -142,6 +142,7 @@ setup() {
     exit 1
   fi
   setup_or_check
+  echo "INFO: Done, setup complete, OK."
 }
 
 setup_or_check() {
@@ -401,14 +402,16 @@ remove_app() {
   if getent passwd | grep -q "${app_user}"; then
     userdel --remove --force "${app_user}"
   else
-    echo "ERROR: User '${app_user}' does not exist." >&2
+    echo "INFO: User '${app_user}' does not exist, probably already removed earlier, OK."
   fi
 
   if [ -f "${wrapper_script}" ]; then
     rm "${wrapper_script}"
   else
-    echo "ERROR: File '${wrapper_script}' does not exist." >&2
+    echo "INFO: File '${wrapper_script}' does not exist, probably already removed earlier, OK."
   fi
+
+  echo "INFO: Done, removal complete, OK."
 }
 
 if [ "${setup_sandbox}" = "1" ]; then
