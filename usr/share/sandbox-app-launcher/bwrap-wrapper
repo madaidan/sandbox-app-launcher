@@ -7,6 +7,7 @@ if [ "$sandbox_app_launcher_debug" = "true" ]; then
   set -x
 fi
 
+true "running: $0"
 true "bwrap_args: '$bwrap_args'"
 
 bwrap \
