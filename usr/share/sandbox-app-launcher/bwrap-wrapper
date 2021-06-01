@@ -21,30 +21,30 @@ bwrap \
    --ro-bind /etc /etc \
    --ro-bind-data 10 /etc/passwd \
    --ro-bind-data 11 /etc/group \
-   --ro-bind ${main_app_dir}/machine-id /etc/machine-id \
+   --ro-bind "${main_app_dir}/machine-id /etc/machine-id" \
    --ro-bind /var/lib /var/lib \
    --tmpfs /var/lib/dbus \
-   --ro-bind ${main_app_dir}/machine-id /var/lib/dbus/machine-id \
+   --ro-bind "${main_app_dir}/machine-id /var/lib/dbus/machine-id" \
    --ro-bind /sys/devices /sys/devices \
    --ro-bind /sys/class /sys/class \
    --ro-bind /sys/bus /sys/bus \
    --ro-bind /sys/fs/cgroup /sys/fs/cgroup \
-   --bind ${app_homedir} ${app_homedir} \
+   --bind "${app_homedir}" "${app_homedir}" \
    --proc /proc \
    --tmpfs /tmp \
    --ro-bind-try /tmp/.X11-unix /tmp/.X11-unix \
    --tmpfs /var/tmp \
    --tmpfs /var/cache \
-   --ro-bind ${wrapper_script} ${wrapper_script} \
-   --ro-bind ${app_path} ${app_path} \
+   --ro-bind "${wrapper_script}" "${wrapper_script}" \
+   --ro-bind "${app_path}" "${app_path}" \
    --tmpfs /run \
    --symlink /run /var/run \
    --dev /dev \
-   --chdir ${app_homedir} \
-   --setenv HOME ${app_homedir} \
-   --setenv USER ${app_user} \
-   --setenv LOGNAME ${app_user} \
-   --setenv XAUTHORITY ${app_homedir}/.Xauthority \
+   --chdir "${app_homedir}" \
+   --setenv HOME "${app_homedir}" \
+   --setenv USER "${app_user}" \
+   --setenv LOGNAME "${app_user}" \
+   --setenv XAUTHORITY "${app_homedir}/.Xauthority" \
    --setenv SHELL /sbin/nologin \
    --setenv started_by_sandbox_app_launcher true \
    --unsetenv SUDO_USER \
@@ -60,8 +60,8 @@ bwrap \
    --new-session \
    --cap-drop all \
    --seccomp 12 \
-   10< <(getent passwd root ${app_user} nobody) \
-   11< <(getent group root ${app_user} nobody) \
-   12< ${seccomp_filter} \
+   10< <(getent passwd root "${app_user}" nobody) \
+   11< <(getent group root "${app_user}" nobody) \
+   12< "${seccomp_filter}" \
    ${bwrap_args} \
-   ${wrapper_script} ${@}
+   "${wrapper_script}" "$@"
