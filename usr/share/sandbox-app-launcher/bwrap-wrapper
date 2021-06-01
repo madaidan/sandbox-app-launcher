@@ -7,6 +7,8 @@ if [ "$sandbox_app_launcher_debug" = "true" ]; then
   set -x
 fi
 
+true "bwrap_args: '$bwrap_args'"
+
 bwrap \
    --ro-bind /bin /bin \
    --ro-bind /usr/bin /usr/bin \
