@@ -323,8 +323,13 @@ run_program() {
   sudo \
     --set-home \
     --user="${app_user}" \
-    sandbox_app_launcher_debug="$sandbox_app_launcher_debug" \
-    app_path="$app_path" \
+    sandbox_app_launcher_debug="${sandbox_app_launcher_debug}" \
+    app_path="${app_path}" \
+    main_app_dir="${main_app_dir}" \
+    app_homedir="${app_homedir}" \
+    wrapper_script="${wrapper_script}" \
+    seccomp_filter="${seccomp_filter}" \
+    bwrap_args="${bwrap_args}" \
     /usr/share/sandbox-app-launcher/bwrap-wrapper
 
   kill_processes_inside_sandbox
