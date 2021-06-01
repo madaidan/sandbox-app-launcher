@@ -66,7 +66,11 @@ app_user="sal-${app_name}"
 app_homedir="${appdata_dir}/${app_name}"
 seccomp_filter="${auto_dir}/seccomp-filter.bpf"
 shared_dir="${appdata_dir}/shared"
-bwrap_args=""
+
+## proper whitespace handling
+## https://www.whonix.org/wiki/Dev/bash
+unset bwrap_args
+declare -a bwrap_args
 
 if [ "${app_name}" = "torbrowser" ]; then
   app_path="${app_homedir}/.tb/tor-browser/Browser/start-tor-browser"
@@ -251,7 +255,7 @@ run_program() {
 
   ## Optionally remove network access by creating an empty net namespace.
   if [ "${allow_net}" = "no" ]; then
-    bwrap_args+="--unshare-net "
+    bwrap_args+=("--unshare-net")
   fi
 
   ## Optionally allow webcam access.
@@ -259,21 +263,35 @@ run_program() {
     for device in /dev/video*
     do
       if [ -f "${device}" ]; then
-        bwrap_args+="--dev-bind-try ${device} ${device} "
+        bwrap_args+=("--dev-bind-try")
+        bwrap_args+=("${device}")
+        bwrap_args+=("${device}")
       fi
     done
   fi
 
   ## Optionally allow microphone access.
   if [ "${allow_mic}" = "yes" ]; then
-    bwrap_args+="--dev-bind-try /dev/snd /dev/snd "
+    bwrap_args+=("--dev-bind-try")
+    bwrap_args+=("/dev/snd")
+    bwrap_args+=("/dev/snd")
   fi
 
   ## Shared storage.
   if [ "${shared_storage}" = "read-write" ]; then
-    bwrap_args+="--bind ${shared_dir} ${shared_dir} --bind /shared /shared "
+    bwrap_args+=("--bind")
+    bwrap_args+=("${shared_dir}")
+    bwrap_args+=("${shared_dir}")
+    bwrap_args+=("--bind")
+    bwrap_args+=("/shared")
+    bwrap_args+=("/shared")
   elif [ "${shared_storage}" = "read-only" ]; then
-    bwrap_args+="--ro-bind ${shared_dir} ${shared_dir} --ro-bind /shared /shared "
+    bwrap_args+=("--ro-bind")
+    bwrap_args+=("${shared_dir}")
+    bwrap_args+=("${shared_dir}")
+    bwrap_args+=("--ro-bind")
+    bwrap_args+=("/shared")
+    bwrap_args+=("/shared")
   fi
 
   ## Install Tor Browser.
@@ -282,8 +300,12 @@ run_program() {
       ## Use tb-starter (by Whonix developers) to install Tor Browser.
       sudo --set-home --user="${app_user}" HOME="${app_homedir}" tb_no_start=true tb_installer_started_by_sandbox_app_launcher=true torbrowser
     fi
-    bwrap_args+="--ro-bind-try /run/anon-ws-disable-stacked-tor/127.0.0.1_9150.sock /run/anon-ws-disable-stacked-tor/127.0.0.1_9150.sock "
-    bwrap_args+="--ro-bind-try /run/anon-ws-disable-stacked-tor/127.0.0.1_9151.sock /run/anon-ws-disable-stacked-tor/127.0.0.1_9151.sock "
+    bwrap_args+=("--ro-bind-try")
+    bwrap_args+=("/run/anon-ws-disable-stacked-tor/127.0.0.1_9150.sock")
+    bwrap_args+=("/run/anon-ws-disable-stacked-tor/127.0.0.1_9150.sock")
+    bwrap_args+=("--ro-bind-try")
+    bwrap_args+=("/run/anon-ws-disable-stacked-tor/127.0.0.1_9151.sock")
+    bwrap_args+=("/run/anon-ws-disable-stacked-tor/127.0.0.1_9151.sock")
   fi
 
   wrapper_script="/usr/share/sandbox-app-launcher/wrapper-script"
