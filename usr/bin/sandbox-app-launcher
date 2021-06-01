@@ -157,7 +157,7 @@ kill_processes_inside_sandbox() {
       break
     fi
     sleep 0.2 &
-    ## Non-blocking. Process even loop such as signals.
+    ## Non-blocking. Process event loop such as signals.
     wait "$!"
   done
 }
