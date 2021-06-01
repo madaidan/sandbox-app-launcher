@@ -325,6 +325,7 @@ run_program() {
     --user="${app_user}" \
     sandbox_app_launcher_debug="${sandbox_app_launcher_debug}" \
     app_path="${app_path}" \
+    app_user="${app_user}" \
     main_app_dir="${main_app_dir}" \
     app_homedir="${app_homedir}" \
     wrapper_script="${wrapper_script}" \
