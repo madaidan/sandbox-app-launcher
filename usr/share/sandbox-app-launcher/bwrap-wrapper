@@ -1,0 +1,67 @@
+#!/bin/bash
+
+## Copyright (C) 2021 - 2021 ENCRYPTED SUPPORT LP <adrelanos@whonix.org>
+## See the file COPYING for copying conditions.
+
+if [ "$sandbox_app_launcher_debug" = "true" ]; then
+  set -x
+fi
+
+bwrap \
+   --ro-bind /bin /bin \
+   --ro-bind /usr/bin /usr/bin \
+   --ro-bind /lib /lib \
+   --ro-bind-try /lib32 /lib32 \
+   --ro-bind-try /lib64 /lib64 \
+   --ro-bind /usr/lib /usr/lib \
+   --ro-bind-try /usr/local/lib /usr/local/lib \
+   --ro-bind /usr/share /usr/share \
+   --ro-bind-try /usr/local/share /usr/local/share \
+   --ro-bind /usr/include /usr/include \
+   --ro-bind /etc /etc \
+   --ro-bind-data 10 /etc/passwd \
+   --ro-bind-data 11 /etc/group \
+   --ro-bind ${main_app_dir}/machine-id /etc/machine-id \
+   --ro-bind /var/lib /var/lib \
+   --tmpfs /var/lib/dbus \
+   --ro-bind ${main_app_dir}/machine-id /var/lib/dbus/machine-id \
+   --ro-bind /sys/devices /sys/devices \
+   --ro-bind /sys/class /sys/class \
+   --ro-bind /sys/bus /sys/bus \
+   --ro-bind /sys/fs/cgroup /sys/fs/cgroup \
+   --bind ${app_homedir} ${app_homedir} \
+   --proc /proc \
+   --tmpfs /tmp \
+   --ro-bind-try /tmp/.X11-unix /tmp/.X11-unix \
+   --tmpfs /var/tmp \
+   --tmpfs /var/cache \
+   --ro-bind ${wrapper_script} ${wrapper_script} \
+   --ro-bind ${app_path} ${app_path} \
+   --tmpfs /run \
+   --symlink /run /var/run \
+   --dev /dev \
+   --chdir ${app_homedir} \
+   --setenv HOME ${app_homedir} \
+   --setenv USER ${app_user} \
+   --setenv LOGNAME ${app_user} \
+   --setenv XAUTHORITY ${app_homedir}/.Xauthority \
+   --setenv SHELL /sbin/nologin \
+   --setenv started_by_sandbox_app_launcher true \
+   --unsetenv SUDO_USER \
+   --unsetenv SUDO_UID \
+   --unsetenv SUDO_GID \
+   --unsetenv SUDO_COMMAND \
+   --unsetenv OLDPWD \
+   --unsetenv MAIL \
+   --unshare-pid \
+   --unshare-cgroup \
+   --unshare-uts \
+   --hostname host \
+   --new-session \
+   --cap-drop all \
+   --seccomp 12 \
+   10< <(getent passwd root ${app_user} nobody) \
+   11< <(getent group root ${app_user} nobody) \
+   12< ${seccomp_filter} \
+   ${bwrap_args} \
+   ${wrapper_script} ${@}
