@@ -308,6 +308,16 @@ run_program() {
     bwrap_args+=("/run/anon-ws-disable-stacked-tor/127.0.0.1_9151.sock")
   fi
 
+  true "{bwrap_args[@]}:"
+  true "${bwrap_args[@]}"
+  true "..."
+  ## XXX: bwrap_args does not have proper whitespace support
+  ## A bash associative array cannot be passed to another script.
+  bwrap_args_string="${bwrap_args[@]}"
+  true "..."
+  true "bwrap_args_string:"
+  true "$bwrap_args_string"
+
   wrapper_script="/usr/share/sandbox-app-launcher/wrapper-script"
 
   ## Debugging.
@@ -330,8 +340,8 @@ run_program() {
     app_homedir="${app_homedir}" \
     wrapper_script="${wrapper_script}" \
     seccomp_filter="${seccomp_filter}" \
-    bwrap_args="${bwrap_args}" \
-    /usr/share/sandbox-app-launcher/bwrap-wrapper
+    bwrap_args="$bwrap_args_string" \
+    /usr/share/sandbox-app-launcher/bwrap-wrapper "$@"
 
   kill_processes_inside_sandbox
 

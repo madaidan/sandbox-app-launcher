@@ -7,8 +7,16 @@ if [ "$sandbox_app_launcher_debug" = "true" ]; then
   set -x
 fi
 
-true "running: $0"
-true "bwrap_args: '$bwrap_args'"
+true "####################"
+true "This script is currently being executed: $0"
+true "####################"
+true "bwrap_args:"
+true "$bwrap_args"
+true "..."
+true "\$@"
+true "$@"
+
+## XXX: bwrap_args does not have proper whitespace support
 
 bwrap \
    --ro-bind /bin /bin \
@@ -24,10 +32,10 @@ bwrap \
    --ro-bind /etc /etc \
    --ro-bind-data 10 /etc/passwd \
    --ro-bind-data 11 /etc/group \
-   --ro-bind "${main_app_dir}/machine-id /etc/machine-id" \
+   --ro-bind "${main_app_dir}/machine-id" "/etc/machine-id" \
    --ro-bind /var/lib /var/lib \
    --tmpfs /var/lib/dbus \
-   --ro-bind "${main_app_dir}/machine-id /var/lib/dbus/machine-id" \
+   --ro-bind "${main_app_dir}/machine-id" "/var/lib/dbus/machine-id" \
    --ro-bind /sys/devices /sys/devices \
    --ro-bind /sys/class /sys/class \
    --ro-bind /sys/bus /sys/bus \
