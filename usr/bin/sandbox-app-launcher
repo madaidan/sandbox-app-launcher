@@ -330,6 +330,13 @@ run_program() {
 
   ## variables app_path and sandbox_app_launcher_debug are read by wrapper_script.
 
+  ## Passing file descriptors to brwap is difficult because sudo closes file
+  ## descriptors with a number greater than 3. This can be overwritten in
+  ## theory using sudo with parameter -C but that would require permitting this
+  ## in global sudo configuration policy with closefrom_override which has
+  ## unknown security impact. Hence, file descriptors are passed in file:
+  ## /usr/share/sandbox-app-launcher/bwrap-wrapper
+
   sudo \
     --set-home \
     --user="${app_user}" \
