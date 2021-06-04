@@ -206,6 +206,12 @@ setup_or_check() {
     run_if_root chmod 1777 "${shared_dir}"
   fi
 
+  ## Check if the second wrapper script exists.
+  if ! [ -f "${wrapper_script}-wx" ]; then
+    echo "ERROR: File '${wrapper_script}-wx' does not exist. This package was not installed properly." >&2
+    exit 1
+  fi
+
   ## Create the user that the sandboxed application will run as.
   if ! getent passwd | sed -e 's/:.*//g' | grep -qw "${app_user}"; then
     ## Use 'adduser' on Debian or Ubuntu systems but 'useradd' on other systems
