@@ -23,17 +23,24 @@ do
         shift
         break
         ;;
+      list)
+        echo -e "Currently configured sandboxes:\n"
+        getent passwd | grep "sal" | sed -e 's/:.*//g' | str_replace "sal-" ""
+        exit
+        ;;
       help)
         echo "Usage: sandbox-app-launcher [OPTION] [APPLICATION]
 
   setup       Setup the sandbox for the application.
   start       Execute the application within the sandbox.
   remove      Remove all application data and configuration files.
+  list        List all currently configured sandboxes.
 
 Examples:
   sandbox-app-launcher setup firefox
   sandbox-app-launcher start firefox
-  sandbox-app-launcher remove firefox"
+  sandbox-app-launcher remove firefox
+  sandbox-app-launcher list"
         exit
         ;;
       *)
