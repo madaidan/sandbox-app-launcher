@@ -1,3 +1,52 @@
+commit 01785426256cf1f4e1087c7bfdf8525acee068dc
+Merge: 6a4c8df feae60d
+Author: Patrick Schleizer <adrelanos@whonix.org>
+Date:   Wed Jun 9 14:08:32 2021 -0400
+
+    Merge remote-tracking branch 'github-whonix/master'
+
+commit feae60d3e2a9e7dfdc1df8876c53c968d7800028
+Merge: 4b2012b 29c4464
+Author: Patrick Schleizer <adrelanos@whonix.org>
+Date:   Tue Jun 8 01:57:14 2021 -0400
+
+    Merge pull request #61 from madaidan/list
+    
+    Add option to list all currently configured sandboxes
+
+commit 4b2012b301f1c681bd110589b639de4c411ef6b2
+Merge: 6a4c8df e763f91
+Author: Patrick Schleizer <adrelanos@whonix.org>
+Date:   Tue Jun 8 01:56:43 2021 -0400
+
+    Merge pull request #60 from madaidan/fix-apparmor
+    
+    Fix AppArmor
+
+commit e763f9122041800f15d5c4903701c3d7f7bf05b6
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Fri Jun 4 20:22:53 2021 +0000
+
+    Check for wrapper-script-wx
+
+commit 203f411b9201b7a3b8a78de5854bdbb73d32f7c2
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Fri Jun 4 20:19:38 2021 +0000
+
+    Fix AppArmor
+
+commit 29c44641b00aebb12450a7a153c8ba9059dfaf99
+Author: madaidan <50278627+madaidan@users.noreply.github.com>
+Date:   Fri Jun 4 19:28:41 2021 +0000
+
+    Add option to list all currently configured sandboxes
+
+commit 6a4c8df16cae9efe78cf1d74f074846468676364
+Author: Patrick Schleizer <adrelanos@whonix.org>
+Date:   Tue Jun 1 07:35:09 2021 -0400
+
+    bumped changelog version
+
 commit 8a8dc7a8a0b7009c437aff76f84bbb13e1361fce
 Author: Patrick Schleizer <adrelanos@whonix.org>
 Date:   Tue Jun 1 07:04:49 2021 -0400
