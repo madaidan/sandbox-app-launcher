@@ -31,9 +31,7 @@ if ! [ -d "${shared_dir}" ]; then
   mkdir -m 1777 "${shared_dir}"
 fi
 
-if ! [ -f "${wrapper_script}-wx" ]; then
-  cp "${wrapper_script}" "${wrapper_script}-wx"
-fi
+cp "${wrapper_script}" "${wrapper_script}-wx"
 
 ## Generate seccomp filter.
 compiler_flags="-lseccomp -ldl -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fstack-protector-all -Wformat -Werror=format-security -Wl,-z,relro -Wl,-z,now"
